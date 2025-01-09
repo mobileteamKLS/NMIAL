@@ -1,0 +1,214 @@
+
+<style>
+    
+    .button { 
+      margin-top: 5px !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #27bda1;
+    }
+
+
+  .primary-heading1 {
+    text-align: center;
+    color: #00AAA2;
+    margin-top: 10px;
+  }
+ 
+  .div-wrapper {
+    margin: 10px 10px 10px 10px;
+    background-color: white;
+    height: 40px;
+    border: lightgrey 1px solid;
+}
+.div-wrapper1 {
+    margin: 10px 10px 10px 10px;
+    background-color: white;
+    height: 115px;
+    border: lightgrey 1px solid;
+}
+
+
+.icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+
+.icons {
+    background-color: #00AAA2;
+    height: 45px;
+}
+tr.table_heading {
+    background-color: orange;
+    height: 35px;
+}
+td{
+    text-align: center;
+}
+.menu_heading{
+  float: none;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <link rel="stylesheet" href="css/app.min.css">
+
+</head>
+<body style="background-color:#dcf3f2 !important;">
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="js/app.min.js"></script>
+ <script type="text/javascript" src="js/LoadingModel.js"></script>
+ <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+ <script type="text/javascript" src="js/dialog.js"></script>
+ <script type="text/javascript" src="js/alert.mob.js"></script>
+ <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+ <script type="text/javascript" src="script/General.js"></script>
+ <script type="text/javascript" src="cordova.js"></script>
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <script type="text/javascript" src="script/Export/EXP_ApplicableCharges.js"></script>
+
+   
+    <div class="icons">
+        <div>
+            <button class="icon" onclick="back();"><i class='fas'>&#xf060;</i></button>
+            <button class="icon" style="float: right;" onclick="logOut();"><i class='fas' >&#xf011;</i></button>
+            <button class="icon" style="float: right;"><i  class='fas'>&#xf0f3;</i></button>
+            <h4 class="menu_heading">Exports</h4> 
+          </div>
+    </div>
+        
+  <div style="background-color:#dcf3f2 !important;">
+    <h5 class="primary-heading">Applicable Charges</h5>
+   
+            <div class= "div-wrapper">
+                <h5 class="primary-heading1">Cargo Tariff-Exports Tariff</h5>
+                </div>
+                <h5 class="primary-heading">(A) Terminal Charges</h5>
+                <div class= "div-wrapper1">
+                    <table style="width: 100%;">
+                         <thead>
+                             <tr class="table_heading">
+                                 <th>
+                                    Sr No.
+                                 </th>
+                                 <th>
+                                     List of Charges
+                                 </th>
+                                 <th>
+                                  Min.Rate per Consgt.(INR)
+                                </th>
+                                <th>
+                                    Rate per KG(INR)
+                                </th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             <tr>
+                                 <td>
+                                    1.
+                                 </td>
+                                 <td>
+                                  General Cargo
+                                 </td>
+                                 <td>
+                                    125.00
+                                 </td>
+                                 <td>
+                                   1.05
+                                 </td>
+                             </tr>
+                             <tr style="background-color: #f2f4f5;">
+                                <td>
+                                   2.
+                                </td>
+                                <td>
+                                 Special and Valuable
+                                </td>
+                                <td>
+                                   250.00
+                                </td>
+                                <td>
+                                  1.60
+                                </td>
+                            </tr>
+                         </tbody>
+                    </table>
+             </div>
+
+             <h5 class="primary-heading" style="margin-top: 30px;">(B) Demurrage Charges</h5>
+             <div class= "div-wrapper1">
+                 <table style="width: 100%;">
+                      <thead>
+                          <tr class="table_heading">
+                              <th>
+                                 Sr No.
+                              </th>
+                              <th>
+                                  List of Charges
+                              </th>
+                              <th>
+                               Min.Rate per Consgt.(INR)
+                             </th>
+                             <th>
+                                 Rate per KG(INR)
+                             </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>
+                                 1.
+                              </td>
+                              <td>
+                               General Cargo
+                              </td>
+                              <td>
+                                 130.00
+                              </td>
+                              <td>
+                                0.85
+                              </td>
+                          </tr>
+                          <tr style="background-color: #f2f4f5;">
+                             <td>
+                                2.
+                             </td>
+                             <td>
+                              Special Cargo
+                             </td>
+                             <td>
+                                250.00
+                             </td>
+                             <td>
+                               1.60
+                             </td>
+                         </tr>
+                      </tbody>
+                 </table>
+          </div>
+       
+  </div> 
+
+  
+</body>
+</html>

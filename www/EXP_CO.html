@@ -1,0 +1,334 @@
+
+<style>
+
+  .button { 
+    margin-top: 5px !important;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #27bda1;
+  }
+
+
+.div-wrapper_2 {
+  margin: 10px 10px 10px 10px;
+}
+.table_row{
+border-bottom: 1px solid grey;
+height: 50px;
+background-color: #fff;
+}
+.icon{
+ background-color: #00AAA2;
+  border: #FFFFFF;
+  color: white;
+  font-size: 20px;
+padding-top: 10px;
+}
+
+.fontSize12 {
+  width: 75%;
+  border: 0px;
+  border-bottom: 1px solid black;
+  text-align: right;
+  margin-top: 10px;
+}
+.fontSize13 {
+  width: 100%;
+  border: 0px;
+  border-bottom: 1px solid black;
+  text-align: right;
+  margin-top: 10px;
+}
+.width{
+width: 70%;
+  border: 0px;
+  border-bottom: 1px solid black;
+  text-align: right;
+  margin-top: 10px; 
+  margin-right: 5px;
+}
+
+
+.icons {
+  background-color: #00AAA2;
+  height: 45px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.col2{
+padding: 15px;
+text-align: right;
+}
+.spanTD{
+padding: 7px;
+text-align: left;
+font-weight: bold;
+}
+
+
+  .logOff{
+    text-align: center;
+    background-color: #00AAA2;
+    margin-bottom: 20px;
+    height: 43px;
+    border-radius: 15px 15px 0px 0px;
+  }
+  input#btnlogOff {
+background-color: white;
+  border: 1px solid #00AAA2;
+  border-radius: 15px;
+  margin-top: 10px;
+  width: 38%;
+  padding: 7px;
+
+}
+.log_label{
+color: white;
+margin-top: 7px;
+}
+input#submit {
+width: 40%;
+  color: white;
+  background-color: #00AAA2;
+  border-radius: 15px;
+  height: 6%;
+  border: none;
+  margin-top: 20PX;
+  transform: translateX(35%);
+  font-size: 17px;
+
+}
+
+input#revoke {
+width: 40%;
+  color: red;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  height: 6%;
+  border: 1px solid red;
+  margin-top: 20PX;
+  transform: translateX(15%);
+  font-size: 17px;
+}
+
+.menu_heading{
+float: none;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+          color: #e94922 !important;
+      }
+
+      
+input#btnClear {
+width: 80%;
+  color:#00AAA2;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  height: 35px;
+  border: 1px solid #00AAA2;
+  margin-top: 20PX;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="vendors/animate.css/animate.min.css">
+  <link rel="stylesheet" href="css/app.min.css">
+  <link href="css/custom.css" rel="stylesheet" />
+  <link href="css/Loader.css" rel="stylesheet" />
+  <link href="css/dialog.css" rel="stylesheet" />
+  <link href="css/alert.mob.css" rel="stylesheet" />
+  <link href="css/Common.css" rel="stylesheet" />
+  <link href="css/jquery-ui.css" rel="stylesheet" />
+  <link href="css/sweetalert2.min.css" rel="stylesheet" />
+  <link href="css/General.css" rel="stylesheet" />
+ 
+
+ </head>
+<body style="background-color:#dcf3f2 !important;">
+
+  <div class="icons">
+    <div>
+     <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+     <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+     </button>
+     <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+     </button>
+     <h4 class="menu_heading">Exports</h4> 
+   </div>
+ </div>
+     
+      
+<div style="background-color:#dcf3f2 !important;">
+  <h5 class="primary-heading">Carting Order</h5>
+ 
+              <!-- <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+                <div class="col-4" style="text-align:left;">
+                    <div class="form-group vtMargin" style="margin-top: 10px;">
+                        <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                      <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtFlightPrefix" class="fontSize12" placeholder="PREFIX" id="prefix" name="prefix"
+                      pattern="[0-9]*" maxlength="3" autofocus></input>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                      <input type="tel" onkeyup="NumberOnly(event); ChkMaxLength(this, '8');" id="txtFlightNo" class="fontSize13" placeholder="MAWB No."  id="MawbNo" name="MAWBNo"
+                      pattern="[0-9]*" maxlength="8" ></input>
+                    </div>
+                </div>
+          </div>
+  
+            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+                
+                  <div class="col-6">
+                    <div class="form-group">
+                        <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
+                    </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <input type="button" class="submitBtn" id="btnClear" value="Search" onclick="searchAWBNumber();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+  
+                  </div>
+              </div>
+          
+          </div> -->
+   
+           <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+            <div class="col-8" id ="lblSbNo">
+              <div class="form-group vtMargin" >
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No.</label>
+              </div>
+          </div>
+          <div class="col-4" style="text-align: right;">
+              <div class="form-group">
+                  <span id="txtMAWBNo" class="fontSize12" style="border: none;"></span>
+                </div>
+          </div>
+          </div>
+
+              <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;display: none;">
+                  <tr class="table_row">
+                      <td class="spanTD">Destination</td>
+                      <td class="col2" colspan="2"><span id="spnDestination"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">First Carrier</td>
+                      <td class="col2" colspan="2"><span id="spnFirstCarrier"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">No. of Pieces</td>
+                      <td class="col2" colspan="2"><span id="spnNoOfPieces"></span></td>
+                  </tr> 
+                  <tr class="table_row">
+                      <td class="spanTD">Gross Wt.(Kgs)</td>
+                      <td class="col2" colspan="2"><span id="spnGrWt"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">Chargeable Wt.(Kgs)</td>
+                    <td class="col2" colspan="2"><span id="spnChrgWt"></span></td>
+                </tr>
+                <tr class="table_row">
+                  <td class="spanTD">Flight No.</td>
+                  <td class="col2">  <input type="text" id="spnCarrCd" class="width"></input></td>
+                  <td class="col2">
+                    <input type="text" id="spnFlightNo" maxlength="4" class="width"></input></td>
+
+              </tr>
+              <tr class="table_row">
+                <td class="spanTD">Flight Date.</td>
+                <td class="col2" colspan="2">
+                  <input type="text" id="spnFlightDt" class="width" placeholder="DD MMM YYYY"  ></input>
+                </tr>
+           
+            <tr class="table_row">
+              <td class="spanTD">Flight Off Point.</td>
+              <td class="col2" colspan="2"><span id="spnFlightOffPt"></span></td>
+          </tr>
+            
+        </table>
+        <input type="button" class="submitBtn" id="revoke" value="Revoke" onclick="CartingOrderRevoke();" style="display: none;">
+        <input type="button" class="submitBtn" id="submit" value = "Approve" onclick="CartingOrderSubmit();" style="display: none;">
+       
+
+         </div>
+        
+        
+</div> 
+<div id="myModal" class="modal">
+  <div class="modal-cont">
+      <div class="logOff">
+          <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+      </div>
+      <div style="text-align: center;">
+           <label style="font-size: large;">Are you sure you want to sign out?</label>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 20px;"  >
+        <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 15px;float: right;" >
+      </div>
+  </div>
+</div>
+
+<div id="myRevokeModal" class="modal">
+<div class="modal-cont">
+    <div class="logOff" style="background-color: red !important;"> 
+        <label class="log_label" style="font-weight: bold;font-size: large;">Rejection Reason</label>
+    </div>
+    <div style="text-align: center;">
+     
+         <textarea class="form-control" autofocus id="txtFeedBack" placeholder="Enter rejection Remarks" style="height:100px;margin-left: 15px;border: 1px solid lightgray;width: 90%;"></textarea>
+         <em id="spnRemark" style="display:none;color:red;text-transform:initial;">Please enter remarks</em></label>
+    </div>
+    <div style="margin-bottom: 15px;">
+      <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitRevokeModal();" style="color: #00AAA2;margin-left: 15px;"  >
+      <input class="log_label" type="button" id="btnlogOff" value="Confirm Rejection" onclick="deleteCartingorder();" style="background-color:red;border:red !important;margin-right: 15px;float: right;" >
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.min.js"></script>
+<script type="text/javascript" src="js/LoadingModel.js"></script>
+<script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+<script type="text/javascript" src="js/alert.mob.js"></script>
+<script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+<script type="text/javascript" src="script/General.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="script/Export/EXP_CO.js"></script>
+<script language="javascript" type="text/javascript">
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  var revokemodal = document.getElementById("myRevokeModal");
+</script>
+</body>
+</html>

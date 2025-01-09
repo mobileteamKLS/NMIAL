@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget defaultlocale="en-US" id="com.kale.GMRHYD" version="5.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <feature name="BackbuttonPlugin">
+        <param name="android-package" value="com.badrit.Backbutton.BackbuttonPlugin" />
+    </feature>
+    <feature name="FirebasePlugin">
+        <param name="android-package" value="org.apache.cordova.firebase.FirebasePlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>
+TEDi	</name>
+    <description>
+		Application for Hyderabad International Airport.
+	</description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+		ACS NMIAL Team
+	</author>
+    <content src="loginScreen2.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+        <application usesCleartextTraffic="true" />
+    </edit-config>
+    <icon density="hdpi" src="res/icon/android/NMIAL_APP-ICON.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="orientation" value="portrait" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="true" />
+    <preference name="android-targetSdkVersion" value="34" />
+    <preference name="android-compileSdkVersion" value="34" />
+    <preference name="AndroidGradlePluginVersion" value="7.1.2" />
+    <preference name="GradleVersion" value="7.2" />
+</widget>

@@ -1,0 +1,179 @@
+<style>
+    .fontSize12 {
+        width: 100%;
+        border: 0px;
+        border-bottom: 1px solid black;
+        text-align: right;
+        margin-top: 10px;
+    }
+    .hide {
+      display: none;
+    }
+        
+    .myDIV:hover + .hide {
+      display: block;
+      color: red;
+    }
+    
+    </style>
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+      <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+      <link rel="stylesheet" href="css/app.min.css">
+      <link href="css/custom.css" rel="stylesheet" />
+      <link href="css/Loader.css" rel="stylesheet" />
+      <link href="css/dialog.css" rel="stylesheet" />
+      <link href="css/alert.mob.css" rel="stylesheet" />
+      <link href="css/Common.css" rel="stylesheet" />
+      <link href="css/General.css" rel="stylesheet" />
+     
+    </head>
+    <body style=" background-color:#e8fcfd !important">
+    
+    <div class= "headbar">
+        <div class="icons">
+            <!-- <button class="icon" onclick="back();"><i class='fas'>&#xf060;</i></button> -->
+            <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i></button>
+    
+            <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i></button>
+            <h4 class="menu_heading">Menu</h4> 
+      
+        </div>
+         
+          <div class="tab-container" style="background-color: #00AAA2;margin-top: 40px;">
+            <ul class="nav nav-tabs nav-fill" role="tablist" id="myTab">
+                <!-- <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home-2" role="tab" id="imp_tab" style="text-transform: none !important;">Exports</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#profile-2" role="tab" id="exp_tab" style="text-transform: none !important;">Imports</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages-2" role="tab" id="oth_tab" style="text-transform: none !important;">Others</a>
+                </li> -->
+             
+            </ul>
+        </div>
+      </div>
+          
+         
+           <div class="border-line">
+                <img src="img/NMIAL_Logo.png" align ="left" style="padding: 10px 0px 5px 5px;">
+                <!-- <img src="img/ACSLogo.png" align ="left" style="    width: 150px;
+                margin-top: 5px;"> -->
+                <!-- <img src="img/CargoByBLR_Logo_120x55.jpg" width = "30%" > -->
+             </div> 
+             <div class="tab-content" style="margin-top: -10px;">
+              <div class="tab-pane" id="home-2" role="tabpanel">
+                 
+                    <table>
+    
+                      <tr>
+                        <td class="col_menu" style="">
+                          <a onclick="GoToImpDeliveryDocket();" >
+                          <img src="img/NMIAL_DeliveryDocket.png" class="img_center"></a>
+                        </td>
+
+                      </tr>
+    
+                    </table>
+              </div>
+    
+              <div class="tab-pane active  show" id="profile-2" role="tabpanel">
+          
+                <table>
+    
+                  <tr>
+                    <td class="col_menu" style="">
+                      <a onclick="GoToImpDeliveryDocket();" >
+                      <img src="img/NMIAL_DeliveryDocket.png" class="img_center"></a>
+                    </td>
+
+                  </tr>
+
+                </table>
+                
+              </div>
+              <div class="tab-pane " id="messages-2" role="tabpanel">
+                <table>
+                  <tr>
+                    <td class="col_menu">
+                      <a onclick="GoToPDAccountBalance();" >
+                      <img src="img/PdAccount.png" class="img_center"></a>
+                    </td>
+                    <td class="col_menu">
+                      <a onclick="GoToApplicableCharges();">
+                      <img src="img/ApplicableCharges.png" class="img_center"></a>
+                    </td>
+                    <td class="col_menu">
+                      <a onclick="GoToContactUs();">
+                      <img src="img/ContactUs.png" class="img_center"></a>
+                    </td>
+                  </tr>
+                  <tr>
+                   
+                    <td class="col_menu">
+                      <a onclick="GoToUpdates();">
+                        <img src="img/Updates.png" class="img_center"></a>
+                    </td>
+                      
+                  </td> <td class="col_menu">
+                    <a onclick="GoToFAQ();">
+                    <img src="img/FAQs.png" class="img_center"></a>
+                  </td>
+                  </tr>
+             
+                </table>
+              </div>
+             
+          </div>
+       
+              
+         
+    
+          </div>
+    
+       
+        <div id="myModal" class="modal">
+              <div class="modal-cont">
+                  <div class="logOff">
+                      <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+                  </div>
+                  <div style="text-align: center;">
+                       <label style="font-size: large;">Are you sure you want to sign out?</label>
+                  </div>
+                  <div style="margin-bottom: 15px;">
+                    <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+                    <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+                  </div>
+              </div>
+        </div>
+       <div class="footer">
+        <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+        <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+      </div>
+      </body>
+    
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/app.min.js"></script>
+      <script type="text/javascript" src="js/LoadingModel.js"></script>
+      <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+      <script type="text/javascript" src="js/dialog.js"></script>
+      <script type="text/javascript" src="js/alert.mob.js"></script>
+      <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+      <script type="text/javascript" src="script/General.js"></script>
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <script type="text/javascript" src="script/Import/CustomOfficerDashboard.js"></script>
+      <script language="javascript" type="text/javascript">
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+    </script>
+      </html>

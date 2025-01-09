@@ -1,0 +1,1 @@
+{"plugins":["cordova-plugin-compat","cordova-plugin-statusbar","cordova-plugin-backbutton","cordova-plugin-splashscreen","cordova-plugin-add-swift-support","cordova-plugin-file","es6-promise-plugin","cordova-plugin-firebase","cordova-plugin-androidx","cordova-plugin-androidx-adapter","cordova-plugin-firebasex","cordova-plugin-qr-barcode-scanner"]}

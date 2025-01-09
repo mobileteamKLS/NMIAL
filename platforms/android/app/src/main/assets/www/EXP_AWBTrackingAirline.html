@@ -1,0 +1,382 @@
+
+<style>
+
+    
+    .button { 
+      margin-top: 5px !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #27bda1;
+    }
+
+  .div-wrapper {
+    margin: 5px 10px 10px 10px;
+    background-color: white;
+    height: 63px;
+    border: lightgrey 1px solid;
+}
+.div-wrapper_2 {
+    margin: 10px 10px 10px 10px;
+}
+.table_row{
+  border-bottom: 1px solid #868e96;
+  height: 50px;
+  background-color: #fff;
+}
+.icon{
+   background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+  padding-top: 10px;
+}
+
+.fontSize12 {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: right;
+    margin-top: 10px;
+}
+.fontSize13 {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: right;
+    margin-top: 10px;
+}
+
+
+.icons {
+    background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.col2{
+  padding: 5px;
+  text-align: right;
+}
+.spanTD{
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+    .logOff{
+      text-align: center;
+      background-color: #00AAA2;
+      margin-bottom: 20px;
+      height: 43px;
+      border-radius: 15px 15px 0px 0px;
+    }
+    input#btnlogOff {
+  background-color: white;
+    border: 1px solid #00AAA2;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 38%;
+    padding: 7px;
+}
+.log_label{
+  color: white;
+  margin-top: 7px;
+}
+.menu_heading{
+  float: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+
+
+input#btnClear {
+  width: 80%;
+    color:#00AAA2;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    height: 35px;
+    border: 1px solid #00AAA2;
+    margin-top: 20PX;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <link rel="stylesheet" href="css/app.min.css">
+ <link href="css/custom.css" rel="stylesheet" />
+  <link href="css/Loader.css" rel="stylesheet" />
+  <link href="css/dialog.css" rel="stylesheet" />
+  <link href="css/alert.mob.css" rel="stylesheet" />
+  <link href="css/Common.css" rel="stylesheet" />
+  <link href="css/General.css" rel="stylesheet" />
+
+
+</head>
+<body style="background-color:#dcf3f2 !important;">
+ 
+    <div class="icons">
+       <div>
+        <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+        <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+        </button>
+        <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+        </button>
+        <h4 class="menu_heading">Exports</h4> 
+      </div>
+    </div>
+        
+  <div style="background-color:#dcf3f2 !important;">
+    <h5 class="primary-heading">Track and Trace</h5>
+
+        <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+              <div class="col-4" style="text-align:left;">
+                  <div class="form-group vtMargin" style="margin-top: 10px;">
+                      <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No</label>
+                  </div>
+              </div>
+              <div class="col-3">
+                  <div class="form-group">
+                    <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtFlightPrefix" class="fontSize12" placeholder="PREFIX" id="prefix" name="prefix"
+                    pattern="[0-9]*" maxlength="3" autofocus></input>
+                  </div>
+              </div>
+              <div class="col-5">
+                  <div class="form-group">
+                    <input type="tel" onkeyup="NumberOnly(event); ChkMaxLength(this, '8');" id="txtFlightNo" class="fontSize13" placeholder="MAWB No."  id="MawbNo" name="MAWBNo"
+                    pattern="[0-9]*" maxlength="8" ></input>
+                  </div>
+              </div>
+        </div>
+
+          <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+              
+                <div class="col-6">
+                  <div class="form-group">
+                      <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
+                  </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <input type="button" class="submitBtn" id="btnClear" value="Search" onclick="searchAWBNumber();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+
+                </div>
+            </div>
+        
+        </div>
+ 
+
+                <!-- <div class= "div-wrapper_2"  id="div_awb1">
+                  <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid; display: none;">
+                    <tr class="table_row">
+                        <td class="spanTD">MAWB ASI</td>
+                        <td class="col2"><span id="spnASI"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                        <td class="spanTD">CO Request</td>
+                        <td class="col2"><span id="spnCORequest"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                        <td class="spanTD">CO</td>
+                        <td class="col2"><span id="spnCOApproval"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">SB ASI</td>
+                      <td class="col2"><span id="spnSBASI"></span></td>
+                  </tr>
+                 
+                    <tr class="table_row">
+                        <td class="spanTD">TSP</td>
+                        <td class="col2"><span id="spnTSP"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">Cargo Acceptance</td>
+                      <td class="col2"><span id="spnCargoAcceptance"></span></td>
+                  </tr>
+                      <tr class="table_row">
+                        <td class="spanTD">LEO</td>
+                        <td class="col2"><span id="spnLEO"></span></td>
+                    </tr>
+                          <tr class="table_row">
+                        <td class="spanTD">RCS</td>
+                        <td class="col2"><span id="spnRCS"></span></td>
+                    </tr>
+                            <tr class="table_row">
+                        <td class="spanTD">EGM</td>
+                        <td class="col2"><span id="spnEGM"></span></td>
+                    </tr> 
+               <div>
+          </table>
+                </div> -->
+                <div class= "div-wrapper_2"  id="div_awb1">
+                  <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid; display: none;">
+                    <tr class="table_row">
+                      <td class="spanTD">MAWB Creation  </td>
+                      <td class="col2"><span id="spnMawbCreation"></span></td>
+                  </tr>
+                
+                  <tr class="table_row">
+                      <td class="spanTD">HAWB Creation  </td>
+                      <td class="col2"><span id="spnHawbCreation"></span></td>
+                  </tr>
+                    <tr class="table_row">
+                        <td class="spanTD">MAWB ASI(Sent to CTO)</td>
+                        <td class="col2"><span id="spnASI"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">SB(Rcvd. by CTO)</td>
+                      <td class="col2"><span id="spnSB"></span></td>
+                  </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">CO(Approved by Airline)</td>
+                      <td class="col2"><span id="spnCOApproval"></span></td>
+                  </tr>
+                   
+                   
+                
+                    <tr class="table_row">
+                        <td class="spanTD">TSP</td>
+                        <td class="col2"><span id="spnTSP"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">Book Slot</td>
+                      <td class="col2"><span id="spnBookSlot"></span></td>
+                  </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">Parking in</td>
+                      <td class="col2"><span id="spnParkingIn"></span></td>
+                  </tr> 
+                  <tr class="table_row">
+                    <td class="spanTD">Parking Out</td>
+                    <td class="col2"><span id="spnParkingOut"></span></td>
+                </tr>
+                <tr class="table_row">
+                  <td class="spanTD">Terminal Gate in</td>
+                  <td class="col2"><span id="spnGateIn"></span></td>
+              </tr> 
+              <tr class="table_row">
+                <td class="spanTD">Dock In(At CTO)</td>
+                <td class="col2"><span id="spnDockIn"></span></td>
+            </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">W/H. Accept. (CARR)</td>
+                      <td class="col2"><span id="spnWhAcceptance"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">Dock Out(At CTO)</td>
+                    <td class="col2"><span id="spnDockOut"></span></td>
+                </tr>
+                <tr class="table_row">
+                  <td class="spanTD">Terminal Gate Out</td>
+                  <td class="col2"><span id="spnGateOut"></span></td>
+              </tr> 
+                      <tr class="table_row">
+                        <td class="spanTD">LEO(Rcvd. by CTO)</td>
+                        <td class="col2"><span id="spnLEO"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">DOC</td>
+                      <td class="col2"><span id="spnDOC"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">SCR</td>
+                    <td class="col2"><span id="spnSCR"></span></td>
+                </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">RCS</td>
+                    <td class="col2"><span id="spnRCS"></span></td>
+                </tr>
+                         
+                    <tr class="table_row">
+                      <td class="spanTD">DEP </td>
+                      <td class="col2"><span id="spnDEP"></span></td>
+                  </tr>
+                            <tr class="table_row">
+                        <td class="spanTD">EGM(Rcvd. by CTO)</td>
+                        <td class="col2"><span id="spnEGM"></span></td>
+                    </tr> 
+               <div>
+          </table>
+                </div>
+      
+                <!-- <div class= "div-wrapper_2" id="div_awb1">
+                  <table id="tblAirWayBillInfo1" width="100%" style="border: lightgrey 1px solid;display: none;">
+                    <tr class="table_row">
+                        <td class="spanTD">No. of Pieces</td>
+                        <td class="col2">                       
+                          <span id="spnPKG"></span>
+                        </td>
+                    </tr>
+                  
+                      <tr class="table_row">
+                        <td class="spanTD">Gross Wt.(Kgs)</td>
+                        <td class="col2"><span id="spnGrWt"></span></td>
+                    </tr>
+                  
+                    <tr class="table_row">
+                      <td class="spanTD">Chargeable Wt.(Kgs)</td>
+                      <td class="col2"><span id="spnChWt"></span></td>
+                  </tr>
+                
+                     <tr class="table_row" style="border: none;">
+                        <td class="spanTD" colspan="2">Commodity </td>
+                    </tr>
+                    <tr>
+                      <td class="spanTD" colspan="2" style="background-color: white;">
+                        <textarea class="form-control" autofocus id="spnCommo" style="height:60px;margin-left: 15px;border: 1px solid #868e96;width: 90%;background-color: white;margin-bottom: 5px;" disabled></textarea>
+                      </td>
+                    </tr>
+                     
+               </table>
+            </div> -->
+        
+  </div> 
+  <div id="myModal" class="modal">
+    <div class="modal-cont">
+        <div class="logOff">
+            <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+        </div>
+        <div style="text-align: center;">
+             <label style="font-size: large;">Are you sure you want to sign out?</label>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+          <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+        </div>
+    </div>
+</div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  <script type="text/javascript" src="js/LoadingModel.js"></script>
+  <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/alert.mob.js"></script>
+  <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+  <script type="text/javascript" src="script/General.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="script/Export/EXP_AWBTrackingAirline.js"></script>
+  <script language="javascript" type="text/javascript">
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+</script>
+</body>
+</html>

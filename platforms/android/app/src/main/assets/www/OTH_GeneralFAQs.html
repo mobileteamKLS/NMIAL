@@ -1,0 +1,332 @@
+
+<style>
+
+    .div-wrapper {
+      margin: 10px 10px 10px 10px;
+      /* height: 55px; */
+      border: 1px solid grey;
+  }
+  
+  
+  .icon{
+  background-color: #00AAA2;
+      border: #FFFFFF;
+      color: white;
+      font-size: 20px;
+      padding-top: 10px;
+  }
+  
+ 
+  form#myForm {
+      text-align: left;
+      margin-top: 10px;
+      margin-left: 10px;
+  }
+  
+   .wrapper {
+      margin: 10px 10px 10px 10px;
+      background-color: white;
+      height: 40px;
+      border: lightgrey 1px solid;
+  }
+  
+  .icons {
+      background-color: #00AAA2;
+      height: 45px;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+  tr.table_heading {
+      background-color: orange;
+      height: 40px;
+      text-align: right;
+  }
+  tr{
+      height: 60px;
+  }
+  td{
+      text-align: left;
+      padding: 5px;
+  }
+  td.col_right{
+      text-align: right;
+      padding: 5px;
+  }
+  .btn-arrow {
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      border: solid 2px;
+      color: white !important;
+      background-color: #00AAA2;
+      float: right;
+         margin: auto;
+         margin-right: 5px !important;
+  }
+  
+  h5.primary-heading1 {
+      text-align: center;
+      margin-top: 8px;
+      color: #00AAA2;
+      font-weight: bold;
+  }
+  .primary-heading2 {
+    text-align: left;
+    margin: 5px 0 5px 10px;
+    font-weight: bold;
+    font-size: initial;
+    }
+  #toggle-section {
+      display:none;
+  }
+  .hidden{
+      display: none;
+  }
+  th {
+      padding: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+  /* The Modal (background) */
+  .modal {
+          display: none;
+          /* Hidden by default */
+          position: fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 150px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+          background-color: rgb(0, 0, 0);
+          /* Fallback color */
+          background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+      }
+          b {
+            font-weight: bold;
+            font-size: 15px !important;
+             }
+             div#collapseOne {
+               background-color: white;
+             }
+             div#collapseTwo {
+               background-color: white;
+             }
+             div#collapseThree {
+               background-color: white;
+             }
+     /* Modal Content */
+    .modal-cont {
+      border-radius: 15px;
+      margin:15px;
+      border:1px solid grey;
+      background-color: #fff;
+  }
+      /* The Close Button */
+      .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      .info {
+    padding: 10px 10px 0px 10px;
+    font-size: 15px;
+}
+      .logOff{
+        text-align: center;
+        background-color: #00AAA2;
+        margin-bottom: 20px;
+        height: 43px;
+        border-radius: 15px 15px 0px 0px;
+      }
+      input#btnlogOff {
+    background-color: white;
+      border: 1px solid #00AAA2;
+      border-radius: 15px;
+      margin-top: 10px;
+      width: 38%;
+      padding: 7px;
+  }
+  .log_label{
+    color: white;
+    margin-top: 7px;
+  }
+  .menu_heading{
+    float: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+  }
+  b{
+    font-weight: bold !important;
+  }
+  
+      </style>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+   <link rel="stylesheet" href="css/app.min.css">
+  
+  </head>
+  <body style="background-color:#dcf3f2 !important;">
+  
+    <div class="icons">
+      <div>
+       <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+       <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+       </button>
+       <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+       </button>
+       <h4 class="menu_heading">Others</h4> 
+     </div>
+   </div>
+          
+    <div style="background-color:#dcf3f2 !important;">
+      <h5 class="primary-heading">FAQs</h5>
+              <div class= "wrapper">
+                  <h5 class="primary-heading1">General FAQs</h5>
+               </div>
+     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingOne" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           General Information about GMR Hyderabad Airport.
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+        </button>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+<div class="info"><b>GMR Hyderabad International Airport Limited (“GHIAL”), </b>a joint venture company promoted by the GMR Group (63%) in partnership with Airports Authority of India (13%), Government of Telangana (13%) and Malaysia Airports Holdings Berhad (MAHB) (11%). GHIAL was mandated to design, finance, build and operate Rajiv Gandhi International Airport (RGIA), Hyderabad as a world class Greenfield airport on the Public Private Partnership (PPP) model.</div>
+<div class="info"> The project was envisaged as a synergistic ecosystem with Hyderabad International Airport as the core and surrounded by an Airport City, driving a host of commercial and social activities, aligned with the vision of the State Government and Government of India to develop Hyderabad into a world class Global city and a Preferred Destination for Investments.</div>
+         
+<div class="info">Conceived as a new Gateway to South & Central India, Hyderabad Airport was commissioned in a record time of 31 months and inaugurated on March 14, 2008, with an initial capacity of 12 million passengers per annum (MPPA) and 150,000 tons of cargo handling capacity per annum. The airport master plan has the flexibility to increase the ultimate capacity to over 100 MPPA in phases. Currently Hyderabad Airport handles over 21 million passengers and around 148,000 tons of cargo annually and serves 17 International destinations through 21 International and 3 Indian passenger carriers and has 8 domestic carriers operating to around 53 domestic destinations. In addition to the above, 5 cargo airlines operate dedicated freighter services from Hyderabad Airport.</div>
+         
+<div class="info">Today, Hyderabad Airport is rated as one of the best airports in the world and has set benchmarks in operations, service quality and passenger experience. It has been consistently rated among the best airports, having been ranked as Global Top 3 airports in 5 – 15 million passenger per annum category for 9 consecutive years by Airport Council International (ACI) – Airport Service Quality (ASQ) passenger survey and as World No. 1 for 4 times. Hyderabad Airport is also one of the most awarded airports in the world having won over 100+ awards for excellence in areas such as operational efficiency, environmental sustainability, safety, corporate governance and Corporate Social Responsibility among others. These awards reflect GHIAL’s endeavour to constantly strive to deliver service excellence to our passengers from all over the world.</div>
+         
+<div class="info">As a leader in technology and innovation, Hyderabad Airport is today at the forefront of leveraging technology to deliver a seamless and enhanced experience to the travelers. As the first airport in India to introduce a unique e-boarding solution, it is the only airport in the country to have end-to-end digital passenger processing system, thus laying the foundation for a future of seamless, paperless travel. With the Indian Aviation Industry growing at a fast pace coupled with State Government’s pro-development policies and GHIAL’s sustained efforts to build growth momentum, Hyderabad has emerged as the 5th largest airport in India in terms of domestic passenger traffic and 6th largest airport overall. To meet this growth in demand, RGIA has embarked on a large scale expansion to increase its capacity to around 35 MPPA.</div>
+<div class="info">With a vision to become the engine of economic growth for the State of Telangana, GHIAL is currently developing Hyderabad Airport City, an integrated ecosystem with ‘Theme/Port’ based development zones covering Commercial Office space, Retail, Leisure & Entertainment, Hospitality, Education, Healthcare, Aerospace and Logistics. Supported by state-of-the-art infrastructure and global connectivity offered by Hyderabad Airport, Hyderabad Airport City has emerged as a preferred choice for global investors and tenants.</div><br>
+              
+        </div>
+    </div>
+  
+        </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class= "div-wrapper">
+            <div class="panel-heading" role="tab" id="headingTwo" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+               <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+               How to Clear Browser Cache?
+               <!-- <button id="open-close-toggle" class="btn-arrow" >
+                   <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+                <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+               </button> -->
+               <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+            </button>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+    
+                <div class="info">Sometimes the browser cache memory gets "clogged" and refreshing may not work as a result of which you might face problems logging into NetBanking.Request you to follow the below steps to clear cache memory. For Internet Explorer 5.0 & above 1.Select "TOOLS" from the menu-bar of the browser. 2.Select "INTERNET OPTIONS". 3.Under the title "Temporary Internet files", Click on "Delete Files" 4.Delete cookies, clear history 5.Click on "Apply" / "OK" 6.Restart the Browser.</div><br>
+                  
+            </div>
+        </div>
+      
+            </div>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class= "div-wrapper">
+
+                <div class="panel-heading" role="tab" id="headingThree" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                   <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+                  What is the best browser/resolution to view this website?
+                   <!-- <button id="open-close-toggle" class="btn-arrow" >
+                       <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+                    <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+                   </button> -->
+                   <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+                </button>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        
+        
+                    <div class="info">This site is best viewed using latest versions of Chrome, Firefox, Microsoft Internet Explorer (11+) or a equivalent browser with a screen resolution of 1366 * 768 or higher. If your browser is of older version or on an older and smaller resolution, you may have trouble viewing some of the website features properly.</div><br>
+                      
+                </div>
+            </div>
+          
+                </div>
+    </div> 
+  
+    <div id="myModal" class="modal">
+      <div class="modal-cont">
+          <div class="logOff">
+              <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+          </div>
+          <div style="text-align: center;">
+               <label style="font-size: large;">Are you sure you want to sign out?</label>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+            <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+          </div>
+      </div>
+  </div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  <script type="text/javascript" src="js/LoadingModel.js"></script>
+  <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/alert.mob.js"></script>
+  <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+  <script type="text/javascript" src="script/General.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="script/Others/OTH_GeneralFAQs.js"></script>
+  </body>
+  
+  <script>
+  //     $('#open-close-toggle').on("click", function(){
+  //     var $arrows = $(this).find("i");
+  //     $('#toggle-section').slideToggle(function(){
+  //         $arrows.toggle();
+  //     });
+  // });
+  
+  function toggleIcon(e) {
+  $(e.target)
+      .prev('.panel-heading')
+      .find(".more-less")
+      .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+  }
+  $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+  $('.panel-group').on('shown.bs.collapse', toggleIcon);
+   // Get the modal
+   var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+  </script>
+  </html>

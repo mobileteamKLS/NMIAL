@@ -1,0 +1,814 @@
+
+<style>
+   
+    .div-wrapper {
+      margin: 10px 10px 10px 10px;
+      /* height: 55px; */
+      border: 1px solid grey;
+      background-color: white;
+  }
+  
+  
+  .icon{
+  background-color: #00AAA2;
+      border: #FFFFFF;
+      color: white;
+      font-size: 20px;
+      padding-top: 10px;
+  }
+
+  form#myForm {
+      text-align: left;
+      margin-top: 10px;
+      margin-left: 10px;
+  }
+  
+   .wrapper {
+      margin: 10px 10px 10px 10px;
+      background-color: white;
+      height: 40px;
+      border: lightgrey 1px solid;
+  }
+  
+  .icons {
+      background-color: #00AAA2;
+      height: 45px;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+  tr.table_heading {
+      background-color: #4F5D75;
+      height: 40px;
+      text-align: left;
+      color: white;
+      font-size: 15px;
+  }
+  tr{
+      height: 60px;
+  }
+  td{
+      text-align: left;
+      padding: 10px;
+      font-size: 15px;
+  }
+  td.col_right{
+      text-align: right;
+      padding: 5px;
+  }
+  .btn-arrow {
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      border: solid 2px;
+      color: white !important;
+      background-color: #00AAA2;
+      float: right;
+         margin: auto;
+         margin-right: 5px !important;
+  }
+  
+  h5.primary-heading1 {
+      text-align: center;
+      margin-top: 8px;
+      color: #00AAA2;
+      font-weight: bold;
+  }
+  .primary-heading2 {
+    text-align: left;
+    margin: 5px 0 5px 10px;
+    font-weight: bold;
+    font-size: initial;
+    }
+  #toggle-section {
+      display:none;
+  }
+  .hidden{
+      display: none;
+  }
+  th {
+      padding: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 15px;
+  }
+  /* The Modal (background) */
+  .modal {
+          display: none;
+          /* Hidden by default */
+          position: fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 150px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+          background-color: rgb(0, 0, 0);
+          /* Fallback color */
+          background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+      }
+  
+     /* Modal Content */
+    .modal-cont {
+      border-radius: 15px;
+      margin:15px;
+      border:1px solid grey;
+      background-color: #fff;
+  }
+      /* The Close Button */
+      .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      .info {
+    padding: 10px 10px 0px 10px;
+    font-size: 15px;
+}
+      .logOff{
+        text-align: center;
+        background-color: #00AAA2;
+        margin-bottom: 20px;
+        height: 43px;
+        border-radius: 15px 15px 0px 0px;
+      }
+      input#btnlogOff {
+    background-color: white;
+      border: 1px solid #00AAA2;
+      border-radius: 15px;
+      margin-top: 10px;
+      width: 38%;
+      padding: 7px;
+  }
+  b{
+    font-weight: bold !important;
+    font-size: 15px !important;
+  }
+ 
+  .log_label{
+    color: white;
+    margin-top: 7px;
+  }
+  .menu_heading{
+    float: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+  }
+  .trackAWB {
+    padding: 10px;
+    font-size: 15px;
+}
+
+.hyperlnk{
+    border: 0px;
+    color: blue;
+    text-decoration:underline ;
+    background-color: white ;
+}
+ 
+      </style>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+   <link rel="stylesheet" href="css/app.min.css">
+  
+  </head>
+  <body style="background-color:#dcf3f2 !important;">
+  
+    <div class="icons">
+        <div>
+         <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+         <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+         </button>
+         <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+         </button>
+         <h4 class="menu_heading">Others</h4> 
+       </div>
+     </div>
+            
+    <div style="background-color:#dcf3f2 !important;">
+      <h5 class="primary-heading">FAQs</h5>
+              <div class= "wrapper">
+                  <h5 class="primary-heading1">FAQs for GMR Hyderabad Air Cargo App</h5>
+               </div>
+     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingOne" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           What activities can be performed by stakeholders on GMR Hyderabad Air Cargo Mobile App?
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;" ></i>
+           </button>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="info">  Following activities could be performed by Freight Forwarder and Customs Broker (CB) user types on GMR Hyderabad Air Cargo Mobile App: </div>
+               <div style="margin-left: 30px;">                
+            <div class="info">a. Export and Import AWB Tracking</div>
+                    
+            <div class="info">b. Vehicle Movement Tracking</div>
+                    
+            <div class="info">c. EGM Details</div>
+            <div class="info">d. IGM Details</div>
+            <div class="info">e. View Applicable Charges</div></div>
+        </div>
+    </div>
+    <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingTwo" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           How to track AWB for Exports or Imports?
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;" ></i>
+        </button>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="trackAWB">
+            <label><b>Exports</b></label><br>
+            Step 1: Login as FF/CB<br>
+            Step 2: Select Exports<br>
+            Step 3: Enter MAWB No<br><br>
+            
+            <label>Screen with following tracking details will appear:</label><br>
+            <div style="margin-left: 30px;">
+            a.	MAWB ASI<br>
+            b.	CO Request<br>
+            c.	CO Approval<br>
+            d.  SB ASI<br>
+            e.	TSP<br>
+            f.	Cargo Acceptance<br>
+            g.	LEO<br>
+            h.	RCS<br>
+            i.	EGM<br><br></div>
+
+            <label><b>Imports</b></label><br>
+            Step 1: Login as FF/CB<br>
+            Step 2: Select Imports<br>
+            Step 3: Enter MAWB No<br>
+            Step 4: Enter the HAWB No. (Opt.)<br><br>
+
+            <label>Screen with following tracking details will appear:</label><br>
+            <div style="margin-left: 30px;">
+            a.	Airline DO<br>
+            b.	Consol DO<br>
+            c.	BOE<br>
+            d.	FFE<br>
+            e.	RFE<br>
+            f.	OC<br>
+            g.	TSP<br>
+            h.	DLV<br>
+            i.	Hold<br>
+            j.	Damaged<br></div>
+            </div>
+            
+        
+        </div>
+    </div>
+    <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingThree" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" >
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           How can vehicle movement be tracked for Exports and Imports?
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+        </button>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+           <div class="trackAWB">
+            <label><b>Exports</b></label><br>
+            Step 1: Login as FF/CB<br>
+            Step 2: Select Exports<br>
+            Step 3: Enter SB No.<br>
+            Step 4: Enter Date<br><br>
+            Screen with following tracking details will appear<br>
+            <div style="margin-left: 30px;">
+                a.	EVT Number and Vehicle No<br>
+                b.	Parking area<br>
+                c.	Dock-in<br>
+                d.	Dock-out<br></div><br>
+
+
+                <label><b>Imports</b></label><br>
+            Step 1: Login as FF/CB<br>
+            Step 2: Select Imports<br>
+            Step 3: Enter BoE No.<br>
+            Step 4: Enter Date<br><br>
+            Screen with following tracking details will appear<br>
+            <div style="margin-left: 30px;">
+                a.	EVT Number and Vehicle No<br>
+                b.	Parking area<br>
+                c.	Dock-in<br>
+                d.	Dock-out<br></div><br>
+
+           <div>
+            All the VTs for that particular Shipping Bill will be displayed on the screen. The user can click on the VT that he wishes to check the status for and the drop down will showcase the status for that Particular Vehicle.
+           </div>
+        </div>  
+        
+        </div>
+    </div>
+    <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingFour" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" >
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           How to check the CTO PD account balance? 
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+        </button>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="trackAWB"> 
+            Step 1: Login as FF/CB <br>
+            Step 2: Select Others <br>
+            Step 3: Go to PD Account Balance <br>
+            Step 4: Select from Dropdown - Balance for CTO and the balance will be displayed<br>
+             </div>
+        
+        </div>
+    </div>
+    <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingSeven" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" >
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           How to check the ACS PD account balance? 
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+        </button>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="trackAWB"> 
+            Step 1: Login as FF/CB<br>
+            Step 2: Select Others<br>
+            Step 3: Go to PD Account Balance<br>
+            Step 4: Select from Dropdown - GMR Hyderabad Air Cargo<br>
+            Step 5: Select from GMR Hyderabad Air Cargo dropdown: GMR or ACS depending on your requirement and the balance will be displayed<br>
+             </div>
+        
+        </div>
+    </div>
+ 
+    <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingSix" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true">
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           Which are the airlines operating at GMR Airport?
+
+
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+        </button>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="div-wrapper_1">
+                <table id="tblVehicleInfo" style="width: 100%;border: lightgrey 1px solid;">
+                  <thead>
+                    <tr class="table_heading">
+                      <th style="width: 40%;">
+                        Airline Name
+                      </th>
+                      <th style="width: 20%;">
+                        IATA Carrier Code
+                      </th>
+                      <th>
+                        Airline Prefix
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background-color: white;height: 50px;">
+                      <td >
+                        Air Arabia	
+                      </td>
+                      <td>
+                        G9
+                      </td>
+                      <td>
+                        514
+                      </td>
+                    </tr>
+                    	
+                    <tr style="background-color:#e9ecef;height: 50px;">
+                        <td >
+                            Air Asia		
+                        </td>
+                        <td>
+                            I5
+                        </td>
+                        <td>
+                            91
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >                  
+                        Air India				
+                        </td>
+                        <td>
+                            AI
+                                                </td>
+                        <td>
+                            98
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Air Mauritius				
+                        </td>
+                        <td>
+                            MK
+                        </td>
+                        <td> 
+                            239
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Air France				
+                        </td>
+                        <td>
+                            AF
+                        </td>
+                        <td>
+                            57
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Blue Dart Aviation Limited		
+                        </td>
+                        <td>
+                            BZ
+                         </td>
+                        <td>
+                            620
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Cathay Pacific		                           
+                        </td>
+                        <td>
+                            CX
+                        </td>
+                        <td>
+                            160
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                    	    DHL Aerologic		
+                          
+                        </td>
+                        <td>
+                             3S
+                        </td>
+                        <td>
+                            278
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Emirates				
+                        </td>
+                        <td>
+                            EK
+                        </td>
+                        <td>
+                            176
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Ethiopian Airlines				
+                        </td>
+                        <td>
+                            ET
+                        </td>
+                        <td>
+                            71
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Etihad Cargo				
+                        </td>
+                        <td>
+                            EY
+                        </td>
+                        <td>
+                            431
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            FedEx			
+                           
+                        </td>
+                        <td>
+                            FX
+                        </td>
+                        <td>
+                            23
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            GoAir		
+                        </td>
+                        <td>
+                            G9
+                        </td>
+                        <td>
+                            879
+                                                </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Gulf Air		
+		
+                        </td>
+                        <td>
+                            GF
+                        </td>
+                        <td>
+                            72
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            IAG Cargo/British Airways		
+                        </td>
+                        <td>
+                            BA
+                        </td>
+                        <td>
+                            125
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Indigo		
+                           
+                        </td>
+                        <td>
+                            6E
+                        </td>
+                        <td>
+                            312
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            KLM		
+                        </td>
+                        <td>
+                            KL
+                        </td>
+                        <td>
+                            74
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Kuwait Airways			
+                        </td>
+                        <td>
+                            KU
+                        </td>
+                        <td>
+                            229
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Lufthansa Cargo		
+                        </td>
+                        <td>
+                            LH
+                        </td>
+                        <td>
+                            20	
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Malaysian Airlines			
+                        </td>
+                        <td>
+                            MH
+                        </td>
+                        <td>
+                            232
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Nepal Airlines		
+                                                </td>
+                        <td>
+                            RA
+                        </td>
+                        <td>
+                            285
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Oman Air		    
+                        </td>
+                        <td>
+                            WY
+                        </td>
+                        <td>
+                            910
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Qatar Airways		
+
+
+
+                        </td>
+                        <td>
+                            QR
+                                                </td>
+                        <td>
+                            157
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Saudia Cargo				
+                        </td>
+                        <td>
+                            SV
+                                                </td>
+                        <td>
+                            65
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >                            
+                        Singapore Airline			
+                          	
+                        </td>
+                        <td>
+                            SQ
+                        </td>
+                        <td>
+                            618
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            SpiceXpress		
+                        </td>
+                        <td>
+                            SG
+                        </td>
+                        <td>
+                            775
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >  		
+                            Srilankan Airline		
+                           	
+                        </td>
+                        <td>
+                            UL
+                                                </td>
+                        <td>
+                            603
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Thai Airways		
+                        </td>
+                        <td>
+                            TG
+                        </td>
+                        <td>
+                            217
+                        </td>
+                      </tr>
+                      <tr style="background-color: white;height: 50px;">
+                        <td >
+                            Turkish Airlines		
+
+                         
+                        </td>
+                        <td>
+                            TK
+                        </td>
+                        <td>
+                            235
+                        </td>
+                      </tr>
+                      <tr style="background-color: #e9ecef;height: 50px;">
+                        <td >
+                            Vistara		
+                        </td>
+                        <td>
+                            UK
+                        </td>
+                        <td>
+                            228
+                        </td>
+                      </tr>
+                     
+                  </tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+        </div>
+    </div> 
+  
+    <div id="myModal" class="modal">
+      <div class="modal-cont">
+          <div class="logOff">
+              <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+          </div>
+          <div style="text-align: center;">
+               <label style="font-size: large;">Are you sure you want to sign out?</label>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+            <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+          </div>
+      </div>
+  </div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  <script type="text/javascript" src="js/LoadingModel.js"></script>
+  <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/alert.mob.js"></script>
+  <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+  <script type="text/javascript" src="script/General.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="script/Others/OTH_MobileAppFAQs.js"></script>
+  </body>
+  
+  <script>
+  //     $('#open-close-toggle').on("click", function(){
+  //     var $arrows = $(this).find("i");
+  //     $('#toggle-section').slideToggle(function(){
+  //         $arrows.toggle();
+  //     });
+  // });
+  
+  function toggleIcon(e) {
+  $(e.target)
+      .prev('.panel-heading')
+      .find(".more-less")
+      .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+  }
+  $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+  $('.panel-group').on('shown.bs.collapse', toggleIcon);
+   // Get the modal
+   var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+  </script>
+  </html>

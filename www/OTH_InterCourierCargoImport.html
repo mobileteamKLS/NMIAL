@@ -1,0 +1,403 @@
+
+<style>
+   .button { 
+      margin-top: 5px !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #27bda1;
+    }
+    .footer { 
+    background-color: lightgrey;
+    font-size: smaller;
+    height: 15px;
+    }
+    .image{
+    color: #89f9f4;
+    width: 90px;
+    margin-left: 5px;
+    margin-top: 10px;
+    }
+  
+
+.content-wrap p {
+  margin-left: 5px;
+  margin-bottom: auto;
+}
+
+  .btn-wrapper {
+  margin: 0 20px;
+  }
+ 
+  .div-wrapper {
+    margin: 10px 10px 10px 10px;
+}
+
+.div-wrapper1 {
+    margin: 10px 10px 10px 10px;
+    background-color: #fff;
+  
+}
+.heading {
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+
+form#myForm {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+button.fab36 {
+    border: 0px;
+    color: white;
+    background-color: #00AAA2;
+    font-size:20px;
+    height: 35px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+ }
+ .wrapper {
+    margin: 5px 10px 10px 10px;
+    background-color: white;
+    border: lightgrey 1px solid;
+}
+
+.icons {
+    background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+tr.table_heading {
+    background-color: orange;
+    height: 35px;
+}
+td{
+    text-align: center;
+}
+
+button.btn-arrow {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: solid 2px;
+    color: white;
+    background-color: #00AAA2;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+h5.primary-heading1 {
+    text-align: center;
+    margin-top: 8px;
+    color: #00AAA2;
+    font-weight: bold;
+}
+.common_notes{
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.part2 {
+    display: inline;
+    margin-left: 10px;
+}.part1 {
+    display: inline;
+}.part3 {
+    margin-left: 15px;
+}
+/* The Modal (background) */
+.modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 150px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+   /* Modal Content */
+  .modal-cont {
+    border-radius: 15px;
+    margin:15px;
+    border:1px solid grey;
+    background-color: #fff;
+}
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .logOff{
+      text-align: center;
+      background-color: #00AAA2;
+      margin-bottom: 20px;
+      height: 43px;
+      border-radius: 15px 15px 0px 0px;
+    }
+    input#btnlogOff {
+  background-color: white;
+    border: 1px solid #00AAA2;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 38%;
+    padding: 7px;
+}
+.log_label{
+  color: white;
+  margin-top: 7px;
+}
+.menu_heading{
+  float: none;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <link rel="stylesheet" href="css/app.min.css">
+ <link href="css/custom.css" rel="stylesheet" />
+ <link href="css/Loader.css" rel="stylesheet" />
+ <link href="css/dialog.css" rel="stylesheet" />
+ <link href="css/alert.mob.css" rel="stylesheet" />
+ <link href="css/Common.css" rel="stylesheet" />
+ <link href="css/General.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:#dcf3f2 !important;">
+
+    <div class="icons">
+        <div>
+         <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+         <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+         </button>
+         <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+         </button>
+         <h4 class="menu_heading">Others</h4> 
+       </div>
+     </div>
+            
+  <div style="background-color:#dcf3f2 !important;">
+    <h5 class="primary-heading">Applicable Charges</h5>
+
+            <div class= "wrapper">
+                <h5 class="primary-heading1">International Courier Terminal - Import Charges</h5>
+             </div>
+   
+             
+             <div class= "div-wrapper">
+               
+                <table id="tblVehicleInfo" style="width: 100%;border: lightgrey 1px solid;table-layout: fixed;">
+                     <thead>
+                         <tr class="table_heading">
+                             <th style="text-align: left;padding: 10px;width: 60%;">
+                                List of Charges
+                             </th>
+                             <th colspan="2" style="padding: 5px;">
+                                per kg Rate
+                            </th>
+                          </tr>
+                     </thead>
+                     <tbody>
+                         <tr style="background-color: white;height: 60px;">
+                             <td colspan="2" style="text-align: left;padding: 10px;font-weight: bold;">
+                                1. Facilitation Fees (Rate/kg)
+                             </td>
+                             <td style="text-align: center;padding: 5px;">
+                                21.1
+                                </td>
+                         </tr>
+
+                         <tr style="background-color: white;height: 60px;">
+                            <td colspan="3" style="text-align: left;padding: 10px;font-weight: bold;">
+                               2. Detention/ Demurrage Fees 
+                            </td>
+                        </tr>
+                         <tr style="background-color: #f2f4f5;height: 40px;">
+                            <td style="text-align: left;padding: 10px;">
+                                a. 0-3 Days
+                            </td>
+                            <td colspan="2" style="text-align: left;">
+                            Nil       
+                             </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;height: 40px;">
+                            <td style="text-align: left;padding: 10px;">
+                                b. 4-5 Days
+                            </td>
+                            <td colspan="2" style="text-align: left;">
+                                Rs 2.64 per Kg per day for the fourth and fifth day or Rs 36 whichever is higher    
+                             </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;height: 40px;">
+                            <td style="text-align: left;padding: 10px;">
+                                c. 6-10 Days
+                            </td>
+                            <td colspan="2" style="text-align: left;">
+                                Rs 2.64 per Kg per day counted from actual time of arrival of flight (ATA) or Rs 36 whichever is higher    
+                             </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;height: 40px;">
+                            <td style="text-align: left;padding: 10px;">
+                                d. 11-20 Days
+                            </td>
+                            <td colspan="2" style="text-align: left;">
+                                Rs 3.96 per Kg per day counted from actual time of arrival of flight (ATA) or Rs 36 whichever is higher      
+                             </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;height: 40px;">
+                            <td style="text-align: left;padding: 10px;">
+                                e. 21-30 Days
+                            </td>
+                            <td colspan="2" style="text-align: left;">
+                                Rs 5.94 per Kg per day counted from actual time of arrival of flight (ATA) or Rs 36 whichever is higher     
+                             </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;height: 40px;">
+                            <td style="text-align: left;padding: 10px;">
+                                f. From 31st Day
+                            </td>
+                            <td colspan="2" style="text-align: left;">
+                                Rs 7.92 per Kg per day counted from actual time of arrival of flight (ATA) or Rs 36 whichever is higher  
+                             </td>
+                        </tr>
+                      
+                        <tr style="background-color: white;height: 60px;">
+                            <td colspan="2" style="text-align: left;padding: 10px;font-weight: bold;">
+                               3. X-Ray
+                            </td>
+                            <td style="text-align: center;padding: 5px;">
+                            3.15
+                               </td>
+                        </tr>
+                    
+                     </tbody>
+                </table>
+         </div>
+
+       
+       
+         <h4 class="heading">Notes:</h4>
+         <div class= "div-wrapper1">
+            <div class="common_notes">
+                <div class="part1">1.</div>
+                <div class="part2">Consignments of Human Remains,Coffins including Unaccompanied Baggage of the deceased and Human Eyes will be exempted from the purview of the Facilitation and Demmurrage charges.</div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">2.</div>
+                <div class="part2">Charges will be levied on the "gross weight" or the "chargeable weight" of the consignment whichever is higher. Wherever the "gross weight and/ or volume weight is wrongly indicated on the Airway Bill and is actually found more, charges will be levied on the 'actual gross weight or 'actual volumetric weight' or 'chargeable weight' whichever is higher. </div>
+            </div>
+         
+            <div class="common_notes">
+                <div class="part1">3.</div>  
+                <div class="part2">All bills will be rounded off to the next INR 5 as per rules.</div>
+            </div>
+         
+            <div class="common_notes">
+                <div class="part1">4.</div>
+                <div class="part2">Back to town charges are at 100 % of all applicable charges including Facilitation Fee</div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">5.</div>
+                <div class="part2"> All charges above are excluding GST which shall be levied at prevailing rates</div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">6.</div>
+                <div class="part2">The tariff charged will be applicable as per the tariff prevailing at the time of invoicing</div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">7.</div>
+                <div class="part2">Unitization/Deunitization charges for the services provided in the main Cargo Terminal will be charged as per the applicable AERA approved Tariffs </div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">8.</div>
+                <div class="part2">For the purpose of charging, the weight will be rounded up to the nearest kg</div>
+            </div> 
+            <div class="common_notes">
+                <div class="part1">9.</div>
+                <div class="part2">For both Export and Import, the Detention/Demurrage charges to be charged on HAWB. The time period shall be till the time of generation of Release Note</div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">10.</div>
+                <div class="part2"> For both Export and Import, Facilitation Fees to be charged on MAWB</div>
+            </div>
+            <div class="common_notes">
+                <div class="part1">11.</div>
+                <div class="part2"> Each 24 hrs cycle will be taken as 01 day, and any part thereof will be counted as one full day.</div>
+            </div>
+         </div>
+ </div>
+ <div id="myModal" class="modal">
+    <div class="modal-cont">
+        <div class="logOff">
+            <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+        </div>
+        <div style="text-align: center;">
+             <label style="font-size: large;">Are you sure you want to sign out?</label>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+          <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.min.js"></script>
+<script type="text/javascript" src="js/LoadingModel.js"></script>
+<script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+<script type="text/javascript" src="js/alert.mob.js"></script>
+<script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+<script type="text/javascript" src="script/General.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script type="text/javascript" src="script/Others/OTH_InterCourierCargoImport.js"></script>
+<script language="javascript" type="text/javascript">
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+</script>
+</body>
+</html>

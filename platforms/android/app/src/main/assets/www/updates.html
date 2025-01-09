@@ -1,0 +1,204 @@
+
+<style>
+  
+  .button { 
+    margin-top: 5px !important;
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #27bda1;
+  }
+
+  .image{
+  color: #89f9f4;
+  margin-left: 10px;
+  width: 100px;
+  }
+
+  .box-wrapper {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.box-wrapper .content-wrap {
+  position: relative;
+  padding: 0 25px;
+  margin-right: 10px;
+}
+.box-wrapper .content-wrap .icon {
+  color: #16928c;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.content-wrap p {
+  padding-right: 15px;
+}
+
+
+
+.btn-wrapper {
+margin: 0 20px;
+}
+.open-arrow-icon {
+  position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.content-wrap.common-grid {
+  background-color:white;
+}
+.imgClassLogin{
+  display: flex;
+  border-bottom: 2px solid #00AAA2;
+}
+.border-line{
+    display: flex;
+    border-bottom: 2px solid #00AAA2;
+    margin-top: 45px !important;
+    background-color: white;
+}
+
+.background{
+background-color:white !important;
+}
+.header{
+background-color: #00AAA2;
+padding: 0% !important;
+margin-top: 0px !important;
+}
+
+.icons_head{
+font-size:24px;
+color: #fff;
+background-color: #00AAA2;
+border-color: #00AAA2;
+}
+.back_icon{
+background-color: #00AAA2;
+border: #FFFFFF;
+  color: white;
+}
+.not_icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+}
+.log_icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+}
+.footer {
+  position:fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:lightgray;
+   color: white;
+   text-align: center;
+   height:20px;
+}
+h6.foo_left {
+text-align: left !important;
+display: inline !important;
+    font-size: smaller !important;
+
+}
+h6.foo_right {
+text-align: right !important;
+display: inline !important;
+    font-size: smaller  !important;
+}
+.icons {
+  background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+  padding-top: 10px;
+}
+.btn-arrow {
+    border: 0px;
+    background-color: #ffffff;
+}
+i#right-arrow {
+    font-size: 40px;
+}
+.menu_heading{
+  float: none;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <link rel="stylesheet" href="css/app.min.css">
+
+</head>
+<body style="background-color: #dcf3f2">
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="js/app.min.js"></script>
+ <script type="text/javascript" src="js/LoadingModel.js"></script>
+ <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+ <script type="text/javascript" src="js/dialog.js"></script>
+ <script type="text/javascript" src="js/alert.mob.js"></script>
+ <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+ <script type="text/javascript" src="script/General.js"></script>
+ <script type="text/javascript" src="cordova.js"></script>
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <script type="text/javascript" src="script/updates.js"></script>
+
+ <div class="icons">
+  
+      <button class="icon" onclick="goBack();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+      <h4 class="menu_heading">Updates</h4> 
+  
+</div>
+  <div class= "scroll">
+        <div class="border-line">
+        <img src="img/GMR_110x55.png" align ="left" >
+        <!-- <img src="img/ACSLogo.png" align ="left" style="    width: 150px;
+        margin-top: 5px;"> -->
+        <!-- <img src="img/CargoByBLR_Logo_120x55.jpg" width = "30%" > -->
+        </div>
+     
+        <div class= "background">
+          <div style="background-color: #dcf3f2">
+              <h4 class="primary-heading" style="margin-top: 10px !important;">Updates</h4>
+       
+              
+              <section id="divUpdatesRow" style="padding-top: 0px !important;">
+                </section>
+        
+              
+          </div>
+        </div>
+  </div>
+<div class="footer">
+  <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+  <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,337 @@
+
+<style>
+    
+    .button { 
+      margin-top: 5px !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #27bda1;
+    }
+    .footer {
+      position:fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       background-color:lightgray;
+       color: white;
+       text-align: center;
+       height:20px;
+    }
+    .image{
+    color: #89f9f4;
+    width: 90px;
+    margin-left: 5px;
+    margin-top: 10px;
+    }
+  
+ /* The Modal (background) */
+ .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 150px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+   /* Modal Content */
+  .modal-cont {
+    border-radius: 15px;
+    margin:15px;
+    border:1px solid grey;
+    background-color: #fff;
+}
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .logOff{
+      text-align: center;
+      background-color: #00AAA2;
+      margin-bottom: 20px;
+      height: 43px;
+      border-radius: 15px 15px 0px 0px;
+    }
+    input#btnlogOff {
+  background-color: white;
+    border: 1px solid #00AAA2;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 38%;
+    padding: 7px;
+}
+.log_label{
+  color: white;
+  margin-top: 7px;
+}
+.content-wrap p {
+  margin-left: 5px;
+  margin-bottom: auto;
+}
+
+  .btn-wrapper {
+  margin: 0 20px;
+  }
+ 
+  .div-wrapper {
+    margin: 5px 10px 0px 10px;
+    background-color: white;
+    border: lightgrey 1px solid;
+}
+.div-wrapper_1 {
+    margin: 10px 10px 10px 10px;
+}
+
+.icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+    padding-top: 10px;
+}
+.fontSize12 {
+    width: 100%;
+    border: 0px;
+    /* border-bottom: 1px solid black; */
+    text-align: right;
+    margin-top: 10px;
+}
+.fontSize13 {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: right;
+    margin-top: 10px;
+}
+form#myForm {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+button.fab36 {
+    border: 0px;
+    color: white;
+    background-color: #00AAA2;
+    font-size:20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+ }
+
+ .icons {
+    background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+tr.table_heading {
+    background-color: orange;
+    height: 50px;
+}
+td{
+    text-align: center;
+    height: 30px;
+}
+.mawb_label {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 15px;
+    width: 100px;
+}.menu_heading{
+  float: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+input#btnClear {
+  width: 80%;
+    color:#00AAA2;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    height: 35px;
+    border: 1px solid #00AAA2;
+    margin-top: 20PX;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+button.btn-arrow {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: solid 2px;
+    color: white;
+    background-color: #00AAA2;
+    float: right;
+    margin-right: 10px;
+}
+.div-wrapper1 {
+    background-color: #00AAA2;
+}
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="css/app.min.css">
+ <link href="css/custom.css" rel="stylesheet" />
+<link href="css/Loader.css" rel="stylesheet" />
+<link href="css/dialog.css" rel="stylesheet" />
+<link href="css/alert.mob.css" rel="stylesheet" />
+<link href="css/Common.css" rel="stylesheet" />
+<link href="css/General.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:#dcf3f2 !important;">
+ 
+    <div class="icons">
+      <div>
+       <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+       <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+       </button>
+       <!-- <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i> -->
+       </button>
+       <h4 class="menu_heading">Exports</h4> 
+     </div>
+   </div>
+   
+  <div style="background-color:#dcf3f2 !important;">
+    <h5 id="listHeading" class="primary-heading"></h5>
+   
+    <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+      <!-- <div class="col-6" style="text-align:left;">
+          <div class="form-group vtMargin" style="margin-top: 7px;">
+              <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No.</label>
+          </div>
+      </div>
+      <div class="col-6">
+          <div class="form-group">
+            <span id="txtMawbNo"  class=""></span>
+          </div>
+      </div> -->
+
+      <div class="col-8" >
+        <div class="form-group vtMargin" >
+            <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No.</label>
+        </div>
+    </div>
+    <div class="col-4" style="margin-top: 5px;">
+        <div class="form-group">
+            <span id="txtMawbNo" class="fontSize12"></span>
+          </div>
+    </div>
+  
+    </div>
+
+    
+    <h5 class="primary-heading" style="margin: 15px 10px;">Select a SB No. to continue</h5>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <section id="listingDetailsRow" ></section>
+    </div>
+
+    <!-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading1" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" >
+            <label style="font-weight: bold;margin-right: 10px;">IGM No.</label><span id="IgmNo" style="margin-right: 20px"></span>
+            <label style="font-weight: bold;margin-right: 10px;">IGM Year.</label><span id="IgmYear" ></span>
+           
+          
+             <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" style="border: none;background-color: white;">
+              <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;margin-left: 15px;"></i>
+          </button>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+             
+            <div class= "div-wrapper1">
+                <div onclick="goToHawbData();">
+                   <h5 class="primary-heading1" style="color: #fff;padding: 15px;display: inline-flex;" id= "hawbNo"></h5>
+                   <button id="" class="btn-arrow" style="margin-top: 13px;"><i class="zmdi zmdi-chevron-right" style="color: white;font-size: 29px;"></i></button>
+                </div>
+            </div>
+          
+          </div>
+      </div>
+    
+          </div> -->
+  <div id="myModal" class="modal">
+    <div class="modal-cont">
+        <div class="logOff">
+            <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+        </div>
+        <div style="text-align: center;">
+             <label style="font-size: large;">Are you sure you want to sign out?</label>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+          <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+        </div>
+    </div>
+</div>
+</div>
+<div class="footer">
+ <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+ <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+</div>
+</body>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  <script type="text/javascript" src="js/LoadingModel.js"></script>
+  <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/alert.mob.js"></script>
+  <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+  <script type="text/javascript" src="script/General.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="script/Export/EXP_SBHawbList.js"></script>
+ 
+  <script language="javascript" type="text/javascript">
+    function toggleIcon(e) {
+  $(e.target)
+      .prev('.panel-heading')
+      .find(".more-less")
+      .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+  }
+  $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+  $('.panel-group').on('shown.bs.collapse', toggleIcon);
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+</script>
+</body>
+</html>

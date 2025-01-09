@@ -1,0 +1,317 @@
+
+<style>
+   
+    .div-wrapper {
+      margin: 10px 10px 10px 10px;
+      /* height: 55px; */
+      border: 1px solid grey;
+      background-color: white;
+  }
+  
+  
+  .icon{
+  background-color: #00AAA2;
+      border: #FFFFFF;
+      color: white;
+      font-size: 20px;
+      padding-top: 10px;
+  }
+
+  form#myForm {
+      text-align: left;
+      margin-top: 10px;
+      margin-left: 10px;
+  }
+  
+   .wrapper {
+      margin: 10px 10px 10px 10px;
+      background-color: white;
+      height: 40px;
+      border: lightgrey 1px solid;
+  }
+  
+  .icons {
+      background-color: #00AAA2;
+      height: 45px;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+  tr.table_heading {
+      background-color: #4F5D75;
+      height: 40px;
+      text-align: left;
+      color: white;
+      font-size: 15px;
+  }
+  tr{
+      height: 60px;
+  }
+  td{
+      text-align: left;
+      padding: 10px;
+      font-size: 15px;
+  }
+  td.col_right{
+      text-align: right;
+      padding: 5px;
+  }
+  .btn-arrow {
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      border: solid 2px;
+      color: white !important;
+      background-color: #00AAA2;
+      float: right;
+         margin: auto;
+         margin-right: 5px !important;
+  }
+  
+  h5.primary-heading1 {
+      text-align: center;
+      margin-top: 8px;
+      color: #00AAA2;
+      font-weight: bold;
+  }
+  .primary-heading2 {
+    text-align: left;
+    margin: 5px 0 5px 10px;
+    font-weight: bold;
+    font-size: initial;
+    }
+  #toggle-section {
+      display:none;
+  }
+  .hidden{
+      display: none;
+  }
+  th {
+      padding: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 15px;
+  }
+  /* The Modal (background) */
+  .modal {
+          display: none;
+          /* Hidden by default */
+          position: fixed;
+          /* Stay in place */
+          z-index: 1;
+          /* Sit on top */
+          padding-top: 150px;
+          /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%;
+          /* Full width */
+          height: 100%;
+          /* Full height */
+          overflow: auto;
+          /* Enable scroll if needed */
+          background-color: rgb(0, 0, 0);
+          /* Fallback color */
+          background-color: rgba(0, 0, 0, 0.4);
+          /* Black w/ opacity */
+      }
+  
+     /* Modal Content */
+    .modal-cont {
+      border-radius: 15px;
+      margin:15px;
+      border:1px solid grey;
+      background-color: #fff;
+  }
+      /* The Close Button */
+      .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+      .info {
+    padding: 10px 10px 0px 10px;
+    font-size: 15px;
+}
+      .logOff{
+        text-align: center;
+        background-color: #00AAA2;
+        margin-bottom: 20px;
+        height: 43px;
+        border-radius: 15px 15px 0px 0px;
+      }
+      input#btnlogOff {
+    background-color: white;
+      border: 1px solid #00AAA2;
+      border-radius: 15px;
+      margin-top: 10px;
+      width: 38%;
+      padding: 7px;
+  }
+  b{
+    font-weight: bold !important;
+    font-size: 15px !important;
+  }
+ 
+  .log_label{
+    color: white;
+    margin-top: 7px;
+  }
+  .menu_heading{
+    float: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+  }
+  .trackAWB {
+    padding: 10px;
+    font-size: 15px;
+}
+
+.hyperlnk{
+    border: 0px;
+    color: blue;
+    text-decoration:underline ;
+    background-color: white ;
+}
+ 
+      </style>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+   <link rel="stylesheet" href="css/app.min.css">
+  
+  </head>
+  <body style="background-color:#dcf3f2 !important;">
+  
+    <div class="icons">
+        <div>
+         <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+         <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+         </button>
+         <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+         </button>
+         <h4 class="menu_heading">Others</h4> 
+       </div>
+     </div>
+            
+    <div style="background-color:#dcf3f2 !important;">
+      <h5 class="primary-heading">Applicable Charges</h5>
+              <div class= "wrapper">
+                  <h5 class="primary-heading1">Airlines</h5>
+               </div>
+     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingOne" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+       International Airlines
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;" ></i>
+           </button>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div onclick="goToExportCharges();" style="border-bottom: 1px solid grey;">
+                <h5 class="primary-heading" style="color:#00AAA2;padding-top: 15px;display: inline-flex;width: 250px;margin-top: 0px !important;">Export Charges</h5>
+                <button id="" class="btn-arrow" style="color: #00AAA2 !important;background-color: white;margin-top: 5px;"><i class="zmdi zmdi-chevron-right"  style="font-size: x-large;"></i></button>
+            </div>
+            <div onclick="goToImportCharges();">
+                <h5 class="primary-heading" style="color: #00AAA2;padding-top: 15px;display: inline-flex;width: 250px;margin-top: 0px !important;">Import Charges</h5>
+                <button id="" class="btn-arrow" style="color: #00AAA2 !important;background-color: white;margin-top: 5px;"><i class="zmdi zmdi-chevron-right"  style="font-size: x-large;"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class= "div-wrapper">
+        <div class="panel-heading" role="tab" id="headingTwo" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px 0px 10px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+           <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">General Information about BIAL and CTOs.</h5> -->
+           Domestic Airlines
+           <!-- <button id="open-close-toggle" class="btn-arrow" >
+               <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+            <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+           </button> -->
+           <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;" ></i>
+        </button>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div onclick="goToOutboundAirlines();" style="border-bottom: 1px solid grey;">
+                <h5 class="primary-heading" style="color: #00AAA2;padding-top: 15px;display: inline-flex;width: 250px;margin-top: 0px !important;">Outbound Charges</h5>
+                <button id="" class="btn-arrow" style="color: #00AAA2 !important;background-color: white;margin-top: 5px;"><i class="zmdi zmdi-chevron-right"  style="font-size: x-large;"></i></button>
+            </div>
+            <div onclick="goToInboundAirlines();">
+                <h5 class="primary-heading" style="color: #00AAA2;padding-top: 15px;display: inline-flex;width: 250px;margin-top: 0px !important;">Inbound Charges</h5>
+                <button id="" class="btn-arrow" style="color: #00AAA2 !important;background-color: white;margin-top: 5px;"><i class="zmdi zmdi-chevron-right" style="font-size: x-large;"></i></button>
+            </div>
+        
+        </div>
+    </div>
+   
+   
+ 
+  
+        </div>
+    </div> 
+  
+   
+    <div id="myModal" class="modal">
+      <div class="modal-cont">
+          <div class="logOff">
+              <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+          </div>
+          <div style="text-align: center;">
+               <label style="font-size: large;">Are you sure you want to sign out?</label>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+            <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+          </div>
+      </div>
+  </div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  <script type="text/javascript" src="js/LoadingModel.js"></script>
+  <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/alert.mob.js"></script>
+  <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+  <script type="text/javascript" src="script/General.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="script/Others/OTH_AirlineCharges.js"></script>
+  </body>
+  
+  <script>
+  //     $('#open-close-toggle').on("click", function(){
+  //     var $arrows = $(this).find("i");
+  //     $('#toggle-section').slideToggle(function(){
+  //         $arrows.toggle();
+  //     });
+  // });
+  
+  function toggleIcon(e) {
+  $(e.target)
+      .prev('.panel-heading')
+      .find(".more-less")
+      .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+  }
+  $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+  $('.panel-group').on('shown.bs.collapse', toggleIcon);
+   // Get the modal
+   var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+  </script>
+  </html>

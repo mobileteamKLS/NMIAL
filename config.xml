@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget defaultlocale="en-US" id="com.kale.GMRHYD" version="5.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <name>
+TEDi	</name>
+    <description>
+		Application for Hyderabad International Airport.
+	</description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+		ACS NMIAL Team
+	</author>
+    <content src="loginScreen2.html"/>
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+	<platform name="android">
+		<allow-intent href="market:*" />
+		  <preference name="SplashMaintainAspectRatio" value="true" />
+        <preference name="SplashShowOnlyFirstTime" value="true" />
+		<preference name="android-targetSdkVersion" value="34"/>
+    		<preference name="android-compileSdkVersion" value="34"/>
+    
+
+<preference name="AndroidGradlePluginVersion" value="7.1.2" />   
+<preference name="GradleVersion" value="7.2" /> 
+ <!--following code use for support latest android version above 8.0-->
+    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+      <application usesCleartextTraffic="true" />
+    </edit-config>
+         <icon density="hdpi" src="res/icon/android/NMIAL_APP-ICON.png" />
+    </platform>
+        <!-- <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="res/icon/android/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="res/icon/android/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="res/icon/android/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="res/icon/android/drawable-xxxhdpi-icon.png" />
+        <splash density="port-mdpi" src="res/screen/android/splash_mdpi.png" />
+        <splash density="port-hdpi" src="res/screen/android/splash_hdpi.png" />
+        <splash density="port-xhdpi" src="res/screen/android/splash_xhdpi.png" />
+        <splash density="port-xxhdpi" src="res/screen/android/splash_xxhdpi.png" />
+        <splash density="port-xxxhdpi" src="res/screen/android/splash_xxxhdpi.png" /> -->
+ 
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <!-- <preference name="SirenAlertType" value="critical" />
+        <preference name="SirenAlertType" value="annoying" /> -->
+        <icon height="20" src="res/icon/ios/20.png" width="20" />
+        <icon height="29" src="res/icon/ios/29.png" width="29" />
+        <icon height="40" src="res/icon/ios/40.png" width="40" />
+        <icon height="50" src="res/icon/ios/50.png" width="50" />
+        <icon height="57" src="res/icon/ios/57.png" width="57" />
+        <icon height="58" src="res/icon/ios/58.png" width="58" />
+        <icon height="60" src="res/icon/ios/60.png" width="60" />
+        <icon height="72" src="res/icon/ios/72.png" width="72" />
+        <icon height="76" src="res/icon/ios/76.png" width="76" />
+        <icon height="80" src="res/icon/ios/80.png" width="80" />
+        <icon height="87" src="res/icon/ios/87.png" width="87" />
+        <icon height="100" src="res/icon/ios/100.png" width="100" />
+        <icon height="120" src="res/icon/ios/120.png" width="120" />
+        <splash height="480" src="res/screen/ios/Default~iphone.png" width="320" />
+        <splash height="960" src="res/screen/ios/Default@2x.png" width="640" />
+        <splash height="1024" src="res/screen/ios/Default-Portrait.png" width="768" />
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x.png" width="1536" />
+        <splash height="1136" src="res/screen/ios/Default-568h@2x.png" width="640" />
+        <splash height="1334" src="res/screen/ios/Default-667h@2x.png" width="750" />
+        <splash height="2208" src="res/screen/ios/Default-Portrait-736h@3x.png" width="1242" />
+        <splash height="768" src="res/screen/ios/Default-Landscape.png" width="1024" />
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x.png" width="2048" />
+        <splash height="1242" src="res/screen/ios/Default-Landscape-736h@3x.png" width="2208" />
+    </platform>
+    <preference name="orientation" value="portrait" />
+</widget>

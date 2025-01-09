@@ -1,0 +1,1313 @@
+<style>
+.buttonUpload { 
+      margin-top: 10px !important;
+      width: 100%;
+    padding: 5px;
+    /* border-radius: 15px; */
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #3e5263;
+    /* font-size: large; */
+    height: 35px;
+    border: #3e5263 !important;
+    
+    }
+    .btnback {
+      margin: 10px 30px 10px 30px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    background-color: #00AAA2;
+    /* font-size: large; */
+    height: 35px;
+    border: 1px solid #00AAA2 !important;
+    width: 85%;
+    }
+    .buttonSubmit {
+    margin-top: 10px !important;
+    width: 90%;
+    /* padding: 12px; */
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #adb5bd;
+    /* font-size: large; */
+    height: 35px;
+    border: #3e5263 !important;
+    margin: 10px;
+}
+.buttonClear {
+    margin-top: 10px !important;
+    width: 90%;
+    /* padding: 12px; */
+    border-radius: 15px;
+    color: #00AAA2;
+    font-weight: bold;
+    background-color: white;
+    /* font-size: large; */
+    height: 35px;
+    border:1px solid #00AAA2 !important;
+    margin: 10px;
+}
+
+  
+    .tablink {
+      background-color: #00AAA2;;
+      color: white;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .tablink.active {
+      border-bottom: solid 3px white;
+      font-weight: bold;
+    }
+    
+    .tabcontent {
+      background-color:#e8fcfd;
+      display: none;
+    }
+    .col_menu{
+      padding: 10px 10px 10px 20px;
+    }
+    h6.foo_left {
+    text-align: left !important;
+    display: inline !important;
+        font-size: smaller !important;
+    
+    }
+    h6.foo_right {
+    text-align: right !important;
+    display: inline !important;
+        font-size: smaller  !important;
+    }
+     /* The Modal (background) */
+     .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 150px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+    
+       /* Modal Content */
+      .modal-cont {
+        border-radius: 15px;
+        margin:15px;
+        border:1px solid grey;
+        background-color: #fff;
+    }
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .logOff{
+          text-align: center;
+          background-color: #00AAA2;
+          margin-bottom: 20px;
+          height: 43px;
+          border-radius: 15px 15px 0px 0px;
+        }
+        input#btnlogOff {
+      background-color: white;
+        border: 1px solid #00AAA2;
+        border-radius: 15px;
+        margin-top: 10px;
+        width: 38%;
+        padding: 7px;
+    }
+    .log_label{
+      color: white;
+      margin-top: 7px;
+    }
+        .icon{
+        background-color: #00AAA2;
+        border: #FFFFFF;
+        color: white;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+    .icons {
+        background-color: #00AAA2;
+        height: 40px;
+        width: 100%;
+    }
+    .footer {
+      position:fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       background-color:lightgray;
+       color: white;
+       text-align: center;
+       height:20px;
+    }
+    
+    .img_center{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+    .headbar {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+    .menu_heading{
+      float: none;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+    }
+    .fontSize12 {
+        width: 75%;
+        border: 0px;
+        /* border-bottom: 1px solid black; */
+        text-align: right;
+        /* margin-top: 10px; */
+    }
+    .fontSize13 {
+        width: 100%;
+        border: 0px;
+        border-bottom: 1px solid black;
+        text-align: right;
+        margin-top: 10px;
+    }
+  
+    .actionBtn {
+      width: 90%;
+        color:#00AAA2;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        height: 30px;
+        border: 1px solid #00AAA2;
+        margin-top: 10PX;
+        font-size: 15px;
+        /* margin-bottom: 10px; */
+    }
+
+    .gatePassBtn {
+      /* width: 90%; */
+        color:#747a80;
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        height: 30px;
+        border: 2px solid #747a80;
+        margin-top: 10PX;
+        font-size: 12px;
+        /* margin-bottom: 10px; */
+    }
+    
+    button.btn-arrow {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: solid 2px;
+    color: white;
+    background-color: #00AAA2;
+    /* float: right;
+    margin-right: 10px; */
+}
+.div-wrapper {
+    margin: 5px 10px 0px 10px;
+    background-color: white;
+    border: lightgrey 1px solid;
+}
+.col2,.col3{
+padding: 15px;
+text-align: right;
+}
+.col-3{
+text-align: right;
+}
+.col-2,.col-4{
+text-align: center;
+}
+.spanTD{
+padding: 10px;
+text-align: left;
+font-weight: bold;
+font-size: 15px;
+}
+.table_row{
+border-bottom: 1px solid grey;
+height: 50px;
+background-color: #fff;
+}
+.col-6,.col-5{
+    padding: 0px !important;
+}
+.remove{
+    color: red;
+    border: 0px;
+    background-color: white;
+    font-weight: bold;
+}
+.dot {
+  height: 15px;
+    width: 15px;
+    background-color: #f9f9f9;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid lightgrey;
+}
+.lbl{
+  display: block;
+}
+tr.table_heading {
+    background-color: orange;
+    height: 35px;
+}
+.div-wrapperVT {
+    margin: 0px 10px 10px 10px;
+    background-color: #00AAA2;
+    height: 50px;
+    
+}
+
+    </style>
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+      <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+      <link rel="stylesheet" href="css/app.min.css">
+      <link href="css/custom.css" rel="stylesheet" />
+      <link href="css/Loader.css" rel="stylesheet" />
+      <link href="css/dialog.css" rel="stylesheet" />
+      <link href="css/alert.mob.css" rel="stylesheet" />
+      <link href="css/jquery-ui.css" rel="stylesheet" />
+      <link href="css/Common.css" rel="stylesheet" />
+      <link href="css/General.css" rel="stylesheet" />
+     
+    </head>
+    <body style=" background-color:#e8fcfd !important">
+    
+    <div class= "headbar">
+        <div class="icons">
+            <div>
+             <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+             <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+             </button>
+             <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+             </button>
+             <h4 class="menu_heading">Imports</h4> 
+           </div>
+         </div>
+         
+      </div>
+          
+      <h5 class="primary-heading" style="margin: 50px 10px 0px 10px;">Shipment Status</h5>
+   
+      <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin: 10px !important;">
+        <div class="col-2" >
+            <div class="form-group vtMargin" style="margin-top: 7px;">
+              <span class="dot" id="BoEDot"></span>
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">BoE</label>
+            </div>
+        </div>
+        
+         <div class="col-2">
+            <div class="form-group vtMargin" style="margin-top: 7px;">
+              <span class="dot" id="BoEASIDot"></span>
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">BoE ASI</label>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group vtMargin" style="margin-top: 7px;">
+              <span class="dot" id="TSPDot"></span>
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">TSP</label>
+            </div>
+        </div>
+        <div class="col-2">
+          <div class="form-group vtMargin" style="margin-top: 7px;">
+            <span class="dot" id="OoCDot"></span>
+              <label class="lbl" style="font-size: 15px;font-weight: bold;">OoC</label>
+          </div>
+      </div>
+
+      <div class="col-2">
+        <div class="form-group vtMargin" style="margin-top: 7px;">
+          <span class="dot" id="GatePassDot"></span>
+            <label class="lbl" style="font-size: 15px;font-weight: bold;">Gate Pass</label>
+        </div>
+    </div>
+         <div class="col-2">
+            <div class="form-group vtMargin" style="margin-top: 7px;">
+              <span class="dot" id="VTDot"></span>
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">VT/Book Slot</label>
+            </div>
+        </div>
+       
+      </div>
+
+      <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin: 10px !important;">
+        <div class="col-8" >
+            <div class="form-group vtMargin" >
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">IGM No.</label>
+            </div>
+        </div>
+        <div class="col-4" style="text-align: right;">
+            <div class="form-group">
+                <span id="txtIGMNo" class="fontSize12"></span>
+              </div>
+        </div>
+        <div class="col-8" >
+            <div class="form-group vtMargin">
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">IGM Year.</label>
+            </div>
+        </div>
+        <div class="col-4" style="text-align: right;">
+          <div class="form-group">
+              <span id="txtIGMYear" class="fontSize12"></span>
+            </div>
+      </div>
+      <div class="col-8" >
+          <div class="form-group vtMargin" >
+              <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No.</label>
+          </div>
+      </div>
+        <div class="col-4" style="text-align: right;">
+            <div class="form-group">
+                <span id="txtMawbNo" class="fontSize12"></span>
+              </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group vtMargin" id ="lblHouseMaster">
+                <label class="lbl" style="font-size: 15px;font-weight: bold;" id="lblHawb">HAWB No.</label>
+            </div>
+        </div>
+        <div class="col-4" style="text-align: right;"  id ="lblHouse">
+            <div class="form-group">
+                <span id="txtHawbNo" class="fontSize12"></span>
+              </div>
+        </div>
+        <div class="col-8" >
+            <div class="form-group vtMargin">
+                <label class="lbl" style="font-size: 15px;font-weight: bold;" id="dateAwb"></label>
+            </div>
+        </div>
+        <div class="col-4" style="text-align: right;">
+            <div class="form-group">
+                <span id="txtHawbDate" class="fontSize12"></span>
+              </div>
+        </div>
+      </div>
+
+      <div class="panel-group" id="accordionHawb" role="tablist" aria-multiselectable="true" style="display: none;">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading1" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" >
+
+          <div class="col-5">
+            <div class="form-group vtMargin" >
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">HAWB Details</label>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="form-group">
+                <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo"  class="fontSize12" style="text-align: center;"></input> -->
+              </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionHawb" href="#collapse1" aria-expanded="true" aria-controls="collapse1" style="border: none;background-color: white;">
+                    <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                </button>
+              </div>
+        </div>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                
+                  <!-- <tr class="table_row">
+                      <td class="spanTD">MAWB No.</td>
+                      <td class="col2"><span id="spnMawbNo"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">HAWB No.</td>
+                      <td class="col2"><span id="spnHawbNo"></span></td>
+                  </tr> -->
+                  <tr class="table_row">
+                    <td class="spanTD">HAWB Pcs(Total)</td>
+                    <td class="col2"><span id="spnPcsTotal"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">HAWB Pcs (Rcvd)</td>
+                      <td class="col2"><span id="spnPcsRcvd"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">HAWB Gr. Wt.(Total)</td>
+                    <td class="col2"><span id="spnGrWtTotal"></span> Kgs</td>
+                </tr>
+                        <tr class="table_row">
+                          <td class="spanTD">HAWB Gr. Wt.(Rcvd)</td>
+                          <td class="col2"><span id="spnGrWtRcvd"></span> Kgs</td>
+                      </tr>
+                      <tr class="table_row">
+                        <td class="spanTD">HAWB Ch. Wt.(Total)</td>
+                        <td class="col2"><span id="spnChWtTotal"></span> Kgs</td>
+                    </tr>
+                   
+            </table>
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+
+      <div class="panel-group" id="accordionMawb" role="tablist" aria-multiselectable="true" style="display: none;">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading1" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" >
+
+          <div class="col-5">
+            <div class="form-group vtMargin" >
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB Details</label>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="form-group">
+                <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo"  class="fontSize12" style="text-align: center;"></input> -->
+              </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionMawb" href="#collapse1" aria-expanded="true" aria-controls="collapse1" style="border: none;background-color: white;">
+                    <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                </button>
+              </div>
+        </div>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                
+                  <!-- <tr class="table_row">
+                      <td class="spanTD">MAWB No.</td>
+                      <td class="col2"><span id="spnMawbNo"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">HAWB No.</td>
+                      <td class="col2"><span id="spnHawbNo"></span></td>
+                  </tr> -->
+                  <tr class="table_row">
+                    <td class="spanTD">MAWB Pcs(Total)</td>
+                    <td class="col2"><span id="spnPcsTotalMawb"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">MAWB Pcs (Rcvd)</td>
+                      <td class="col2"><span id="spnPcsRcvdMawb"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">MAWB Gr. Wt.(Total)</td>
+                    <td class="col2"><span id="spnGrWtTotalMawb"></span> Kgs</td>
+                </tr>
+                        <tr class="table_row">
+                          <td class="spanTD">MAWB Gr. Wt.(Rcvd)</td>
+                          <td class="col2"><span id="spnGrWtRcvdMawb"></span> Kgs</td>
+                      </tr>
+                      <tr class="table_row">
+                        <td class="spanTD">MAWB Ch. Wt.(Total)</td>
+                        <td class="col2"><span id="spnChWtTotalMawb"></span> Kgs</td>
+                    </tr>
+                   
+            </table>
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+
+      <div class="panel-group" id="accordionBoE" role="tablist" aria-multiselectable="true">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading2" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" >
+            <div class="col-5">
+                <div class="form-group vtMargin" >
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">BoE Details</label>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group" style="text-align: center;">
+                    <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="BoEStatus"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="BoEStatusDate"></label>
+                      <label class="lbl" style="font-size: 15px;font-weight: bold;" id="BoEStatusTime"></label>
+                  </div>
+            </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionBoE" href="#collapse2" aria-expanded="true" aria-controls="collapse2" style="border: none;background-color: white;" onclick="getBoEDetails();">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                  <tr class="table_row" id = "statusRowBoE" style="display: none;">
+                    <td class="spanTD" id ="status">Status</td>
+                    <td class="col2"><span id="spnStatusBoE"></span></td>
+                </tr>
+
+                  <tr class="table_row">
+                      <td class="spanTD">Mode</td>
+                      <td class="col2"><span id="spnBoEMode"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">BoE No.</td>
+                      <td class="col2"> <input type="number" id="txtBOENo"  class="fontSize12" style="border-bottom: 1px solid black;" maxlength="7" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></input></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">BoE Date</td>
+                    <td class="col2"><input type="tel" id="txtBOEDate"  class="fontSize12" style="border-bottom: 1px solid black;width: 75%;" onchange="onDateChangeBoE()"></input></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">BoE Pcs (Total)</td>
+                      <td class="col2"><input type="number" id="txtBOEPcs"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">BoE Gr. Wt.(Total)</td>
+                    <td class="col2"><input type="number" id="txtBOEGrWt"  class="fontSize12" style="border-bottom: 1px solid black;width: 80%;">Kgs</input></td>
+                </tr>
+                      
+                      <tr class="table_row">
+                        <td class="spanTD">BoE Ch. Wt.(Total)</td>
+                        <td class="col2"><input type="number" id="txtBOEChWt"  class="fontSize12" style="border-bottom: 1px solid black;width: 80%;">Kgs</input></td>
+                    </tr>
+                      
+                    <tr class="table_row">
+                      <td class="spanTD">CAV (INR)</td>
+                      <td class="col2"><input type="number" id="txtBOECAV"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                  </tr>
+                    
+                  <tr class="table_row">
+                    <td class="spanTD">CHA Code</td>
+                    <td class="col2"><input type="text" id="txtBOECode"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="spanTD">Upload BoE Copy</td>
+                  
+              </tr>
+             
+
+          <tr id="fileFromDevice">
+            <td colspan="2">
+              <input id="fileList" type="file" class="buttonUpload" name="fileList" onchange ="readFile(event); onSelectFile(event);" accept="application/pdf"/> 
+        
+              <a class="" id = "viewFile" type="button" style="margin-left: 10px;font-weight: bold;" onclick="viewFileBoE();"></a>
+              <button class="remove" id = "removeFile" type="button" onclick="removePdf();">Remove</button>
+             
+            </td>
+        </tr>
+
+        
+      
+          <tr id="instructions">
+            <td colspan="2">
+              <label class="lbl" style="font-size: 15px;font-weight: bold;margin: 10px;">Instructions to upload file from device<br>1. Acceptable formats are PDF<br>
+              2. File size to be less than 2MB</label></td>
+        </tr>
+        
+                   
+            </table>
+            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+          
+      
+              <div class="col-6">
+                <div class="form-group">
+                    <input type="button" class="actionBtn" id="btnClearBoE" value="Clear" onclick="clearInputsBoE();">
+                </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="button" class="actionBtn" id="btnSubmitBoE" value="Submit" onclick="submitBoEData();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+      
+              </div>
+          </div>
+          
+          </div>
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+
+      
+
+     
+
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading5" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" >
+            <div class="col-5">
+                <div class="form-group vtMargin" >
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">BoE ASI Submission</label>
+                </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group" style="text-align: center;">
+                  <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;" id="BoEAsiStatus"></label>
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="BoEAsiStatusDate"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="BoEAsiStatusTime"></label>
+                </div>
+          </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5" style="border: none;background-color: white;" onclick="getAsiDetails();">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                
+                  <tr class="table_row">
+                      <td class="spanTD">ACS Balance Amt.</td>
+                      <td class="col2"><span id="spnBalance"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">ACS Charge</td>
+                      <td class="col2"><span id="spnAcsCharge"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">CGST</td>
+                    <td class="col2"><span id="spnCGST"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">SGST</td>
+                      <td class="col2"><span id="spnSGST"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">IGST</td>
+                    <td class="col2"><span id="spnIGST"></span></td>
+                </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">GST Total</td>
+                    <td class="col2"><span id="spnGSTTotal"></span></td>
+                </tr>
+                        <tr class="table_row">
+                          <td class="spanTD">Total Payable Amount</td>
+                          <td class="col2"><span id="spTotalPayable"></span></td>
+                      </tr>
+
+                      <tr class="table_row" id="orgName">
+                        <td class="spanTD">Org Name</td>
+                        <td class="col2"><span id="spnOrgName"></span></td>
+                    </tr>
+                    <tr class="table_row"  id="accNo">
+                      <td class="spanTD">ACS PD A/C No.</td>
+                      <td class="col2"><span id="spnPDAccountNo"></span></td>
+                  </tr>
+                  <tr class="table_row"  id="bal">
+                    <td class="spanTD">ACS PD Balance</td>
+                    <td class="col2"><span id="spnPDBalance"></span></td>
+                </tr>
+                      
+                   
+            </table>
+            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+              <div class="col-6">
+                <div class="form-group">
+                    <input type="button" class="actionBtn" id="btnClearAsi" value="Clear" onclick="clearInputsBoEASI();">
+                </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="button" class="actionBtn" id="btnSubmitAsi" value="Submit" onclick="SubmitAsiDetails();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+      
+              </div>
+          </div>
+          
+          </div>
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+
+      <div class="panel-group" id="accordionTSP" role="tablist" aria-multiselectable="true">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading6" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" onclick="getTspDetails();">
+            <div class="col-5">
+                <div class="form-group vtMargin" >
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">TSP</label>
+                </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group" style="text-align: center;">
+                  <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;" id="TSPStatus"></label>
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="TSPStatusDate"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="TSPStatusTime"></label>
+                </div>
+          </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionTSP" href="#collapse6" aria-expanded="true" aria-controls="collapse6" style="border: none;background-color: white;">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                
+                  <tr class="table_row">
+                      <td class="spanTD">Commodity Type</td>
+                      <td class="col2"><select class="textfieldClass" id="ddlCommodityTypeList" style="background-color: #fff;border: none;border-bottom: 2px solid #333;font-size: 15px;font-weight: bold;" onchange="getCommodityNameList();">
+                        
+                    </select></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">Commodity name</td>
+                      <td class="col2"> <select class="textfieldClass" id="ddlCommodityNameList" style="background-color: #fff;border: none;border-bottom: 1px solid #333;font-size: 15px;font-weight: bold;" onchange="onChangeCommodityName();">
+                        
+                      </select></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">HSN Code</td>
+                    <td class="col2"><input type="number" id="HSNCode"  class="fontSize12" style="border-bottom: 1px solid black;" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></input></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">Payment Mode</td>
+                      <td class="col2"><span id="payMode"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">PD A/C No.</td>
+                    <td class="col2"><span id="PDAccNo"></span></td>
+                </tr>
+                        <!-- <tr class="table_row">
+                          <td class="spanTD">Location Code-Pkgs</td>
+                          <td class="col2"><span id="LocationCode"></span></td>
+                      </tr> -->
+                      <tr class="table_row">
+                        <td class="spanTD">CTO PD A/C Balance</td>
+                        <td class="col2"><span id="CTOPDBalance"></span></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">TSP Payable Amount</td>
+                      <td class="col2"><span id="TSPPayAmount"></span></td>
+                  </tr>
+            </table>
+
+            <div id = "proceedBtn" class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+              <div class="col-6">
+                <div class="form-group">
+                    <input type="button" class="actionBtn" id="btnClearTSP" value="Clear" onclick="clearTSPInputs();">
+                </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="button" class="actionBtn" id="btnSubmitTSP" value="Proceed" onclick="proceedTSPDetails();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+      
+              </div>
+          </div>
+        </div>
+        <div id = "tblChargeDetails" style="display: none;">
+            <div class="col-12">
+            <h2 style="font-weight: bold;font-size: 15px;margin: 10px -5px;">Charge Details</h2>
+        </div>
+          <table style="width: 100% ;border: lightgrey 1px solid;" id="tblChargeInfo">
+            <thead>
+                <tr class="table_heading" style="text-align: left;">
+                    <th>Charge Description</th>
+                    <th>Ch. Amt. (INR)</th>
+                    <th>GST (INR)</th>
+                    <th>Total Amt.</th>
+                </tr>
+            </thead>
+            <tbody id = "viewList">
+              <!-- <tr class="">
+                  <td>Import Strapping Charges</td>
+                  <td>200.00</td>
+                  <td>36.00</td>
+                  <td>236.00</td>
+              </tr>
+              <tr class="">
+                <td>Import Terminal Charges</td>
+                <td>800.00</td>
+                <td>144.00</td>
+                <td>944.00</td>
+            </tr>
+            <tr class="">
+              <td>Total</td>
+              <td>1500.00</td>
+              <td>274.00</td>
+              <td>1774.00</td>
+          </tr> -->
+            </tbody>
+          </table>
+       
+          <div id = "passwordTag" class="contacts row contacts__itemfortext"  style="padding: 5px 5px !important;margin-right: 10px;margin-left: 10px;">
+        <div class="col-6" >
+            <div class="form-group vtMargin" >
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">Transaction Password</label>
+            </div>
+        </div>
+        <div class="col-6" style="text-align: right;">
+            <div class="form-group">
+              <input type="password" id="tspPassword" class="fontSize12" placeholder="" style="border-bottom: 1px solid black;"  autofocus></input>
+              <span class="eye_icon" onclick="viewPassword();"><i class="zmdi zmdi-eye-off" style="display:none;" ></i><i class="zmdi zmdi-eye"  style="font-size: large !important;color: gray !important; margin-left: 4px;"></i></span>
+              </div>
+        </div>
+          </div>
+        <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+          <div class="col-6">
+            <div class="form-group">
+                <input type="button" class="actionBtn" id="btnClearTSPDetails" value="Clear" onclick="clearTSPDetails();">
+            </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <input type="button" class="actionBtn" id="btnPayTSP" value="Pay Now" onclick="PayTSPDetails();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+  
+          </div>
+        </div>
+    </div>
+
+    </div>
+       
+          
+         
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+
+      <div class="panel-group" id="accordionPOE" role="tablist" aria-multiselectable="true">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading3" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" >
+            <div class="col-5">
+                <div class="form-group vtMargin" >
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">Pick Order Exam.(Opt.)</label>
+                </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group" style="text-align: center;">
+                  <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;" id="PickorderStatus"></label>
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="PickorderStatusDate"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="PickorderStatusTime"></label>
+                </div>
+          </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionPOE" href="#collapse3" aria-expanded="true" aria-controls="collapse1" style="border: none;background-color: white;" onclick="getPickOrderDetails();">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                
+                  <tr class="table_row">
+                      <td class="spanTD">Consignee</td>
+                      <td class="col2"><span id="spnConsignee"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">Agent/Code</td>
+                      <td class="col2"><span id="spnAgentCode"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">NoG</td>
+                    <td class="col2"><span id="spnNoG"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                      <td class="spanTD">Routing</td>
+                      <td class="col2"><span id="spnRouting"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">Location</td>
+                    <td class="col2"><span id="spnLocation"></span></td>
+                </tr>
+                <tr class="table_row">
+                  <td class="spanTD">Damage NOP (if any)</td>
+                  <td class="col2"><span id="spnDamageNOP"></span></td>
+              </tr>
+                        <tr class="table_row">
+                          <td class="spanTD">Pcs. for Exam.</td>
+                          <td class="col2"><input type="number" id="spnPcsExam"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                      </tr>
+                      <tr class="table_row">
+                        <td class="spanTD">Remarks</td>
+                        <td class="col2"><input type="text" id="spnRemarks"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                    </tr>
+                    <tr class="table_row">
+                      <td class="spanTD">IGM No.</td>
+                      <td class="col2"><span id="spnIgmNo"></span></td>
+                  </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">Flight No.</td>
+                    <td class="col2"><span id="spnFlightNo"></span></td>
+                </tr>
+                <tr class="table_row">
+                  <td class="spanTD">Flight Date and Time</td>
+                  <td class="col2"><span id="spnFlightDateTime"></span></td>
+              </tr>
+              <tr class="table_row">
+                <td class="spanTD">Packages</td>
+                <td class="col2"><span id="spnPkgs"></span></td>
+            </tr>
+            <tr class="table_row">
+              <td class="spanTD">Gr. Wt. (Kgs)</td>
+              <td class="col2"><span id="spnGrWt"></span></td>
+          </tr>
+          <tr class="table_row">
+            <td class="spanTD">Ch. Wt. (Kgs)</td>
+            <td class="col2"><span id="spnChWt"></span></td>
+        </tr>
+                   
+            </table>
+            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+              <div class="col-6">
+                <div class="form-group">
+                    <input type="button" class="actionBtn" id="btnPickorderClear" value="Clear" onclick="clearInputsPickOrder();">
+                </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="button" class="actionBtn" id="btnPickorderSave" value="Save" onclick="savePickOrder();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+      
+              </div>
+          </div>
+          
+          </div>
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+      <div class="panel-group" id="accordionOoC" role="tablist" aria-multiselectable="true">
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading4" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" >
+            <div class="col-5">
+                <div class="form-group vtMargin">
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">OoC Details</label>
+                </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group" style="text-align: center;">
+                  <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;" id="OoCStatus"></label>
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="OoCStatusDate"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="OoCStatusTime"></label>
+                </div>
+          </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionOoC" href="#collapse4" aria-expanded="true" aria-controls="collapse4" style="border: none;background-color: white;" onclick="onClickOoCDetails();">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+             
+            <div class= "div-wrapper_2">
+                <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                
+                  <tr class="table_row" id = "statusRowOoC" style="display: none;">
+                    <td class="spanTD" id ="status">Status</td>
+                    <td class="col2"><span id="spnStatusOoC"></span></td>
+                </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">Mode</td>
+                    <td class="col2"><span id="spnOoCMode"></span></td>
+                </tr>
+                  <tr class="table_row">
+                    <td class="spanTD">OoC No.</td>
+                    <td class="col2"><input type="number" id="spnOoCNo"  class="fontSize12" style="border-bottom: 1px solid black;" maxlength="10"     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"></input></td>
+                </tr>
+                <tr class="table_row">
+                    <td class="spanTD">OoC Date</td>
+                    <td class="col2"><input type="text" id="spnOoCDate"  class="fontSize12" style="border-bottom: 1px solid black;width: 75%;" onchange="onDateChangeOoC()"></input></td>
+                </tr>
+                <tr class="table_row">
+                  <td class="spanTD">OoC Pcs(Rcvd)</td>
+                  <td class="col2"><input type="number"  id="txtOoCPcs"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                </tr>
+                <tr class="table_row">
+                    <td class="spanTD">BoE Pcs (Total)</td>
+                    <td class="col2"><input type="number"  id="txtBOEPcsOoC"  class="fontSize12" style="border-bottom: 1px solid black;"></input></td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="spanTD">Upload OoC Copy</td>
+                </tr>
+          <tr id="fileFromDevice">
+            <td colspan="2">
+              <input id="fileListOoC" type="file" class="buttonUpload" name="fileListOoC" onchange ="readFile(event); onSelectFile(event);" accept="application/pdf"/> 
+             
+              <a class="" id = "viewFileOoC" type="button" style="margin-left: 10px;font-weight: bold;" onclick="viewFileOoC();"></a>
+              <button class="remove" id = "removeFileOoC" type="button" onclick="removePdfOoC();">Remove</button>
+              <!-- <button onclick="upload()"> Upload </button> -->
+            </td>
+        </tr>
+
+          <tr id="instructions">
+            <td colspan="2">
+              <label class="lbl" style="font-size: 15px;font-weight: bold;margin: 10px;">Instructions to upload file from device<br>1. Acceptable formats are PDF<br>
+              2. File size to be less than 2MB</label></td>
+        </tr>
+        
+                   
+            </table>
+            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+              <div class="col-6">
+                <div class="form-group">
+                    <input type="button" class="actionBtn" id="btnClearOoc" value="Clear" onclick="clearInputsOoC();">
+                </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input type="button" class="actionBtn" id="btnSubmitOoC" value="Submit" onclick="submitOoCData();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+      
+              </div>
+          </div>
+          
+          </div>
+          </div>
+          
+          </div>
+      </div>
+    
+      </div>
+      
+
+      <div class="panel-group" id="accordionGatePass" role="tablist" aria-multiselectable="true" >
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading9" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="true" onclick="getGatePassDetails();">
+
+          <div class="col-5">
+            <div class="form-group vtMargin" >
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">Gate Pass</label>
+            </div>
+        </div>
+        <div class="col-5">
+          <div class="form-group" style="text-align: center;">
+            <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+            <label class="lbl" style="font-size: 15px;font-weight: bold;" id="GatePassStatus"></label>
+            <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="GatePassDate"></label>
+              <label class="lbl" style="font-size: 15px;font-weight: bold;" id="GatePassTime"></label>
+          </div>
+        </div>
+        <div class="col-2">
+            <div class="form-group">
+                <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionGatePass" href="#collapse9" aria-expanded="true" aria-controls="collapse9" style="border: none;background-color: white;">
+                    <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                </button>
+              </div>
+        </div>
+          </div>
+          <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+             
+            <div class= "div-wrapper_2">
+              <div id = "proceedBtn" class="contacts row contacts__itemfortext"  style="margin-right: 0px;margin-left: 0px;">
+                <div class="col-4" style="margin-bottom: 10px;">
+                  <div class="form-group">
+                      <input type="button" class="gatePassBtn" id="btnCollect" value="Collect Charges" onclick="CollectCharges();">
+                  </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <input type="button" class="gatePassBtn" id="btnCancelGP" value="Cancel Gate Pass" onclick="CancelGatePass();" style="float: right !important;">
+        
+                </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <input type="button" class="gatePassBtn" id="btnCreateGP" value="Create Gate Pass" onclick="CreateGatePass();" style="color: #fff;background-color: #00AAA2;float: right !important; border: 1px solid #00AAA2;">
+      
+              </div>
+          </div>
+          <div style="width: 900; text-align: center" id="gatePassAlert">
+            <svg id="barcode"></svg>
+          </div>
+       
+          <!-- <div id="barcodeTarget" class="barcodeTarget"></div>
+          <canvas id="canvasTarget" width="150" height="150"></canvas> -->
+          <div class="col-12">
+            <label class="lbl" style="font-size: 15px;font-weight: bold;" id="GPStatus"></label>
+          </div>
+          </div>
+     
+          </div>
+        
+
+          </div>
+      </div>
+    
+      </div>
+
+      <div class="panel-group" id="accordionVT" role="tablist" aria-multiselectable="true" >
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading7" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" onclick="getVTDetails();">
+            <div class="col-5">
+                <div class="form-group vtMargin" >
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">Vehicle Token (VT)</label>
+                </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group" style="text-align: center;">
+                  <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;" id="VTStatus"></label>
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="VTStatusDate"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="VTStatusTime"></label>
+                </div>
+          </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionVT" href="#collapse7" aria-expanded="true" aria-controls="collapse7" style="border: none;background-color: white;">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+           <section id= "VTlist"></section>
+           
+          </div>
+      </div>
+    
+      </div>
+
+      
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-bottom: 40px;"> 
+        <div class= "div-wrapper">
+          <div class="panel-heading" role="tab" id="heading8" style="font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="true" onclick="getApplicableCharges();">
+            <div class="col-5">
+                <div class="form-group vtMargin" >
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;">Additional Charges</label>
+                </div>
+            </div>
+            <div class="col-5">
+              <div class="form-group" style="text-align: center;">
+                
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;" id="AddChargeStatus"></label>
+                  <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="AddChargeStatusDate"></label>
+                    <label class="lbl" style="font-size: 15px;font-weight: bold;" id="AddChargeStatusTime">--</label>
+                </div>
+          </div>
+            <div class="col-2">
+                <div class="form-group">
+                    <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8" style="border: none;background-color: white;">
+                        <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                    </button>
+                  </div>
+            </div>
+          </div>
+          <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+             
+            <section id= "appChargeslist"></section>
+          
+          </div>
+      </div>
+    
+      </div> 
+
+        <div id="myModal" class="modal">
+              <div class="modal-cont">
+                  <div class="logOff">
+                      <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+                  </div>
+                  <div style="text-align: center;">
+                       <label style="font-size: large;">Are you sure you want to sign out?</label>
+                  </div>
+                  <div style="margin-bottom: 15px;">
+                    <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+                    <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+                  </div>
+              </div>
+        </div>
+       <div class="footer">
+        <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+        <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+      </div>
+      </body>
+    
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/app.min.js"></script>
+      <script type="text/javascript" src="js/LoadingModel.js"></script>
+      <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+      <script type="text/javascript" src="js/dialog.js"></script>
+      <script type="text/javascript" src="js/alert.mob.js"></script>
+      <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+      <script type="text/javascript" src="script/General.js"></script>
+      <script type="text/javascript" src="js/qrcode.js"></script>
+      <script src="JsBarcode.all.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/JsBarcode.all.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.4/dist/JsBarcode.all.min.js"></script> -->
+      <script src="js/jquery-ui.js"></script>
+      <script type="text/javascript" src="cordova.js"></script>
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <script type="text/javascript" src="script/Import/IMP_ShipmentDetails.js"></script>
+    
+    
+    <script language="javascript" type="text/javascript">
+      function toggleIcon(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find(".more-less")
+        .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+    }
+    $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+    $('.panel-group').on('shown.bs.collapse', toggleIcon);
+      // Get the modal
+      var modal = document.getElementById("myModal");
+  
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+  
+    </script>
+    </html>

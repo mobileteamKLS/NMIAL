@@ -1,0 +1,990 @@
+
+<style>
+
+ 
+  .div-wrapper {
+    margin: 10px 10px 10px 10px;
+    /* height: 55px; */
+    border: 1px solid grey;
+}
+table tbody {
+  display: block;
+  /* max-height: 300px; */
+  overflow-x: scroll;
+}
+
+
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table thead tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+ 
+}
+
+
+.icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+form#myForm {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+ .wrapper {
+    margin: 10px 10px 10px 10px;
+    background-color: white;
+    height: 40px;
+    border: lightgrey 1px solid;
+}
+
+.icons {
+    background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+tr.table_heading {
+    background-color: #4F5D75;
+     /* height: 40px; */
+    text-align: right; 
+    color: #FFFFFF;
+}
+
+
+/* td:nth-child(4n+4){ 
+    background-color: red;
+} */
+td{
+    text-align: left;
+    padding: 5px;
+    font-size: 15px;
+}
+td.col_line{
+    /* text-align: right; */
+    padding: 5px;
+ 
+    font-size: 15px;
+}
+td.col_right{
+  
+    padding: 5px;
+    font-size: 15px;
+}
+
+.btn-arrow {
+  border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: solid 2px;
+    color: white !important;
+    background-color: #00AAA2;
+    float: right;
+    margin: auto;
+    margin-right: 0px !important;
+}
+
+h5.primary-heading1 {
+    text-align: center;
+    margin-top: 8px;
+    color: #00AAA2;
+    font-weight: bold;
+}
+.primary-heading2 {
+  text-align: left;
+  margin: 5px 0 5px 10px;
+  font-weight: bold;
+  font-size: initial;
+  }
+#toggle-section {
+    display:none;
+}
+.hidden{
+    display: none;
+}
+th {
+  padding: 5px 0px 5px 5px;
+    text-align: left;
+}
+table{
+  table-layout: fixed;
+}
+/* The Modal (background) */
+.modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 150px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+   /* Modal Content */
+  .modal-cont {
+    border-radius: 15px;
+    margin:15px;
+    border:1px solid grey;
+    background-color: #fff;
+}
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .logOff{
+      text-align: center;
+      background-color: #00AAA2;
+      margin-bottom: 20px;
+      height: 43px;
+      border-radius: 15px 15px 0px 0px;
+    }
+    input#btnlogOff {
+  background-color: white;
+    border: 1px solid #00AAA2;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 38%;
+    padding: 7px;
+}
+.log_label{
+  color: white;
+  margin-top: 7px;
+}
+.menu_heading{
+  float: none;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <link rel="stylesheet" href="css/app.min.css">
+
+</head>
+<body style="background-color:#dcf3f2 !important;">
+
+  <div class="icons">
+    <div>
+     <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+     <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+     </button>
+     <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+     </button>
+     <h4 class="menu_heading">Others</h4> 
+   </div>
+ </div>
+        
+  <div style="background-color:#dcf3f2 !important;">
+    <h5 class="primary-heading">Contact Us</h5>
+            
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class= "div-wrapper">
+      <div class="panel-heading" role="tab" id="headingOne" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        GMR HYD Air Cargo Support
+        <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">Kale Support</h5> -->
+         <!-- <button id="open-close-toggle" class="btn-arrow" >
+             <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+          <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+         </button> -->
+         <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+      </button>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <table style="width: 100%;">
+            <thead>
+               
+            </thead>
+            <tbody>
+              <tr class="table_heading" style="width: 180%;">
+                <th style="text-align: initial;width: 110px;">
+                   Point of Contact
+                </th>
+                <th style="width: 140px;">
+                  <div >Contact No.</div>
+
+                </th>
+                <th>
+                  <div>E-mail</div> 
+                </th>
+               
+            </tr>
+                <tr style="background-color: #fff;width: 180%;">
+                    <td style="width: 110px;">
+                      GMR HYD Air Cargo Support (24X7)
+                    </td>
+                    <td style="width: 140px;">
+                      8929035003
+
+                    </td>
+                    <td>
+                      <a href="mailto:gmrhyd.support@kalelogistics.com">gmrhyd.support@kalelogistics.com</a>
+                    </td>
+                </tr>
+                
+          
+            </tbody>
+       </table>
+      </div>
+  </div>
+
+            <div class= "div-wrapper">
+                <div class="panel-heading" role="tab" id="headingTwo" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" >
+                  Cargo Terminal: GMR HYD Air Cargo operational support
+                  <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">Cargo Terminal:Air India SATS</h5> -->
+                   <!-- <button id="open-close-toggle" class="btn-arrow" >
+                       <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+                    <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+                   </button> -->
+                   <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+                </button>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <table style="width: 100%;">
+                      <thead>
+                         
+                      </thead>
+                      <tbody>
+                        <tr class="table_heading" style="width: 180%;">
+                          <th style="width: 110px;">
+                              Point of Contact
+                            </th>
+                            <th style="width: 140px;">
+                              <div>Contact No.</div>
+
+                            </th>
+                           <th>
+                            <div>E-mail</div> 
+                           </th>
+                        </tr>
+                          <tr style="background-color: #fff;width: 180%;">
+                              <td style="width: 110px;">
+                                Operations
+                              </td>
+                              <td style="width: 140px;">
+                                +91 9704678160
+
+                              </td>
+                              <td>
+                                hyd.dutymanager@gmrgroup.in
+                              </td>
+                          </tr>
+                          <tr style="background-color: #f2f4f5;width: 180%;">
+                                <td style="width: 110px;">
+                                  Safety and Security
+                                </td>
+                                <td style="width: 140px;">
+                                	+91 4066977014
+                                 
+                                </td style="width: 110px;">
+                                <td>
+                                  hyd.dutymanager@gmrgroup.in
+                                </td>
+                            </tr>
+                            <tr style="background-color: #fff;width: 180%;">
+                                <td style="width: 110px;">
+                                  Duty manager-Import Operations 
+                                </td>
+                                <td style="width: 140px;">
+                                  +91 9538100095
+                               
+                                </td>
+                                <td>
+                                  dmimportt.blr@aisats.in
+                                </td>
+                            </tr>
+                            <tr style="background-color: #f2f4f5;width: 180%;">
+                                <td style="width: 110px;">
+                                  Duty manager-Coolport Operations 
+                                </td>
+                                <td style="width: 140px;">
+                                 +91 9538955532
+                              
+                                </td>
+                                <td>
+                                  coolport.ops@aisats.in
+                                </td>
+                            </tr>
+                            <tr style="background-color: #fff;width: 180%;">
+                                <td style="width: 110px;">
+                                  Finance
+                                </td>
+                                <td style="width: 140px;">
+                                  +91 4066977029
+                      
+                                </td>
+                                <td>
+                                  divakar.tk@gmrgroup.in
+                                </td>
+                            </tr>
+                            <tr style="background-color: #fff;width: 180%;">
+                              <td style="width: 110px;">
+                                IT
+                              </td>
+                              <td style="width: 140px;">
+                                +91 9704678174
+                    
+                              </td>
+                              <td>
+                                ITSupport.cargo@gmrgroup.in
+                              </td>
+                          </tr>
+                      </tbody>
+                 </table>
+                </div>
+            </div>
+       
+          
+            <div class= "div-wrapper">
+                <div class="panel-heading" role="tab" id="headingFour" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" >
+                  Airlines
+                   <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 10px;display: inline-flex;">Airlines</h5> -->
+                   <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+                </button>
+                </div>
+                <div id="collapseFou" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <table style="width: 100%;">
+
+                      <tbody>
+                   
+                            <tr class="table_heading" style="width: 280%;">
+                              <th style="text-align: left !important;width: 100px;" >
+                                <div>Airline Name</div>
+                              </th>
+                              <th style="text-align: left !important;width:140px">
+                                <div>Contact No.</div>
+                                
+                              </th>
+                              <th style="text-align: left !important;">
+                                <div>E-mail</div> 
+                              </th>
+                           </tr>
+                
+                        <tr style="background-color: #fff; width: 280%;">
+                          <td style="width: 100px;">
+                            Air Arabia
+                          </td>
+                          <td class="col_line" style="width: 140px;">
+                            +91 9900392250
+                          </td>
+                          <td class="col_line">
+                           raja.reddy@in.mghgroup.com
+                          </td>
+                      </tr>
+                      <tr style="background-color: #f2f4f5;width: 280%;">
+                             <td style="width: 100px;">
+                              Air Asia
+                             </td>
+                             <td class="col_line" style="width: 140px;">
+                              +91 9741351869
+                            </td>
+                            <td class="col_line">
+                              aushvinthdavid@airasia.com
+                            </td>
+
+                        </tr>
+                        <tr style="background-color: #fff;width: 280%;">
+                             <td style="width: 100px;">
+                              Air France
+                            </td>
+                             <td class="col_line" style="width: 140px;">
+                              <div>+91 80-40992399/2499</div>
+                              <div>+91 8022018054</div>
+                            </td>
+                           <td class="col_line">
+                            customerservice.blr@airfrance.fraksamal@airfrance.fr
+                         </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;width: 280%;">
+                           <td style="width: 100px;">
+                            Air Asia
+                           </td>
+                           <td class="col_line" style="width: 140px;">
+                            +91 9741351869
+                          </td>
+                          <td class="col_line">
+                            aushvinthdavid@airasia.com
+                          </td>
+
+                      </tr>
+                      <tr style="background-color: #fff;width: 280%;">
+                           <td style="width: 100px;">
+                            Air France
+                          </td>
+                           <td class="col_line" style="width: 140px;">
+                            <div>+91 80-40992399/2499</div>
+                            <div>+91 8022018054</div>
+                          </td>
+                         <td class="col_line">
+                          customerservice.blr@airfrance.fraksamal@airfrance.fr
+                       </td>
+                      </tr>
+                      <tr style="background-color: #f2f4f5;width: 280%;">
+                         <td style="width: 100px;">
+                          Air India		
+                         </td>
+                         <td class="col_line" style="width: 140px;">
+                          +91 9449873949
+                        </td>
+                        <td class="col_line">
+                          blrcgomgr@airindia.in
+                        </td>
+
+                    </tr>
+                    <tr style="background-color: #fff;width: 280%;">
+                         <td style="width: 100px;">
+                          Air Mauritius	
+                        </td>
+                         <td class="col_line" style="width: 140px;">
+                          +91 9884277788
+                        </td>
+                       <td class="col_line">
+                        sushmakarunakar@in.sharafcargo.com
+                     </td>
+                    </tr>
+                    <tr style="background-color: #f2f4f5;width: 280%;">
+                       <td style="width: 100px;">
+                        Blue Dart Aviation Limited	
+                       </td>
+                       <td class="col_line" style="width: 140px;">
+                        +91 80-66785806
+                      </td>
+                      <td class="col_line">
+                        ChetanV@bluedart.com
+                      </td>
+
+                  </tr>
+                  <tr style="background-color: #fff;width: 280%;">
+                       <td style="width: 100px;">
+                  British Airways Cargo		
+                      </td>
+                       <td class="col_line" style="width: 140px;">
+                        +91 7022005533
+                      </td>
+                     <td class="col_line">
+                      cargoops.blr@ba.com
+                   </td>
+                  </tr>
+                  <tr style="background-color: #f2f4f5;width: 280%;">
+                     <td style="width: 100px;">
+                      Cathay Pacific	
+                     </td>
+                     <td class="col_line" style="width: 140px;">
+                     +91 9873765982
+                    </td>
+                    <td class="col_line">
+                      rohith_ramanan@cathaypacific.comDL_BLR_CGO_all_staff@cathaypacific.com
+                    </td>
+
+                </tr>
+                <tr style="background-color: #fff;width: 280%;">
+                     <td style="width: 100px;">
+                      DHL Aerologic		
+                     
+                    </td>
+                     <td class="col_line" style="width: 140px;">
+                      <div>+91 8027688322</div>
+                      <div>+91 8022018049</div>
+                    </td>
+                   <td class="col_line">
+                    Ops.blr@avs-gsa.comacs.blr@menziesbobba.com
+                 </td>
+                </tr>
+                <tr style="background-color: #f2f4f5;width: 280%;">
+                   <td style="width: 100px;">
+                    Emirates	
+                   </td>
+                   <td class="col_line" style="width: 140px;">
+                    +91 9999983280
+                  </td>
+                  <td class="col_line">
+                    halim.modassir@emirates.com
+                  </td>
+
+              </tr>
+              <tr style="background-color: #fff;width: 280%;">
+                   <td style="width: 100px;">
+                    Ethiopian Airlines                   
+                  </td>
+                   <td class="col_line" style="width: 140px;">
+                  <div>+91 9663344412</div>
+                   <div>+91 8022018060</div>
+                  </td>
+                 <td class="col_line">
+                   Felix.peter@aaplindia.comarun.samal@menziesbobba.com
+               </td>
+              </tr>
+              <tr style="background-color: #f2f4f5;width: 280%;">
+                 <td style="width: 100px;">
+                  Etihad Cargo	
+                 </td>
+                 <td class="col_line" style="width: 140px;">
+                  +91 99000801004
+                </td>
+                <td class="col_line">
+                  sravindran@etihad.ae
+                </td>
+
+            </tr>
+            <tr style="background-color: #fff;width: 280%;">
+                 <td style="width: 100px;">
+                FedEx	
+                </td>
+                 <td class="col_line" style="width: 140px;">
+                  +91 80-46253526
+                </td>
+               <td class="col_line">
+                ramesh.s2@fedex.com
+             </td>
+            </tr>
+            <tr style="background-color: #f2f4f5;width: 280%;">
+               <td style="width: 100px;">
+                GoAir	
+               </td>
+               <td class="col_line" style="width: 140px;">
+                +91 9900180978
+              </td>
+              <td class="col_line">
+                mahin.vardhan@goair.in
+              </td>
+
+          </tr>
+          <tr style="background-color: #fff;width: 280%;">
+               <td style="width: 100px;">
+                Gulf Air	
+              </td>
+               <td class="col_line" style="width: 140px;">
+                +91 8022018053
+              </td>
+             <td class="col_line">
+              arun.samal@menziesbobba.com
+           </td>
+          </tr> <tr style="background-color: #f2f4f5;width: 280%;">
+             <td style="width: 100px;">
+              IAG Cargo/British Airways		
+             </td>
+             <td class="col_line" style="width: 140px;">
+              +91 80-66783180
+            </td>
+            <td class="col_line">
+              abdur.rehman@ba.com
+            </td>
+
+        </tr>
+        <tr style="background-color: #fff;width: 280%;">
+             <td style="width: 100px;">
+              Indigo             
+            </td>
+             <td class="col_line" style="width: 140px;">
+             <div>+91 80-47406008</div>
+              <div>+91 80-47406007	</div>
+            </td>
+           <td class="col_line">
+          	blr.intlcgo@GOINDIGO.INblt.intlops@goindigo.in
+         </td>
+        </tr>
+        <tr style="background-color: #f2f4f5;width: 280%;">
+           <td style="width: 100px;">
+            KLM
+            
+           </td>
+           <td class="col_line" style="width: 140px;">
+              <div>+91 8040992399/2499</div>
+              <div>+91 8022018053</div>
+          </td>
+          <td class="col_line">
+            customerservice.blr@airfrance.frarun.samal@menziesbobba.com
+          </td>
+
+      </tr>
+      <tr style="background-color: #fff;width: 280%;">
+           <td style="width: 100px;">
+            Kuwait Airways
+          </td>
+           <td class="col_line" style="width: 140px;">
+            <div> +91 80-47406354	</div>
+          <div> +91 9980870751</div>
+          </td>
+         <td class="col_line">
+          blrffku@kuwaitairways.com
+       </td>
+      </tr>
+      <tr style="background-color: #f2f4f5;width: 280%;">
+         <td style="width: 100px;">
+          Lufthansa Cargo		
+         </td>
+         <td class="col_line" style="width: 140px;">
+          +91 80-27688207
+        </td>
+        <td class="col_line">
+          fhablrteam@dlh.de
+        </td>
+
+                </tr>
+                <tr style="background-color: #fff;width: 280%;">
+                     <td style="width: 100px;">
+                      Malaysian Airlines	
+                    </td>
+                     <td class="col_line" style="width: 140px;">
+                      +91 9500001931
+                    </td>
+                  <td class="col_line">
+                    sridhar@aerosailgssaindia.com
+                </td>
+                </tr>
+                <tr style="background-color: #f2f4f5;width: 280%;">
+                   <td style="width: 100px;">
+                    Nepal Airlines
+                  </td>
+                   <td class="col_line" style="width: 140px;">
+                    +91 9810255171
+                  </td>
+                  <td class="col_line">
+                    rajneesh.sharma@birdtravels.com
+                  </td>
+
+              </tr>
+              <tr style="background-color: #fff;width: 280%;">
+                   <td style="width: 100px;">
+                  Oman Air		
+                  </td>
+                   <td class="col_line" style="width: 140px;">
+                    +91 9884277788
+                  </td>
+                <td class="col_line">
+                  sushmakarunakar@in.sharafcargo.com
+              </td>
+              </tr>
+              <tr style="background-color: #f2f4f5;width: 280%;">
+                 <td style="width: 100px;">
+                  GoAir	Qatar Airways	
+                </td>
+                 <td class="col_line" style="width: 140px;">
+                  +91 8022018030
+                </td>
+                <td class="col_line">
+                  Blr.qops@menziesbobba.com
+                </td>
+
+            </tr>
+            <tr style="background-color: #fff;width: 280%;">
+                 <td style="width: 100px;">
+                  Saudia cargo		
+                </td>
+                 <td class="col_line" style="width: 140px;">
+                  +91 9741159027
+                </td>
+              <td class="col_line">
+                hbaby@saudiacargo.com
+            </td>
+            </tr>
+            <tr style="background-color: #f2f4f5;width: 280%;">
+               <td style="width: 100px;">
+                Singapore Airline	
+              </td>
+               <td class="col_line" style="width: 140px;">
+                +91 9845211811
+              </td>
+              <td class="col_line">
+                Preeti_shukla@singaporeair.com.sg
+              </td>
+
+            </tr>
+            <tr style="background-color: #fff;width: 280%;">
+               <td style="width: 100px;">
+                SpiceXpress		
+              </td>
+               <td class="col_line" style="width: 140px;">
+                +91 9900080752
+              </td>
+            <td class="col_line">
+              vishal.noronha@spicejet.com
+            </td>
+            </tr>
+            <tr style="background-color: #f2f4f5;width: 280%;">
+               <td style="width: 100px;">
+                Srilankan Airline	
+              </td>
+               <td class="col_line" style="width: 140px;">
+                +91 9980434408
+              </td>
+              <td class="col_line">
+                rakesh.p@globalaviationindia.com
+              </td>
+
+            </tr>
+            <tr style="background-color: #fff;width: 280%;">
+               <td style="width: 100px;">
+                Thai Airways	
+              </td>
+               <td class="col_line" style="width: 140px;">
+                +91 80-27688239	
+              </td>
+            <td class="col_line">
+              tej.s@thaiairways.co.in
+            </td>
+            </tr>
+            <tr style="background-color: #f2f4f5;width: 280%;">
+               <td style="width: 100px;">
+                GoAir	Turkish Airlines
+              </td>
+               <td class="col_line" style="width: 140px;">
+                +91 11-49407100	
+              </td>
+              <td class="col_line">
+                BLRCARGO@THY.COM
+              </td>
+
+            </tr>
+            <tr style="background-color: #fff;width: 280%;">
+               <td style="width: 100px;">
+                Vistara	   
+              </td>
+               <td class="col_line" style="width: 140px;">
+              <div>+91 8826600820<div>
+              <div> +91 9945500055<div>
+              </td>
+            <td class="col_line">
+              saujat.bansal@airvistara.comtsal.cargo@airvistara.comakumar@aviaprologistics.com
+            </td>
+            </tr>
+
+                        
+                      </tbody>
+                 </table> 
+                </div>
+            </div>
+            <div class= "div-wrapper">
+              <div class="panel-heading" role="tab" id="headingFive" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true">
+                 <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">Bangalore International Airport</h5> -->
+                GMR Hyderabad Air Cargo - Cargo Support
+                 <!-- <button id="open-close-toggle" class="btn-arrow" >
+                     <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+                  <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+                 </button> -->
+                 <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                  <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+              </button>
+              </div>
+              <div id="collapseFiv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                  <table style="width: 100%;">
+                    <thead>
+                     
+                    </thead>
+                    <tbody>
+                      <tr class="table_heading" style="width: 180%;">
+                        <th style="width: 110px;">
+                            Point of Contact
+                          </th>
+                          <th style="width: 140px;">
+                            <div>Contact No.</div>
+                          
+                          </th>
+                          <th>
+                            <div>E-mail</div> 
+                          </th>
+                         
+                      </tr>
+                        <tr style="background-color: #fff;width: 180%;">
+                          <td style="width: 110px;">Anantha Rangasayee
+                          </td>
+                          <td style="width: 140px;">
+                           +91 9606012188
+                          
+                          </td>
+                          <td>
+                            <a href="mailto:anantha@BIALAIRPORT.COM">anantha@BIALAIRPORT.COM</a>
+
+                          </td>
+                        </tr>
+                        <tr style="background-color: #f2f4f5;width: 180%;">
+                          <td style="width: 110px;">
+                            Devendra Gaonkar
+                          </td>
+                          <td style="width: 140px;">
+                           +91 9606012159
+                          
+                          </td>
+                          <td>
+                            <a href="mailto:devendra.g@BIALAIRPORT.COM">devendra.g@BIALAIRPORT.COM</a>
+
+                          </td>
+                             
+                          </tr>
+                          <tr style="background-color: #fff;width: 180%;">
+                            <td style="width: 110px;">
+                              Fletcher Samuel
+                            </td>
+                            <td style="width: 140px;">
+                             +91 9538882137
+                           
+                            </td>
+                            <td>
+                              <a href="mailto:fletcher.s@BIALAIRPORT.COM">fletcher.s@BIALAIRPORT.COM</a>
+                            </td>
+                          </tr>
+                          <tr style="background-color: #f2f4f5;width: 180%;">
+                             
+                                                        
+                            <td style="width: 110px;">
+                              Pratik Mehta 
+                            </td>
+                            <td style="width: 140px;">
+                             +91 7829968080
+                           
+                             
+                            </td>
+                            <td>
+                              <a href="mailto:pratik@BIALAIRPORT.COM">pratik@BIALAIRPORT.COM</a>
+                            </td>
+                          </tr>
+                        
+                    </tbody>
+               </table>
+              </div>
+          </div>
+
+          <div class= "div-wrapper">
+            <div class="panel-heading" role="tab" id="headingSix" style="background-color: #00AAA2;font-size: 17px;color: #fff;font-weight: bold;padding: 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+              GMR Hyderabad Air Cargo – Media Support
+              <!-- <h5 class="primary-heading2" style="color: #fff;padding-top: 13px;display: inline-flex;">Kale Support</h5> -->
+               <!-- <button id="open-close-toggle" class="btn-arrow" >
+                   <i class='fas' style='font-size:22px;float: right;' class='fas'>&#xf078;</i>
+                <i class="hidden" style='font-size:22px;float: right;' class='fas'>&#xf077;</i>
+               </button> -->
+               <button class="btn-arrow" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;"></i>
+            </button>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                <table style="width: 100%;">
+                  <thead>
+                     
+                  </thead>
+                  <tbody>
+
+                    <tr class="table_heading" style="width: 180%;">
+                      <th style="width: 110px;">
+                         Point of Contact
+                      </th>
+                      <th style="width: 140px;">
+                        <div>Contact No.</div>
+                      
+                      </th>
+                      <th>
+                        <div>E-mail</div> 
+                      </th>
+                     
+                  </tr>
+                       <tr style="background-color: #fff;width: 180%;">
+                          <td style="width: 110px;">
+                            Corporate Communications
+                          </td>
+                          <td style="width: 140px;">
+                   
+                           
+                          </td>
+                          <td>
+                            <a href="hial-corporatecommunicationsteam@gmrgroup.in">hial-corporatecommunicationsteam@gmrgroup.in</a>
+                          </td>
+                      </tr>
+                      
+                    
+                  </tbody>
+             </table>
+            </div>
+        </div>
+     
+        </div>
+  </div> 
+
+  <div id="myModal" class="modal">
+    <div class="modal-cont">
+        <div class="logOff">
+            <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+        </div>
+        <div style="text-align: center;">
+             <label style="font-size: large;">Are you sure you want to sign out?</label>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+          <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.min.js"></script>
+<script type="text/javascript" src="js/LoadingModel.js"></script>
+<script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+<script type="text/javascript" src="js/dialog.js"></script>
+<script type="text/javascript" src="js/alert.mob.js"></script>
+<script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+<script type="text/javascript" src="script/General.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script type="text/javascript" src="script/Others/OTH_ContactUs.js"></script>
+</body>
+
+<script>
+//     $('#open-close-toggle').on("click", function(){
+//     var $arrows = $(this).find("i");
+//     $('#toggle-section').slideToggle(function(){
+//         $arrows.toggle();
+//     });
+// });
+
+function toggleIcon(e) {
+$(e.target)
+    .prev('.panel-heading')
+    .find(".more-less")
+    .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+}
+$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+$('.panel-group').on('shown.bs.collapse', toggleIcon);
+ // Get the modal
+ var modal = document.getElementById("myModal");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+</script>
+</html>

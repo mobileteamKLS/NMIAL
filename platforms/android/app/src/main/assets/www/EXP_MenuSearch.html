@@ -1,0 +1,581 @@
+<style>
+
+ 
+  .buttonUpload { 
+          margin-top: 10px !important;
+          width: 100%;
+          padding: 5px;
+          /* border-radius: 15px; */
+          /* color: #ffffff; */
+          font-weight: bold;
+          /* background-color: #3e5263; */
+          /* font-size: large; */
+          height: 35px;
+          border:1px solid #3e5263 !important;
+          font-size: 10px;
+          }
+          .btnback {
+          margin: 0px 30px 10px 30px;
+          border-radius: 15px;
+          color: white;
+          font-weight: bold;
+          background-color: #00AAA2;
+          /* font-size: large; */
+          height: 35px;
+          border: 1px solid #00AAA2 !important;
+          width: 85%;
+          }
+          .buttonSubmit {
+          margin-top: 10px !important;
+          width: 90%;
+          /* padding: 12px; */
+          border-radius: 15px;
+          color: #ffffff;
+          font-weight: bold;
+          background-color: #adb5bd;
+          /* font-size: large; */
+          height: 35px;
+          border: #3e5263 !important;
+          margin: 10px;
+      }
+      .buttonClear {
+          margin-top: 10px !important;
+          width: 90%;
+          /* padding: 12px; */
+          border-radius: 15px;
+          color: #00AAA2;
+          font-weight: bold;
+          background-color: white;
+          /* font-size: large; */
+          height: 35px;
+          border:1px solid #00AAA2 !important;
+          margin: 10px;
+      }
+      
+        
+          .tablink {
+            background-color: #00AAA2;;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+          }
+          
+          .tablink.active {
+            border-bottom: solid 3px white;
+            font-weight: bold;
+          }
+          
+          .tabcontent {
+            background-color:#e8fcfd;
+            display: none;
+          }
+          .col_menu{
+            padding: 10px 10px 10px 20px;
+          }
+          h6.foo_left {
+          text-align: left !important;
+          display: inline !important;
+              font-size: smaller !important;
+          
+          }
+          .table td, .table th{
+            text-align: center !important;
+            padding: 3px;
+          }
+          h6.foo_right {
+          text-align: right !important;
+          display: inline !important;
+              font-size: smaller  !important;
+          }
+           /* The Modal (background) */
+           .modal {
+                  display: none;
+                  /* Hidden by default */
+                  position: fixed;
+                  /* Stay in place */
+                  z-index: 1;
+                  /* Sit on top */
+                  padding-top: 150px;
+                  /* Location of the box */
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  /* Full width */
+                  height: 100%;
+                  /* Full height */
+                  overflow: auto;
+                  /* Enable scroll if needed */
+                  background-color: rgb(0, 0, 0);
+                  /* Fallback color */
+                  background-color: rgba(0, 0, 0, 0.4);
+                  /* Black w/ opacity */
+              }
+          
+             /* Modal Content */
+            .modal-cont {
+              border-radius: 15px;
+              margin:15px;
+              border:1px solid grey;
+              background-color: #fff;
+          }
+              /* The Close Button */
+              .close {
+                  color: #aaaaaa;
+                  float: right;
+                  font-size: 28px;
+                  font-weight: bold;
+              }
+              .logOff{
+                text-align: center;
+                background-color: #00AAA2;
+                margin-bottom: 20px;
+                height: 43px;
+                border-radius: 15px 15px 0px 0px;
+              }
+              input#btnlogOff {
+            background-color: white;
+              border: 1px solid #00AAA2;
+              border-radius: 15px;
+              margin-top: 10px;
+              width: 38%;
+              padding: 7px;
+          }
+          .log_label{
+            color: white;
+            margin-top: 7px;
+          }
+              .icon{
+              background-color: #00AAA2;
+              border: #FFFFFF;
+              color: white;
+              font-size: 20px;
+              padding-top: 10px;
+          }
+          .icons {
+              background-color: #00AAA2;
+              height: 40px;
+              width: 100%;
+          }
+          .footer {
+            position:fixed;
+             left: 0;
+             bottom: 0;
+             width: 100%;
+             background-color:lightgray;
+             color: white;
+             text-align: center;
+             height:20px;
+          }
+          
+          .img_center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+          }
+          .headbar {
+              overflow: hidden;
+              position: fixed;
+              top: 0;
+              width: 100%;
+              z-index: 1;
+          }
+          .menu_heading{
+            float: none;
+              position: absolute;
+              top: 45%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              color: white;
+              font-weight: bold;
+          }
+          .fontSize12 {
+          width: 100%;
+          border: 0px;
+          border-bottom: 1px solid black;
+          text-align: right;
+          margin-top: 8px;
+      }
+      .fontSize13 {
+          width: 100%;
+          border: 0px;
+          border-bottom: 1px solid black;
+          text-align: right;
+          margin-top: 10px;
+      }
+        
+          .actionBtn {
+            width: 90%;
+              color:#00AAA2;
+              background-color: #f9f9f9;
+              border-radius: 15px;
+              height: 30px;
+              border: 1px solid #00AAA2;
+              /* margin-top: 10PX; */
+              font-size: 15px;
+              /* margin-bottom: 10px; */
+          }
+          button.btn-arrow {
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          border: solid 2px;
+          color: white;
+          background-color: #00AAA2;
+          float: right;
+          margin-right: 10px;
+      }
+      .div-wrapper {
+          margin: 5px 10px 20px 10px;
+          background-color: white;
+          border: lightgrey 1px solid;
+      }
+      .div-wrapper1 {
+      background-color: #00AAA2;
+      margin: 10px;
+  }
+      .col2,.col3{
+      padding: 15px;
+      text-align: right;
+      }
+      .col-3{
+      text-align: right;
+      }
+      .col-2,.col-4{
+      text-align: center;
+      }
+      .hawbHead{
+    background-color: #ffc721 !important;
+  }
+      .spanTD{
+      padding: 10px;
+      text-align: left;
+      font-weight: bold;
+      font-size: 15px;
+      }
+      .table_row{
+      border-bottom: 1px solid grey;
+      height: 50px;
+      background-color: #fff;
+      }
+      .col-6,.col-5{
+          padding: 0px !important;
+      }
+      .remove{
+          color: red;
+          border: 0px;
+          background-color: white;
+          font-weight: bold;
+      }
+      .dot {
+        height: 15px;
+          width: 15px;
+          background-color: #f9f9f9;
+          border-radius: 50%;
+          display: inline-block;
+          border: 2px solid lightgrey;
+      }
+      .lbl{
+        display: block;
+      }
+      tr.table_heading {
+          background-color: orange;
+          height: 35px;
+      }
+      .div-wrapperVT {
+          margin: 0px 10px 10px 10px;
+          background-color: #00AAA2;
+          height: 50px;
+          
+      }
+      tr{
+        border: 1px solid grey;
+      }
+      input[type=checkbox]:checked {
+   background-color: #00AAA2 !important;
+} 
+
+input[type="checkbox"] {
+        	accent-color: #00AAA2 !important;
+        	/* Green color */
+    	}
+      </style>
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+      <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+      <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+      <link rel="stylesheet" href="css/app.min.css">
+      <link href="css/custom.css" rel="stylesheet" />
+      <link href="css/Loader.css" rel="stylesheet" />
+      <link href="css/dialog.css" rel="stylesheet" />
+      <link href="css/alert.mob.css" rel="stylesheet" />
+      <link href="css/Common.css" rel="stylesheet" />
+      <link href="css/General.css" rel="stylesheet" />
+     
+    </head>
+    <body style=" background-color:#e8fcfd !important">
+    
+    <div class= "headbar">
+        <div class="icons">
+            <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+            <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i></button>
+    
+            <!-- <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i></button> -->
+            <h4 class="menu_heading">Exports</h4> 
+      
+        </div>
+         
+
+      </div>
+
+      <h5 class="primary-heading" style="margin: 50px 10px 10px 10px;" id = "MenuHeading"></h5>
+ 
+                <div class="scrol">
+              <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+                <div class="col-5" style="text-align:left;">
+                    <div class="form-group vtMargin" style="margin-top: 10px;">
+                        <label class="lbl" style="font-size: 15px;font-weight: bold;">Search MAWB No.</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                      <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtFlightPrefix" class="fontSize12" placeholder="Prefix"name="prefix"
+                      pattern="[0-9]*" maxlength="3" autofocus></input>
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                      <input type="tel" onkeyup="NumberOnly(event); ChkMaxLength(this, '8');" id="txtFlightNo" class="fontSize13" placeholder="Enter AWB No." name="MAWBNo"
+                      pattern="[0-9]*" maxlength="8" ></input>
+                    </div>
+                </div>
+          </div>
+    
+            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+                
+                  <div class="col-6">
+                    <div class="form-group">
+                        <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
+                    </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <input type="button" class="submitBtn" id="btnClear" value="Search" onclick="searchAWBNumber();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+    
+                  </div>
+              </div>
+          
+          </div>
+                </div>
+
+                <h5 class="primary-heading" id="listingHeading"style="margin: 15px 10px;display: none;">Select HAWB No. from the list of IGMs to continue</h5>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <section id="listingDetailsRow" ></section>
+                </div>
+                <div class="panel-group" id="accordionDocUpload" role="tablist" aria-multiselectable="true">
+                  <div class= "div-wrapper">
+                    <div class="panel-heading" role="tab" id="heading2" style="font-size: 17px;padding: 5px 10px 5px 10px;display: inline-flex;width: 100%;" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" >
+                      <div class="col-5">
+                          <div class="form-group vtMargin" >
+                              <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB Details</label>
+                          </div>
+                      </div>
+                      <div class="col-5">
+                          <div class="form-group" style="text-align: center;">
+                              <!-- <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtIGMNo" value= "Approved 08 Oct 2021 10:45" class="fontSize12" style="text-align: center;"></input> -->
+                              <label class="lbl" style="font-size: 15px;font-weight: bold;" id="DocStatus"></label>
+                              <label class="lbl" style="font-size: 15px;font-weight: bold;display: block;" id="DocStatusDate"></label>
+                                <label class="lbl" style="font-size: 15px;font-weight: bold;" id="DocStatusTime"></label>
+                            </div>
+                      </div>
+                      <div class="col-2">
+                          <div class="form-group">
+                              <button class="btn-arrow" data-toggle="collapse" data-parent="#accordionDocUpload" href="#collapse2" aria-expanded="true" aria-controls="collapse2" style="border: none;background-color: white;" onclick="getBoEDetails();">
+                                  <i class="more-less zmdi zmdi-chevron-down" id="down-arrow" style="float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;"></i>
+                              </button>
+                            </div>
+                      </div>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                       
+                      <div class= "div-wrapper_2">
+                          <table id="tblAirWayBillInfo" width="100%" style="border: lightgrey 1px solid;">
+                    
+                                <tr class="table_row">
+                                    <td class="spanTD">MAWB No.</td>
+                                    <td class="col2"><span id="spnMawbNo"></span></td>
+                                </tr>
+                                <tr class="table_row">
+                                  <td class="spanTD">MAWB Date</td>
+                                  <td class="col2"><span id="spnMawbDate"></span></td>
+                              </tr>
+                            </table>
+                              <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 0px;margin-left: 0px;">
+                    
+                
+                                <div class="col-6">
+                                  <div class="form-group">
+                                    <select name="CSDDocument" id="CSDDocument" class="textfieldClass" style="font-size: 12px;font-weight: bold;height: 35px;border: solid 1px #236bb2;margin-top: 10px;" disabled>
+                                    <option value="105">CSD Document</option>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="col-6">
+                                <div class="form-group">
+                                  <input id="fileCSD" type="file" class="buttonUpload" name="fileList" onchange ="onSelectFile(event); readCSDFile(event); " accept="application/pdf" style="word-break: break-all;"/> 
+                          
+                                <a class="" id = "viewFile" type="button" style="margin-left: 10px;font-weight: bold;word-break: break-all;"></a>
+                        
+                                </div>
+                            </div>
+                            
+                            </div>
+                         
+                            <!-- <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 0px;margin-left: 0px;">
+                    
+                
+                              <div class="col-6">
+                                <div class="form-group">
+                                  <select name="AWBDocument" id="AWBDocument" class="textfieldClass" style="font-size: 12px;font-weight: bold;height: 35px;border: solid 1px #236bb2;margin-top: 10px;" disabled>
+                                    <option value="106">Air Waybill</option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <input id="fileAWB" type="file" class="buttonUpload" name="fileList" onchange ="onSelectFile(event); readAWBFile(event); " accept="application/pdf" style="word-break: break-all;"/> 
+                        
+                              <a class="" id = "viewFile" type="button" style="margin-left: 10px;font-weight: bold;word-break: break-all;"></a>
+                      
+                              </div>
+                          </div>
+                          
+                          </div> -->
+                            <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 0px;margin-left: 0px;">
+                    
+                
+                              <div class="col-6">
+                                <div class="form-group">
+                                  <select name="documentList" id="documentList" class="textfieldClass" style="font-size: 12px;font-weight: bold;height: 35px;border: solid 1px #236bb2;margin-top: 10px;" onChange = "ondropDownChnge();">
+                           
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <input id="fileList" type="file" class="buttonUpload" name="fileList" onchange ="onSelectFile(event); readFile(event); " accept="application/pdf" style="word-break: break-all;"/> 
+                          
+                                <a class="" id = "viewFile" type="button" style="margin-left: 10px;font-weight: bold;word-break: break-all;"></a>
+                    
+                              <!-- <button class="remove" id = "removeFile" type="button" onclick="removePdf();">Remove</button> -->
+                              </div>
+                          </div>
+                          
+                          </div>
+          
+                                        
+
+                      <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+                    
+                
+                        <div class="col-6">
+                          <div class="form-group">
+                              <input type="button" class="actionBtn" id="btnClearData" value="Clear" onclick="clearData();">
+                          </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input type="button" class="actionBtn" id="uploadDoc" value="Upload" onclick="uploadClick();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+                
+                        </div>
+                    </div>
+                    
+                    </div>
+                    </div>
+                    
+
+                    <div class="contacts row contacts__itemfortext" style="margin: 20px 10px 15px 10px;">
+                  
+                            <table class="table  table-bordered mb-0" id="tblTrackInfo">
+                              <thead class="theadClass" style="background-color: #ffc721;">
+                                       <th><input type="checkbox" class="selectall" name= "checkAll"></th>
+                                        <th>Doc Name</th>
+                                        <th>Doc Status</th>
+                                        <th>Doc Remarks</th>
+                                        <th>Action</th>
+                           
+                              </thead>
+                              <tbody id="docTable" class= "tableDoc">
+                                
+                              </tbody>
+                          </table>
+                    </div>
+          
+                
+                  <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+                      
+                      
+                      <div class="col-8">
+                        <div class="form-group">
+                         <button class="btnBack" type="button" id="submitButton" onclick="submitToCTO();" style="position: relative;left: 20%;">Submit</button>
+          
+                        </div>
+                    </div>
+                
+                </div>
+
+                
+                <button class="btnBack" type="button" id="backButton" onclick="backButton();">Back To Exports Menu</button>
+      
+      
+                    </div>
+                </div>
+              
+                </div>
+       
+        <div id="myModal" class="modal">
+              <div class="modal-cont">
+                  <div class="logOff">
+                      <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+                  </div>
+                  <div style="text-align: center;">
+                       <label style="font-size: large;">Are you sure you want to sign out?</label>
+                  </div>
+                  <div style="margin-bottom: 15px;">
+                    <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+                    <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+                  </div>
+              </div>
+        </div>
+       <div class="footer">
+        <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+        <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+      </div>
+      </body>
+    
+      <script type="text/javascript" src="js/jquery.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/app.min.js"></script>
+      <script type="text/javascript" src="js/LoadingModel.js"></script>
+      <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+      <script type="text/javascript" src="js/dialog.js"></script>
+      <script type="text/javascript" src="js/alert.mob.js"></script>
+      <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+      <script type="text/javascript" src="script/General.js"></script>
+      <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+      <script type="text/javascript" src="script/Export/EXP_MenuSearch.js"></script>
+      <script language="javascript" type="text/javascript">
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+    </script>
+      </html>

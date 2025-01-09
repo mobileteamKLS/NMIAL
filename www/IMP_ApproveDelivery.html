@@ -1,0 +1,366 @@
+
+<style>
+
+    
+    .button { 
+      margin-top: 5px !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #27bda1;
+    }
+    .box-wrapper {
+    height: 50px;
+    border-bottom: solid 1px grey;
+    background-color: white;
+  }
+  .left-head{
+  float: left;
+  text-align: left;
+  margin-top: 15px;
+  margin-left: 10px;
+  font-weight: bold;
+  }
+  .right-head{
+    float: right;
+    text-align: right;
+    margin-top: 15px;
+    margin-right: 20px;
+  }
+  .div-wrapper {
+    margin: 5px 10px 10px 10px;
+    background-color: white;
+    height: 120px;
+    border: lightgrey 1px solid;
+  }
+  .div-wrapper_2 {
+    margin: 10px 10px 10px 10px;
+  }
+  
+  .icon{
+  background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+  padding-top: 10px;
+  }
+  .fontSize12 {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: right;
+    margin-top: 10px;
+  }
+  .fontSize13 {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: right;
+    margin-top: 10px;
+  }
+  .fontSize14 {
+  width: 100%;
+    border: 0px;
+    border-bottom: 1px solid black;
+    text-align: right;
+    margin-top: 10px;
+    height: 27px;
+  }
+  form#myForm {
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  button.fab36 {
+    border: 0px;
+    color: white;
+    background-color: #00AAA2;
+    font-size:20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  
+  .close_btn{
+    height: 35px;
+    width: 35px;
+    background-color: #00AAA2;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 30px;
+    color: white;
+    margin-top: 30px;
+    margin-right: 15px;
+  }
+  .icons {
+    background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  .col2{
+  padding: 10px;
+  text-align: right;
+  }
+  .spanTD{
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  }
+  .table_row{
+  border-bottom: 1px solid grey;
+  height: 50px;
+  background-color: #fff;
+  }
+  .mawb_label {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 15px;
+    width: 100px;
+  } /* The Modal (background) */
+  .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 150px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+  
+   /* Modal Content */
+  .modal-cont {
+    border-radius: 15px;
+    margin:15px;
+    border:1px solid grey;
+    background-color: #fff;
+  }
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .logOff{
+      text-align: center;
+      background-color: #00AAA2;
+      margin-bottom: 20px;
+      height: 43px;
+      border-radius: 15px 15px 0px 0px;
+    }
+    input#btnlogOff {
+  background-color: white;
+    border: 1px solid #00AAA2;
+    border-radius: 15px;
+    margin-top: 10px;
+    width: 38%;
+    padding: 7px;
+  }
+  .log_label{
+  color: white;
+  margin-top: 7px;
+  }
+  .menu_heading{
+  float: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+  }
+  .or_heading{
+    float: none;
+    position: absolute;
+    /* top: 45%; */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  input#btnClear {
+  width: 80%;
+    color:#00AAA2;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    height: 35px;
+    border: 1px solid #00AAA2;
+    margin-top: 20PX;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+    </style>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+  <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="css/app.min.css">
+  <link href="css/custom.css" rel="stylesheet" />
+  <link href="css/Loader.css" rel="stylesheet" />
+  <link href="css/dialog.css" rel="stylesheet" />
+  <link href="css/alert.mob.css" rel="stylesheet" />
+  <link href="css/Common.css" rel="stylesheet" />
+  <link href="css/General.css" rel="stylesheet" />
+  
+  </head>
+  <body style="background-color:#dcf3f2 !important;">
+  
+    <div class="icons">
+      <div>
+       <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+       <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+       </button>
+       <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i>
+       </button>
+       <h4 class="menu_heading">Imports</h4> 
+     </div>
+   </div>
+       
+        
+  <div style="background-color:#dcf3f2 !important;">
+    <h5 class="primary-heading">Approve Delivery </h5>
+   
+    <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+      <div class="col-4" style="text-align:left;">
+          <div class="form-group vtMargin" style="margin-top: 10px;">
+              <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No</label>
+          </div>
+      </div>
+      <div class="col-2">
+          <div class="form-group">
+            <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtFlightPrefix" class="fontSize12" placeholder="Prefix" id="prefix" name="prefix"
+            pattern="[0-9]*" maxlength="3" autofocus></input>
+          </div>
+      </div>
+      <div class="col-4">
+          <div class="form-group">
+            <input type="tel" onkeyup="NumberOnly(event); ChkMaxLength(this, '8');" onblur="getHawblist();" id="txtFlightNo" class="fontSize13" placeholder="MAWB No."  id="MawbNo" name="MAWBNo"
+            pattern="[0-9]*" maxlength="8" ></input>
+          </div>
+      </div>
+      <div class="col-2" style="margin-top: 10px;">
+        <button onclick="openScannerMawb();" class="btn btn--icon login__block__btn login__block__btn_margin scannerBG"><i class="zmdi zmdi-scanner"></i></button>
+    </div>
+    </div>
+  
+    <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+      <div class="col-4" style="text-align:left;">
+          <div class="form-group vtMargin" style="margin-top: 10px;">
+              <label class="lbl" style="font-size: 15px;font-weight: bold;">HAWB No.</label>
+          </div>
+      </div>
+      <div class="col-6">
+          <div class="form-group">
+            <select class="fontSize14"name="prefix" id="ddlHAWBNo" >
+              <option value="">Select</option>
+          </select>
+          </div>
+      </div>
+  
+    </div>
+
+
+    <h4 class="or_heading">OR</h4>
+    
+    <div class="contacts row contacts__itemfortext" style="padding: 30px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
+        <div class="col-4" style="text-align:left;">
+            <div class="form-group vtMargin" style="margin-top: 10px;">
+                <label class="lbl" style="font-size: 15px;font-weight: bold;">GP Number</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <input type="text" id="txtGatePassNo" class="fontSize13" placeholder="Gate Pass No."></input>
+            </div>
+        </div>
+        <div class="col-2" style="margin-top: 10px;">
+          <button onclick="openScannerGP();" class="btn btn--icon login__block__btn login__block__btn_margin scannerBG"><i class="zmdi zmdi-scanner"></i></button>
+      </div>
+    
+      </div>
+
+  
+      <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
+          
+      
+        <div class="col-6">
+          <div class="form-group">
+              <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
+          </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <input type="button" class="submitBtn" id="btnClear" value="Search" onclick="searchAWBNumber();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+  
+        </div>
+    </div>
+    
+    </div>
+  
+           
+         
+  </div> 
+  
+  <div id="myModal" class="modal">
+    <div class="modal-cont">
+        <div class="logOff">
+            <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+        </div>
+        <div style="text-align: center;">
+             <label style="font-size: large;">Are you sure you want to sign out?</label>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+          <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+        </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.min.js"></script>
+  <script type="text/javascript" src="js/LoadingModel.js"></script>
+  <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+  <script type="text/javascript" src="js/dialog.js"></script>
+  <script type="text/javascript" src="js/alert.mob.js"></script>
+  <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+  <script type="text/javascript" src="script/General.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script type="text/javascript" src="script/Import/IMP_ApproveDelivery.js"></script>
+  <script language="javascript" type="text/javascript">
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  </script>
+  </body>
+  </html>

@@ -1,0 +1,156 @@
+
+<style>
+    
+    .button { 
+      margin-top: 5px !important;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #27bda1;
+    }
+
+    .image{
+    color: #89f9f4;
+    width: 100px;
+    margin: 5px 10px 10px 0px;
+    float: left;
+    }
+.content-wrap p {
+  margin-bottom: auto;
+}
+
+  .btn-wrapper {
+  margin: 0 20px;
+  }
+ 
+  .div-wrapper {
+    margin: 5px 10px 10px 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+
+.border-line{
+    display: flex;
+    border-bottom: 2px solid #00AAA2;
+    background-color: white;
+    margin-top: 45px !important;
+}
+.footer {
+  position:fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:lightgray;
+   color: white;
+   text-align: center;
+   height:20px;
+}
+
+.icons {
+    background-color: #00AAA2;
+    height: 45px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.icon{
+background-color: #00AAA2;
+    border: #FFFFFF;
+    color: white;
+    font-size: 20px;
+  padding-top: 10px;
+}
+.menu_heading{
+  float: none;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+.detail{
+  text-align: left; 
+margin-top: 10px; }
+i#file {
+    font-size: 23px;
+    color: white;
+}
+h6.filename {
+    display: inline;
+    color: #2196f3;
+    text-decoration: underline;
+    margin-bottom: 40px;
+}
+.dwnicon{
+  border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    border: solid 2px;
+    color: white !important;
+    background-color: #00AAA2;
+    margin-right: 5px !important;
+
+}
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+ <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+ <link rel="stylesheet" href="css/app.min.css">
+
+</head>
+<body style="background-color:#dcf3f2 !important;">
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="js/app.min.js"></script>
+ <script type="text/javascript" src="js/LoadingModel.js"></script>
+ <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+ <script type="text/javascript" src="js/dialog.js"></script>
+ <script type="text/javascript" src="js/alert.mob.js"></script>
+ <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+ <script type="text/javascript" src="script/General.js"></script>
+ <script type="text/javascript" src="cordova.js"></script>
+ <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <script type="text/javascript" src="script/updateDetails.js"></script>
+
+ <div class="icons">
+
+      <button class="icon" onclick="goBack();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+      <h4 class="menu_heading">Updates</h4> 
+
+</div>
+  <div class="border-line">
+   <img src="img/LogoKIABCargoByBLR1_110x55.jpg" align ="left" >
+   <!-- <img src="img/CargoByBLR_Logo_120x55.jpg" width = "30%" > -->
+   </div>
+     
+  <div style="background-color:#dcf3f2 !important;">
+    <h4 class="primary-heading" style="margin-top: 10px !important;">Updates</h4>
+
+ 
+  <section id ="displayDetails">
+
+  </section>
+
+  
+
+       
+  
+
+  </div> 
+
+  <div class="footer">
+    <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+    <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+  </div>
+</body>
+</html>

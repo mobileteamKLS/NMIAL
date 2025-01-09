@@ -1,0 +1,252 @@
+<style>
+    
+  .button { 
+    margin-top: 5px !important;
+  width: 100%;
+  padding: 5px;
+  border-radius: 15px;
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #00AAA2;
+  font-size: large;
+  border: #00AAA2 !important;
+  
+  }
+
+  .image{
+  border-radius: 15px;
+  color: #6CE2DD;
+  border: solid;
+  margin-left: 10px;
+  height: 70px;
+  }
+
+  .box-wrapper {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #BBBBBB;
+    padding-bottom: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.box-wrapper .content-wrap {
+  position: relative;
+  padding: 0 12px;
+}
+.box-wrapper .content-wrap .icon {
+  color: #16928c;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.content-wrap p {
+  padding-right: 15px;
+  font-size: 13px;
+}
+.scroll-wrapper {
+  height:  calc(100vh - 300px);
+    background-color: rgba(255, 255, 255);
+    margin: 190px 20px 20px;
+    border-radius: 15px;
+    padding: 15px;
+    border: solid 1px grey;
+  }
+  .scroller {
+    height: calc(74vh - 221px);
+    overflow-y: scroll;
+  }
+
+.primary-heading {
+text-align: center !important;
+margin: 5px 0 25px !important;
+color: #16928c
+}
+.btn-wrapper {
+margin: 0 15px;
+}
+
+.open-arrow-icon {
+  position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.background-img-wrapper {
+  background: url('img/Bg_LoginNew1_360x203.jpg') no-repeat;
+  width: 100%;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  }
+  .border-line{
+    display: flex;
+    border-bottom: 2px solid #00AAA2;
+}
+.foot{   
+   background-color: lightgrey;
+    height: 20px;
+    }
+h6.foo_left {
+text-align: left !important;
+display: inline !important;
+    font-size: smaller !important;
+
+}
+h6.foo_right {
+text-align: right !important;
+display: inline !important;
+    font-size: smaller  !important;
+}
+.footer {
+  position:fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:lightgray;
+   color: white;
+   text-align: center;
+   height:20px;
+}
+.btn-arrow {
+    border: 0px;
+    background-color: #ffffff;
+}
+i#right-arrow {
+    font-size: 27px;
+}
+
+    </style>
+     <html>
+   
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+   
+          <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+          <link rel="stylesheet" href="css/app.min.css">
+        </head>
+        <body>
+          <script type="text/javascript" src="js/jquery.min.js"></script>
+          <script type="text/javascript" src="js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="js/app.min.js"></script>
+          <script type="text/javascript" src="js/LoadingModel.js"></script>
+          <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+          <script type="text/javascript" src="js/dialog.js"></script>
+          <script type="text/javascript" src="js/alert.mob.js"></script>
+          <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+          <script type="text/javascript" src="script/General.js"></script>
+          <script type="text/javascript" src="cordova.js"></script>
+          <script type="text/javascript" src="script/homeScreen2.js"></script>
+         
+ <div class="background-img-wrapper ">
+        <!-- <div class="border-line">
+          <img src="img/KIAB_Logo_240x55.jpg" width = "70%" align ="left" >
+          <img src="img/CargoByBLR_Logo_120x55.jpg" width = "30%" >
+        </div> -->
+    <div class="scroll-wrapper">
+      <div onclick="goToUpdates();">
+          <a class="btn-arrow" >
+            <h1 class="primary-heading">Updates 
+            <i class="right_arr zmdi zmdi-chevron-right" id="right-arrow" ></i>
+          </a>
+        </h1>
+      </div>
+    <div class="scroller" id="divUpdatesRow">
+        <!-- <div class="box-wrapper" onclick="goToUpdateDetails();">
+          <div class="image-wrapper common-grid">
+            <img class="image" src="img/News_img1_100x100.jpg">
+          </div>
+          <div class="content-wrap common-grid">
+              <p>BIAL opens BLR Airport Campus to Cyclists</p>
+              <div class="open-arrow-icon">
+                <a class="btn-arrow" >
+                  <i class="right_arr zmdi zmdi-chevron-right" id="right-arrow" ></i>
+                </a>
+              </div>
+                  <p>24 June 2020  10:54  News</p>
+                        
+          </div>
+        </div>
+  
+        <div class="box-wrapper" onclick="goToUpdateDetails();">
+          <div class="image-wrapper common-grid">
+            <img class="image" src="img/News_img2_100x100.jpg">
+          </div>
+          <div class="content-wrap common-grid">
+              <p>BIAL opens BLR Airport Campus to Cyclists</p> 
+              <div class="open-arrow-icon">
+                <a class="btn-arrow" >
+                  <i class="right_arr zmdi zmdi-chevron-right" id="right-arrow" ></i>
+                </a>
+              </div>
+                  <p>24 June 2020  10:54  News</p>
+          </div>
+        </div>
+        <div class="box-wrapper" onclick="goToUpdateDetails();">
+          <div class="image-wrapper common-grid">
+            <img class="image" src="img/News_img3_100x100.jpg">
+          </div>
+          <div class="content-wrap common-grid">
+              <p>BIAL opens BLR Airport Campus to Cyclists</p>
+              <div class="open-arrow-icon">
+                <a class="btn-arrow" >
+                  <i class="right_arr zmdi zmdi-chevron-right" id="right-arrow" ></i>
+                </button>
+              </div>
+                  <p>24 June 2020  10:54  News</p>
+          </div>
+        </div>
+        <div class="box-wrapper" onclick="goToUpdateDetails();">
+          <div class="image-wrapper common-grid">
+            <img class="image" src="img/News_img1_100x100.jpg">
+          </div>
+          <div class="content-wrap common-grid">
+              <p>BIAL opens BLR Airport Campus to Cyclists</p>
+              <div class="open-arrow-icon">
+                <a class="btn-arrow">
+                  <i class="right_arr zmdi zmdi-chevron-right" id="right-arrow" ></i>
+                </a>
+              </div>
+                  <p>24 June 2020  10:54  News</p>
+          </div>
+        </div>
+        <div class="box-wrapper" onclick="goToUpdateDetails();">
+          <div class="image-wrapper common-grid">
+            <img  class="image" src="img/News_img2_100x100.jpg">
+          </div>
+          <div class="content-wrap common-grid">
+              <p>BIAL opens BLR Airport Campus to Cyclists</p>
+              <div class="open-arrow-icon">
+                <a class="btn-arrow">
+                  <i class="right_arr zmdi zmdi-chevron-right" id="right-arrow" ></i>
+                </a>
+              </div>
+                  <p>24 June 2020  10:54  News</p>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+          
+   <div class="btn-wrapper">
+    <button class="button" type="button" id="btnHome">
+     Home
+     </button>
+   </div>
+        
+   
+  </div>
+  <div class="footer">
+    <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+    <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+  </div>
+  
+  </body>
+ 
+  </html>
+  
+  
+  
+  

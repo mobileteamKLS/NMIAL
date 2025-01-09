@@ -1,0 +1,329 @@
+<style>
+
+ 
+  .tablink {
+    background-color: #00AAA2;;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-tabs .nav-link{
+    margin: 0px 30px 5px 30px;
+  }
+  .tablink.active {
+    border-bottom: solid 3px white;
+    font-weight: bold;
+  }
+  
+
+  .col_menu{
+    padding: 10px 10px 10px 20px;
+  }
+
+
+ 
+ 
+      .logOff{
+        text-align: center;
+        background-color: #00AAA2;
+        margin-bottom: 20px;
+        height: 43px;
+        border-radius: 15px 15px 0px 0px;
+      }
+      input#btnlogOff {
+    background-color: white;
+      border: 1px solid #00AAA2;
+      border-radius: 15px;
+      margin-top: 10px;
+      width: 38%;
+      padding: 7px;
+  }
+  .log_label{
+    color: white;
+    margin-top: 7px;
+  }
+      .icon{
+      background-color: #00AAA2;
+      border: #FFFFFF;
+      color: white;
+      font-size: 20px;
+      padding-top: 10px;
+  }
+  .icons {
+      background-color: #00AAA2;
+      height: 40px;
+      width: 100%;
+  }
+  .footer {
+    position:fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color:lightgray;
+     color: white;
+     text-align: center;
+     height:20px;
+  }
+  
+  .img_center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .headbar {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      width: 100%;
+  }
+  .menu_heading{
+    float: none;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+  }
+  .not_count{
+      float: none;
+      position: absolute;
+      /* top: 25%; */
+      left: 50%;
+      transform: translate(-50%, -200%);
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      background-color: red;
+      height: 15px;
+      width: 15px;
+  }
+  .imports_soon{
+  text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif;
+}
+  </style>
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+    <link href="css/custom.css" rel="stylesheet" />
+    <link href="css/Loader.css" rel="stylesheet" />
+    <link href="css/dialog.css" rel="stylesheet" />
+    <link href="css/alert.mob.css" rel="stylesheet" />
+    <link href="css/Common.css" rel="stylesheet" />
+    <link href="css/General.css" rel="stylesheet" />
+   
+  </head>
+  <body style=" background-color:#e8fcfd !important">
+  
+  <div class= "headbar">
+    <div class="icons">
+      <!-- <button class="icon" onclick="back();"><i class='fas'>&#xf060;</i></button> -->
+      <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i></button>
+
+      <button class="icon" style="float: right;" onclick="openNotification();"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i><sub><h6 class="not_count" id="count"></h6></sub></button>
+      <h4 class="menu_heading">Menu</h4> 
+
+  </div>
+
+     <div class="tab-container" style="background-color: #00AAA2;margin-top: 40px;">
+    <ul class="nav nav-tabs nav-fill" role="tablist" id="myTab">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home-2" role="tab" id="imp_tab" style="text-transform: none !important;">Exports</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#profile-2" role="tab" id="exp_tab" style="text-transform: none !important;">Imports</a>
+        </li>
+       
+     
+    </ul>
+      </div>
+    </div>
+        
+       
+         <div class="border-line" style="padding: 10px;">
+              <img src="img/NMIAL_Logo.png"  align ="left" >
+              <!-- <img src="img/ACSLogo.png" align ="left" style="    width: 150px;
+              margin-top: 5px;"> -->
+              <!-- <img src="img/CargoByBLR_Logo_120x55.jpg" width = "30%" > -->
+           </div> 
+           <div class="tab-content">
+            <div class="tab-pane active show" id="home-2" role="tabpanel">
+              <table>
+                <!-- <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToEXPAWBTracking();">
+                    <img src="img/Menu_AWBTracking.png" id= "GoToAWBTracking" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToEXPVehicleTracking();" >
+                    <img src="img/Menu_VehicleTracking.png" class="img_center"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToEXPEGM();" >
+                    <img src="img/Menu_EGM.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToEXPFAQ();" >
+                    <img src="img/Menu_FAQ.png" class="img_center"></a>
+                  </td>
+                </tr> -->
+               
+               
+                <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToEXPAWBTracking();" >
+                    <img src="img/Tracking_menu.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToEXPCartingOrder();" >
+                    <img src="img/Menu_Exports_CO.png"></a>
+                  </td>
+                 
+                </tr> 
+              </table>
+            </div>
+  
+            <div class="tab-pane " id="profile-2" role="tabpanel">
+              <table>
+                <!-- <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPAWBTracking();" >
+                    <img src="img/Menu_AWBTracking.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPVehicleTracking();">
+                    <img src="img/Menu_VehicleTracking.png" class="img_center"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPIGM();" >
+                    <img src="img/Menu_IGM.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPFAQ();">
+                    <img src="img/Menu_FAQ.png" class="img_center"></a>
+                  </td>
+                </tr>
+                 -->
+                <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPAWBTracking();" >
+                    <img src="img/Tracking_menu.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPDeliveryOrder();" >
+                    <img src="img/Menu_Imports_DO.png"></a>
+                  </td>
+                 
+                </tr> 
+                <!-- <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPApplicableCharges();" >
+                    <img src="img/Menu_ApplicableCharges.png">
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToIMPDeliveryDocket();" style="float: right; margin-right: 10px;">
+                    <img src="img/Menu_DeliveryDocket.png">
+                  </td>
+                </tr> -->
+              </table>
+              <!-- <img src="img/hourglass.png" style="display: block; margin-left: auto; margin-right: auto;margin-top: 30%;"><br>
+              <h1 class="imports_soon">Coming Soon</h1>  -->
+            </div>
+  
+            <!-- <div class="tab-pane fade" id="messages-2" role="tabpanel">
+              <table>
+                <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToPDAccountBalance();" >
+                    <img src="img/Menu_PDAccountBalance.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToApplicableCharges();">
+                    <img src="img/Menu_ApplicableCharges - Copy.png" class="img_center"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col_menu">
+                    <a onclick="GoToContactUs();">
+                    <img src="img/Menu_ContactUs.png" class="img_center"></a>
+                  </td>
+                  <td class="col_menu">
+                    <a onclick="GoToUpdates();">
+                      <img src="img/Menu_Updates.png" class="img_center"></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col_menu">
+                   
+                  </td>
+                  <td class="col_menu">
+                    
+                  </td>
+                </tr>
+              </table>
+            </div> 
+            -->
+        </div>
+     
+            
+       
+  
+        </div>
+  
+     
+      <div id="myModal" class="modal">
+            <div class="modal-cont">
+                <div class="logOff">
+                    <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+                </div>
+                <div style="text-align: center;">
+                     <label style="font-size: large;">Are you sure you want to sign out?</label>
+                </div>
+                <div style="margin-bottom: 15px;">
+                  <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+                  <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+                </div>
+            </div>
+      </div>
+     <div class="footer">
+      <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+      <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+    </div>
+    </body>
+  
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/app.min.js"></script>
+    <script type="text/javascript" src="js/LoadingModel.js"></script>
+    <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <script type="text/javascript" src="js/alert.mob.js"></script>
+    <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+    <script type="text/javascript" src="script/General.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script type="text/javascript" src="script/Export/AirlineDashboard.js"></script>
+    <script language="javascript" type="text/javascript">
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+  </script>
+    </html>

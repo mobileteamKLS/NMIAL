@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "182218146020",
+    "project_id": "gmrcargohyd",
+    "storage_bucket": "gmrcargohyd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182218146020:android:fc32674723f355b632ecf1",
+        "android_client_info": {
+          "package_name": "com.kale.GMRHYD"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182218146020-ukp7t5qrk9pqlvhhqoa79le505u2olie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7ZvIy7LttDmWcS2OK_8tzmMsdP8Ky1-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182218146020-ukp7t5qrk9pqlvhhqoa79le505u2olie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
