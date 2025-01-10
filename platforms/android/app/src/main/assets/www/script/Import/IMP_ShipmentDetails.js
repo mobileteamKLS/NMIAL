@@ -3954,6 +3954,13 @@ function CreateGatePass(){
             console.log(response)
             $("#gatePassAlert").hide();
             $("#GPStatus").text(obj[0].ERRORMSG).css( "color", "red" );
+            if(obj[0].ERRORMSG == "Gate Pass can not be generated. Due Charge(s) are outstanding against selected shipment. Kindly settle due charges to generate Gate Pass."){
+              $("#btnCollect").css('color', '#00AAA2 !important').css('border', '2px solid #00AAA2');
+              
+            }
+            else{
+              $("#btnCollect").css('color', 'grey !important').css('border', '2px solid grey');
+            } 
           }else{
             ImportListingPageDetails('1', AirlinePrefix, AwbNumber, HawbNumber, IGMNo, IGMYear, CreatedByUserId, OrganizationBranchId, OrganizationId);
             errmsg = "Alert</br>";
