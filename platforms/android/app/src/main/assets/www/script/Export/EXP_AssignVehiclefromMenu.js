@@ -3,6 +3,16 @@ var LocationName = localStorage.getItem('LocationName');
 var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
+
+var GHACreatedByUserId = localStorage.getItem('TSMCreatedByUserId');
+var GHAOrganizationBranchId = localStorage.getItem('TSMOrganizationBranchId');
+var GHAOrganizationId = localStorage.getItem('TSMOrganizationId');
+
+var FFCreatedByUserId = localStorage.getItem('FFCreatedByUserId');
+var FFOrganizationBranchId = localStorage.getItem('FFOrganizationBranchId');
+var FFOrganizationId = localStorage.getItem('FFOrganizationId');
+
+var selectedSlot = localStorage.getItem("Slot")
 var MAWBNo = localStorage.getItem('mawbNo');
 var AirlinePrefix = localStorage.getItem('Prefix');
 var AwbNumber = localStorage.getItem('AWBNumber');
@@ -23,18 +33,24 @@ var TotalGrWt = localStorage.getItem('TotalGrWt');
 var TSPSetting = localStorage.getItem('TSPSetting');
 var awbID = localStorage.getItem('awbID');
 var sbID = localStorage.getItem('sbID');
-
+var VehicleDetailsList;
+var AssignedAWBdata;
+var VehicleDetailsArray= [];
+var AssignedAWBdataArray= [];
 console.log(HouseObjectToGenerateVT)
 $(function () {
   $("#CTODot").css('background-color', '#00AAA2');
+  $("#CTODot").css('border', '1px solid #00AAA2');
+  $("#AlloDot").css('border', '1px solid #00AAA2');
     $("#AlloDot").css('background-color', '#00AAA2');
     $("#AssDot").css('border', '1px solid orange');
-
+    $("#slotDot").css('background-color', '#00AAA2');
+    $("#slotDot").css('border', '1px solid #00AAA2');
 
     if(TSPSetting =="M"){
       sbID = 0;
     }
-if(HouseObjectToGenerateVT.length > 1){
+if(HouseObjectToGenerateVT.length >= 1){
   $("#btnAdd").attr('disabled', 'disabled');
   $("#btnAdd").css({ "background-color": "lightgrey", "color": "#585a5d"}); 
 }
@@ -50,7 +66,7 @@ if(HouseObjectToGenerateVT.length > 1){
     function back() {
   
       // modal.style.display = "block";
-      window.location.href = "EXP_AllocateShipmentfromMenu.html";
+      window.location.href = "EXP_BookSlotfromMenu.html";
     }
     function goToAirIndiaAppCharges(){
   
@@ -64,12 +80,13 @@ if(HouseObjectToGenerateVT.length > 1){
  
 var i = 0;
 var vehicleXml = "";
-
+var VTcount;
+var  CustID;
 $(".GenerateVTBtn").on('click', function() {
   vehicleXml = "";
         
   console.log("globalCounter = ",window.globalCounter)
-  var VTcount = window.globalCounter - 1;
+   VTcount = window.globalCounter - 1;
   if ((HouseObjectToGenerateVT.length == 1 && VTcount == 1) || (HouseObjectToGenerateVT.length > 1 && VTcount == 1))
 {
   $('#VTList').find('.panel-group').each(function (index) {
@@ -134,19 +151,58 @@ $(".GenerateVTBtn").on('click', function() {
         return;
       }
 
+    
       HouseObjectToGenerateVT.forEach((element, i) => {
 
         console.log(element.MAWBID); // 100, 200, 300
         console.log(i+1); // 0, 1, 2
-        var index = 1;
+        var index = 2;
         if(TSPSetting =="M"){
           sbID = 0;
         }else{
-          sbID = element.SBID;
+          sbID = element.SBGUID;
         }
-        vehicleXml +=  "<InsertSBData><SBData><rowIndex>" + (index) + "</rowIndex><AWBid>" + element.AWBID + "</AWBid><SBid>" + sbID + "</SBid><AllocateNOP>" + element.SBNOP + "</AllocateNOP><AllocateGrWt>" + element.SBGrossWeight + "</AllocateGrWt><GHAID>" + GHAID + "</GHAID><VehicleNo>" + VehicleNo + "</VehicleNo><DriverName>" + DriverName + "</DriverName><DriverCountryCode></DriverCountryCode><DriverMobileNo>" + DriverMobNo + "</DriverMobileNo><AgentMobileNo>" + DriverMobNo + "</AgentMobileNo><DriverLicense>" + LicenseNo + "</DriverLicense><NoOfPieces>" + NoP + "</NoOfPieces><GrossWeight>" + GrWt + "</GrossWeight><Unit>KGS</Unit><Remarks>" + GHANAME + "</Remarks><VehicleCargoType>" + CargoType + "</VehicleCargoType></SBData></InsertSBData>";
+     CustID = (element.CustodianID).toString();
+        AssignedAWBdata = {
+            "rowIndex":"2",
+                      "AWBid":(element.Id).toString(), //TSM AWBiD
+                      "DOId":"", // for import 
+                      "HAWBID":"", ////HAWB if any TSM HAWBiD
+                      "AllocateNOP":element.SBNOP,
+                      "AllocateGrWt":element.SBGrossWeight,
+                      "GHAID":(element.CustodianID).toString() //TSM Branch ID
+          };
+          AssignedAWBdataArray.push(AssignedAWBdata);
+
     });
-    console.log("vehicleXml == ",vehicleXml);
+    VehicleDetailsList = {
+      "RowIndex":"2", // start from 2
+                  "SlotDetails":selectedSlot,
+                  "VehicleNo":VehicleNo,
+                  "DriverName":DriverName,
+                  "DriverMobileNo":DriverMobNo,
+                  "DriverCountryCode":"91",
+                  "DriverLicense":LicenseNo,
+                  "AgentMobileNo":"", 
+                  "TSA":"", //empty
+                  "VehicleType":"All", //Constant
+                  "NoOfPieces":NoP, 
+                  "GrossWeight":"", //empty
+                  "Unit":"Kgs", //Constant
+                  "UnitId":"", ////empty
+                  "Remarks":"",
+                  "VehicleTypeId":"", //empty
+                  "CustodianID":CustID, //GHA TSM Branch ID
+                  "MLValue":"14", //Constant
+                  "isAdvanceSlot":"0",
+                  "CoDrivername":"", //empty
+                  "CoDriverLicense":"", //empty
+                  "SealNo":"",//empty
+                  "Services":"",//empty
+                  "AdvApprovalDockNo":"" //empty
+       
+      };
+      VehicleDetailsArray.push(VehicleDetailsList);
     generateVehicleToken();
     });
    
@@ -243,6 +299,45 @@ $(".GenerateVTBtn").on('click', function() {
             }else{
               sbID = element.SBID;
             }
+
+            VehicleDetailsList = {
+              "RowIndex":index+1, // start from 2
+                          "SlotDetails":selectedSlot,
+                          "VehicleNo":VehicleNo,
+                          "DriverName":DriverName,
+                          "DriverMobileNo":DriverMobNo,
+                          "DriverCountryCode":"91",
+                          "DriverLicense":LicenseNo,
+                          "AgentMobileNo":"", 
+                          "TSA":"", //empty
+                          "VehicleType":"All", //Constant
+                          "NoOfPieces":NoP, 
+                          "GrossWeight":GrWt, //empty
+                          "Unit":"Kgs", //Constant
+                          "UnitId":"", ////empty
+                          "Remarks":"",
+                          "VehicleTypeId":"", //empty
+                          "CustodianID":(element.CustodianID).toString(), //GHA TSM Branch ID
+                          "MLValue":"14", //Constant
+                          "isAdvanceSlot":"0",
+                          "CoDrivername":"", //empty
+                          "CoDriverLicense":"", //empty
+                          "SealNo":"",//empty
+                          "Services":"",//empty
+                          "AdvApprovalDockNo":"" //empty
+               
+              };
+              VehicleDetailsArray.push(VehicleDetailsList);
+            AssignedAWBdata = {
+                "rowIndex":"2",
+                          "AWBid":(element.Id).toString(), //TSM AWBiD
+                          "DOId":"", // for import 
+                          "HAWBID":"", ////HAWB if any TSM HAWBiD
+                          "AllocateNOP":element.SBNOP,
+                          "AllocateGrWt":element.SBGrossWeight,
+                          "GHAID":(element.CustodianID).toString() //TSM Branch ID
+              };
+              AssignedAWBdataArray.push(AssignedAWBdata);
             vehicleXml +=  "<InsertSBData><SBData><rowIndex>" + (index+1) + "</rowIndex><AWBid>" + element.AWBID + "</AWBid><SBid>" + sbID + "</SBid><AllocateNOP>" + NoP + "</AllocateNOP><AllocateGrWt>" + GrWt + "</AllocateGrWt><GHAID>" + GHAID + "</GHAID><VehicleNo>" + VehicleNo + "</VehicleNo><DriverName>" + DriverName + "</DriverName><DriverCountryCode></DriverCountryCode><DriverMobileNo>" + DriverMobNo + "</DriverMobileNo><AgentMobileNo>" + DriverMobNo + "</AgentMobileNo><DriverLicense>" + LicenseNo + "</DriverLicense><NoOfPieces>" + NoP + "</NoOfPieces><GrossWeight>" + GrWt + "</GrossWeight><Unit>KGS</Unit><Remarks>" + GHANAME + "</Remarks><VehicleCargoType>" + CargoType + "</VehicleCargoType></SBData></InsertSBData>";
       });
      
@@ -387,14 +482,17 @@ if(r.test(v)) {
       console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
       $.ajax({
           type: 'POST',
-          url: ACSServiceURL + "/ACS_EXP_INSERT_VehicleToken",
-          data: JSON.stringify({
-            "SBDataXML":vehicleXml,
-            "CreatedByUserId":CreatedByUserId,
-            "strOutMsg":"",
-            "VTNos": "",
-            "IsAutoVCTFromCMS": 0
-              }),
+          url: TSMServiceUrl + "/BookVehicleSlotDetailsCB",
+          data: JSON.stringify({"OrganizationID": FFOrganizationId, "OrganizationBranchID" :  FFOrganizationBranchId,  "dateButtonValue":selectedSlot.substring(0, 11),"strNoOfVehicle" : VTcount, "strVehicleType" :"All",
+          
+            "VehicleDetails":VehicleDetailsArray,
+            "lstAssignedAwbData":AssignedAWBdataArray,
+            "BaseStation":"NMI",
+            "strVehicleTypeID":"15", //Constant
+            "strCommodityIDs":"2", //Constant
+            "isWFSIntegrated":"0", //Constant
+            "createdByID":FFCreatedByUserId,"GHAOrganizationId":GHAOrganizationId, "GHABranchID":GHAOrganizationBranchId, "AirlineBranchids":"","Lang": "en-US"}),
+         
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function (response, xhr, textStatus) {
@@ -403,7 +501,7 @@ if(r.test(v)) {
              console.log(response.d);
              console.log(obj);
               if (obj.length > 0) {
-                if (obj[0].ERRORMSG == undefined) {
+                if (obj[0].ErrorMSG == undefined) {
                  localStorage.setItem('FinalVTList',  JSON.stringify(obj));
                  window.location.href = "EXP_FinalVTListfromMenu.html";
                  
@@ -412,7 +510,7 @@ if(r.test(v)) {
                 }else{
                 
                   errmsg = "Alert</br>";
-                  errmsgcont = obj[0].ERRORMSG;
+                  errmsgcont = obj[0].ErrorMSG;
                   $.alert(errmsg,errmsgcont);
                   return;
        

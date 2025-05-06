@@ -3,6 +3,16 @@ var LocationName = localStorage.getItem('LocationName');
 var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
+
+var GHACreatedByUserId = localStorage.getItem('TSMCreatedByUserId');
+var GHAOrganizationBranchId = localStorage.getItem('TSMOrganizationBranchId');
+var GHAOrganizationId = localStorage.getItem('TSMOrganizationId');
+
+var FFCreatedByUserId = localStorage.getItem('FFCreatedByUserId');
+var FFOrganizationBranchId = localStorage.getItem('FFOrganizationBranchId');
+var FFOrganizationId = localStorage.getItem('FFOrganizationId');
+
+var selectedSlot = localStorage.getItem("Slot")
 var MAWBNo = localStorage.getItem('mawbNo');
 var AirlinePrefix = localStorage.getItem('Prefix');
 var AwbNumber = localStorage.getItem('AWBNumber');
@@ -26,12 +36,17 @@ var ArrayOfAwbId = localStorage.getItem('ArrayOfAwbId');
 var awbID = localStorage.getItem('awbID');
 var sbID = localStorage.getItem('sbID');
 var TSPSetting = localStorage.getItem('TSPSetting');
-
+var VehicleDetailsList;
+var AssignedAWBdata;
+var VehicleDetailsArray= [];
+var AssignedAWBdataArray= [];
 console.log(HouseObjectToGenerateVT)
 $(function () {
   $("#CTODot").css('background-color', '#00AAA2');
     $("#AlloDot").css('background-color', '#00AAA2');
     $("#AlloDot").css('border', '1px solid #00AAA2');
+    $("#slotDot").css('background-color', '#00AAA2');
+    $("#slotDot").css('border', '1px solid #00AAA2');
     $("#AssDot").css('border', '1px solid orange');
 
     if(TSPSetting =="M"){
@@ -48,7 +63,7 @@ $(function () {
     }
   });
      if(HouseObjectToGenerateVT) {
-        if(HouseObjectToGenerateVT.length > 1){
+        if(HouseObjectToGenerateVT.length >= 1){
           $("#btnAdd").attr('disabled', 'disabled');
           $("#btnAdd").css({ "background-color": "lightgrey", "color": "#585a5d"}); 
         }
@@ -63,7 +78,7 @@ $(function () {
     function back() {
   
       // modal.style.display = "block";
-      window.location.href = "EXP_AllocateShipment.html";
+      window.location.href = "EXP_BookSlot.html";
     }
     function goToAirIndiaAppCharges(){
   
@@ -78,19 +93,30 @@ $(function () {
       console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
       $.ajax({
           type: 'POST',
-          url: ACSServiceURL +  "/ACS_EXP_Get_Multiple_SBDetailsForGenerateToken",
-          data: JSON.stringify({
-            "OperationType":1,
-            "AirlinePrefix":AirlinePrefix,
-            "AwbNumber":AwbNumber,
-            "HawbNumber":HawbNumber,
-            "SBID":sbID,
-            "AWBID":awbID,
-            "OrganizationBranchId":OrganizationBranchId,
-            "OrganizationId":OrganizationId,
-            "CustodianID":0,
-            "CreatedByUserId": CreatedByUserId
-              }),
+          url: TSMServiceUrl + "/ExportPendingBookSlotListCB",
+          data: JSON.stringify(
+              {
+      
+                "createdByID": FFCreatedByUserId,
+          
+                "organizationBranchID":
+        
+                FFOrganizationBranchId,     
+                "filterCondition": "",
+        
+                "PageNumber": 0,
+        
+                "RecordsPerPage": 10,
+        
+                "sortOrder": "DESC",
+        
+                "sortColumn": "",
+        
+                "GHABranchId": GHAOrganizationBranchId,
+        
+                "GHAOrganizationID":GHAOrganizationId
+        
+            }),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function (response, xhr, textStatus) {
@@ -104,7 +130,7 @@ $(function () {
                   console.log("House = " + houseArr[i])
                   // if(obj[0].HAWBNumber == "" ||  obj[0].HAWBNumber == null){
                   var newArray = obj.filter(function(p){
-                      return (p.SBID == houseArr[i])
+                      return (p.SBGUID == houseArr[i])
                     });
                   // }else{
                   //   var newArray = obj.filter(function(p){
@@ -118,7 +144,7 @@ $(function () {
                 console.log(array);
                 // localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(array));
                 HouseObjectToGenerateVT = JSON.parse(localStorage.getItem('HouseObjectToGenerateVT'));
-                if(HouseObjectToGenerateVT.length > 1){
+                if(HouseObjectToGenerateVT.length >= 1){
                   $("#btnAdd").attr('disabled', 'disabled');
                   $("#btnAdd").css({ "background-color": "lightgrey", "color": "#585a5d"}); 
                 }else{
@@ -160,12 +186,14 @@ $(function () {
 
 var i = 0;
 var vehicleXml = "";
+var VTcount;
+var CustID;
 
 $(".GenerateVTBtn").on('click', function() {
   vehicleXml = "";
         
   console.log("globalCounter = ",window.globalCounter)
-  var VTcount = window.globalCounter - 1;
+   VTcount = window.globalCounter - 1;
   console.log("House Object", HouseObjectToGenerateVT)
   console.log("VT Object", VTcount)
   if ((HouseObjectToGenerateVT.length == 1 && VTcount == 1) || (HouseObjectToGenerateVT.length > 1 && VTcount == 1))
@@ -231,20 +259,60 @@ $(".GenerateVTBtn").on('click', function() {
         $.alert(errmsg,errmsgcont);
         return;
       }
+    
 
       HouseObjectToGenerateVT.forEach((element, i) => {
 
         console.log(element.MAWBID); // 100, 200, 300
         console.log(i+1); // 0, 1, 2
-        var index = 1;
+        var index = 2;
         if(TSPSetting =="M"){
           sbID = 0;
         }else{
-          sbID = element.SBID;
+          sbID = element.SBGUID;
         }
-        vehicleXml +=  "<InsertSBData><SBData><rowIndex>" + (index) + "</rowIndex><AWBid>" + element.AWBID + "</AWBid><SBid>" + sbID + "</SBid><AllocateNOP>" + element.SBNOP + "</AllocateNOP><AllocateGrWt>" + element.SBGrossWeight + "</AllocateGrWt><GHAID>" + GHAID + "</GHAID><VehicleNo>" + VehicleNo + "</VehicleNo><DriverName>" + DriverName + "</DriverName><DriverCountryCode></DriverCountryCode><DriverMobileNo>" + DriverMobNo + "</DriverMobileNo><AgentMobileNo>" + DriverMobNo + "</AgentMobileNo><DriverLicense>" + LicenseNo + "</DriverLicense><NoOfPieces>" + NoP + "</NoOfPieces><GrossWeight>" + GrWt + "</GrossWeight><Unit>KGS</Unit><Remarks>" + GHANAME + "</Remarks><VehicleCargoType>" + CargoType + "</VehicleCargoType></SBData></InsertSBData>";
-       
+     CustID = (element.CustodianID).toString();
+        AssignedAWBdata = {
+            "rowIndex":"2",
+                      "AWBid":(element.Id).toString(), //TSM AWBiD
+                      "DOId":"", // for import 
+                      "HAWBID":"", ////HAWB if any TSM HAWBiD
+                      "AllocateNOP":element.SBNOP,
+                      "AllocateGrWt":element.SBGrossWeight,
+                      "GHAID":(element.CustodianID).toString() //TSM Branch ID
+          };
+          AssignedAWBdataArray.push(AssignedAWBdata);
+
     });
+    VehicleDetailsList = {
+      "RowIndex":"2", // start from 2
+                  "SlotDetails":selectedSlot,
+                  "VehicleNo":VehicleNo,
+                  "DriverName":DriverName,
+                  "DriverMobileNo":DriverMobNo,
+                  "DriverCountryCode":"91",
+                  "DriverLicense":LicenseNo,
+                  "AgentMobileNo":"", 
+                  "TSA":"", //empty
+                  "VehicleType":"All", //Constant
+                  "NoOfPieces":NoP, 
+                  "GrossWeight":"", //empty
+                  "Unit":"Kgs", //Constant
+                  "UnitId":"", ////empty
+                  "Remarks":"",
+                  "VehicleTypeId":"", //empty
+                  "CustodianID":CustID, //GHA TSM Branch ID
+                  "MLValue":"14", //Constant
+                  "isAdvanceSlot":"0",
+                  "CoDrivername":"", //empty
+                  "CoDriverLicense":"", //empty
+                  "SealNo":"",//empty
+                  "Services":"",//empty
+                  "AdvApprovalDockNo":"" //empty
+       
+      };
+      VehicleDetailsArray.push(VehicleDetailsList);
+
     console.log("vehicleXml == ",vehicleXml);
 
 generateVehicleToken();
@@ -344,6 +412,44 @@ generateVehicleToken();
             }else{
               sbID = element.SBID;
             }
+            VehicleDetailsList = {
+              "RowIndex":index+1, // start from 2
+                          "SlotDetails":selectedSlot,
+                          "VehicleNo":VehicleNo,
+                          "DriverName":DriverName,
+                          "DriverMobileNo":DriverMobNo,
+                          "DriverCountryCode":"91",
+                          "DriverLicense":LicenseNo,
+                          "AgentMobileNo":"", 
+                          "TSA":"", //empty
+                          "VehicleType":"All", //Constant
+                          "NoOfPieces":NoP, 
+                          "GrossWeight":GrWt, //empty
+                          "Unit":"Kgs", //Constant
+                          "UnitId":"", ////empty
+                          "Remarks":"",
+                          "VehicleTypeId":"", //empty
+                          "CustodianID":(element.CustodianID).toString(), //GHA TSM Branch ID
+                          "MLValue":"14", //Constant
+                          "isAdvanceSlot":"0",
+                          "CoDrivername":"", //empty
+                          "CoDriverLicense":"", //empty
+                          "SealNo":"",//empty
+                          "Services":"",//empty
+                          "AdvApprovalDockNo":"" //empty
+               
+              };
+              VehicleDetailsArray.push(VehicleDetailsList);
+            AssignedAWBdata = {
+                "rowIndex":"2",
+                          "AWBid":(element.Id).toString(), //TSM AWBiD
+                          "DOId":"", // for import 
+                          "HAWBID":"", ////HAWB if any TSM HAWBiD
+                          "AllocateNOP":element.SBNOP,
+                          "AllocateGrWt":element.SBGrossWeight,
+                          "GHAID":(element.CustodianID).toString() //TSM Branch ID
+              };
+              AssignedAWBdataArray.push(AssignedAWBdata);
         vehicleXml +=  "<InsertSBData><SBData><rowIndex>" + (index+1) + "</rowIndex><AWBid>" + element.AWBID + "</AWBid><SBid>" + sbID + "</SBid><AllocateNOP>" + NoP + "</AllocateNOP><AllocateGrWt>" + GrWt + "</AllocateGrWt><GHAID>" + GHAID + "</GHAID><VehicleNo>" + VehicleNo + "</VehicleNo><DriverName>" + DriverName + "</DriverName><DriverCountryCode></DriverCountryCode><DriverMobileNo>" + DriverMobNo + "</DriverMobileNo><AgentMobileNo>" + DriverMobNo + "</AgentMobileNo><DriverLicense>" + LicenseNo + "</DriverLicense><NoOfPieces>" + NoP + "</NoOfPieces><GrossWeight>" + GrWt + "</GrossWeight><Unit>KGS</Unit><Remarks>" + GHANAME + "</Remarks><VehicleCargoType>" + CargoType + "</VehicleCargoType></SBData></InsertSBData>";
 
     });
@@ -496,14 +602,17 @@ if(r.test(v)) {
       console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
       $.ajax({
           type: 'POST',
-          url: ACSServiceURL + "/ACS_EXP_INSERT_VehicleToken",
-          data: JSON.stringify({
-                  "SBDataXML":vehicleXml,
-                  "CreatedByUserId":CreatedByUserId,
-                  "strOutMsg":"",
-                  "VTNos": "",
-                  "IsAutoVCTFromCMS": 0
-              }),
+          url: TSMServiceUrl + "/BookVehicleSlotDetailsCB",
+          data: JSON.stringify({"OrganizationID": FFOrganizationId, "OrganizationBranchID" :  FFOrganizationBranchId,  "dateButtonValue":selectedSlot.substring(0, 11),"strNoOfVehicle" : VTcount, "strVehicleType" :"All",
+          
+            "VehicleDetails":VehicleDetailsArray,
+            "lstAssignedAwbData":AssignedAWBdataArray,
+            "BaseStation":"NMI",
+            "strVehicleTypeID":"15", //Constant
+            "strCommodityIDs":"2", //Constant
+            "isWFSIntegrated":"0", //Constant
+            "createdByID":FFCreatedByUserId,"GHAOrganizationId":GHAOrganizationId, "GHABranchID":GHAOrganizationBranchId, "AirlineBranchids":"","Lang": "en-US"}),
+         
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function (response, xhr, textStatus) {
@@ -512,7 +621,7 @@ if(r.test(v)) {
              console.log(response.d);
              console.log(obj);
               if (obj.length > 0) {
-                if (obj[0].ERRORMSG == undefined) {
+                if (obj[0].ErrorMSG == undefined) {
                   localStorage.setItem('FinalVTList',  JSON.stringify(obj));
                  window.location.href = "EXP_FinalVTList.html";
                   //makeCode();
@@ -520,7 +629,7 @@ if(r.test(v)) {
                   // $.alert('Details saved successfully');
                 }else{
                   errmsg = "Alert</br>";
-                  errmsgcont = obj[0].ERRORMSG;
+                  errmsgcont = obj[0].ErrorMSG;
                   $.alert(errmsg,errmsgcont);
                   return;
        

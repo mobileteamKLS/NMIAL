@@ -999,6 +999,7 @@ var countCol = 1;
         console.log(obj);
  
         if (obj[0].Successmessage == "Document deleted successfully.") {
+          ImportTrackandTraceMenuFlow('4', AirlinePrefix, AwbNumber, HawbNumber, CreatedByUserId, OrganizationBranchId, OrganizationId);
       counter = 0;
       countCol = 1;
  

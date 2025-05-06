@@ -3,10 +3,14 @@ var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
 var fromMenus = localStorage.getItem('fromMenus');
+var ACSCreatedByUserId = localStorage.getItem('ACSCreatedByUserId');
+var ACSOrganizationBranchId = localStorage.getItem('ACSOrganizationBranchId');
+var ACSOrganizationId = localStorage.getItem('ACSOrganizationId');
 
   $(function () {
-     
-// debugger
+    userfromACS();
+    FFTSMId();
+    // debugger
   
 //       if(fromMenus == '1'){
 //         $('#imp_tab').removeClass('active')
@@ -22,6 +26,110 @@ if(activeTab){
 }
     
 });
+userfromACS = function () {
+  
+  $.ajax({
+    type: 'POST',
+    url: loginUrl + "/ValidateUser",
+   data: JSON.stringify({ 'pUserID': "NMIAL", 'pPassword': "Kale@JUN2425", 'pDeviceNumber': "" }),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+      success: function (response, xhr, textStatus) {
+          console.log(response.d);
+          var obj = JSON.parse(response.d);
+              console.log(obj);
+              if (obj != null && obj != "") {
+                  if (obj.length > 0) {
+                
+                    UserTSMId(obj[0].UserUID,obj[0].OrganizationUID,obj[0].OrganizationBranchUID);
+                  }
+              } else {
+                  HideLoader();
+                  errmsg = errmsg + 'Invalid username and password.';
+                  $.alert(errmsg);
+              }UserTSMId 
+          
+      },
+      error: function (xhr, textStatus, errorThrown) {
+          $("body").mLoading('hide');
+          alert('Server not responding...');
+      }
+  });
+}
+
+UserTSMId = function (UserId,OrganizationId,OrganizationBranchId) {
+  $.ajax({
+      type: 'POST',
+      url: TSMServiceUrl + "/Get_TSMUserDetailsFromACSGuid",
+     data: JSON.stringify({
+      "UserName": "NMIAL",
+      "UserGUID": UserId,
+      "OrganizationGUID": OrganizationId,
+      "OrgBranchGUID": OrganizationBranchId
+  }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (response, xhr, textStatus) {
+          console.log(response.d);
+          
+              var obj = JSON.parse(response.d);
+              console.log(obj);
+              if (obj != null && obj != "") {
+                  if (obj.length > 0) {
+                    localStorage.setItem('TSMCreatedByUserId', obj[0].UserId);
+                    localStorage.setItem('TSMOrganizationBranchId', obj[0].OrganizationBranchId);
+                    localStorage.setItem('TSMOrganizationId', obj[0].OrganizationId);
+                  }
+              } else {
+                  HideLoader();
+                  errmsg = errmsg + 'Invalid username and password.';
+                  $.alert(errmsg);
+              }
+          
+      },
+      error: function (xhr, textStatus, errorThrown) {
+          $("body").mLoading('hide');
+          alert('Server not responding...');
+      }
+  });
+}
+
+FFTSMId = function () {
+  $.ajax({
+      type: 'POST',
+      url: TSMServiceUrl + "/Get_TSMUserDetailsFromACSGuid",
+     data: JSON.stringify({
+      "UserName": "ACSNMI25_FFCB",
+      "UserGUID": ACSCreatedByUserId,
+      "OrganizationGUID": ACSOrganizationId,
+      "OrgBranchGUID": ACSOrganizationBranchId
+  }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function (response, xhr, textStatus) {
+          console.log(response.d);
+          
+              var obj = JSON.parse(response.d);
+              console.log(obj);
+              if (obj != null && obj != "") {
+                  if (obj.length > 0) {
+                    localStorage.setItem('FFCreatedByUserId', obj[0].UserId);
+                    localStorage.setItem('FFOrganizationBranchId', obj[0].OrganizationBranchId);
+                    localStorage.setItem('FFOrganizationId', obj[0].OrganizationId);
+                  }
+              } else {
+                  HideLoader();
+                  errmsg = errmsg + 'Invalid username and password.';
+                  $.alert(errmsg);
+              }
+          
+      },
+      error: function (xhr, textStatus, errorThrown) {
+          $("body").mLoading('hide');
+          alert('Server not responding...');
+      }
+  });
+}
 // function openCity(cityName,elmnt,color) {
 //   var i, tabcontent, tablinks;
 //   tabcontent = document.getElementsByClassName("tabcontent");

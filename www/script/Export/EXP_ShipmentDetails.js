@@ -154,7 +154,7 @@ ExportListingPageDetails = function (OperationType, AirlinePrefix, AwbNumber, Ha
               $("#txtSBNo").text(obj[0].SBNumber); 
               $("#txtSBDate").text(obj[0].SBDate); 
               if(TSPSetting == ""){
-                localStorage.setItem('HouseArrayData',obj[0].SBID);
+                localStorage.setItem('HouseArrayData',obj[0].SBGUID);
               }else{ 
                   localStorage.setItem('HouseArrayData',obj[0].AWBID);}
               
@@ -2422,11 +2422,11 @@ var row = "";
     getCommodityTypeAndDescription();
     $("#btnPayTSP").attr('disabled', 'disabled'); 
     $("#btnPayTSP").css({ "background-color": "lightgrey", "color": "#585a5d" , "border-color": "grey"}); 
-    var sel ='<option value="-1">Select</option>';
-    $("#ddlCommodityTypeList").html(sel);
+    // var sel ='<option value="-1">Select</option>';
+    // $("#ddlCommodityTypeList").html(sel);
 
-    var select ='<option value="-1">Select</option>';
-    $("#ddlCommodityNameList").html(select);
+    // var select ='<option value="-1">Select</option>';
+    // $("#ddlCommodityNameList").html(select);
     $("#HSNCode").val(''); 
     $("#payMode").val(''); 
     $("#PDAccNo").val(''); 
@@ -2976,6 +2976,7 @@ if(ele[i].type=='checkbox')
         console.log(response.d);
         console.log(obj);
      if (obj[0].Successmessage == "Document deleted successfully.") {
+      ExportListingPageDetails('2', AirlinePrefix, AwbNumber, HawbNumber, CreatedByUserId, OrganizationBranchId, OrganizationId, awbID, sbID);
       counter = 0;
       countCol = 1;
  

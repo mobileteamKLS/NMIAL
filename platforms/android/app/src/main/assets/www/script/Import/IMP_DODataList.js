@@ -74,6 +74,7 @@ return;
      localStorage.setItem('awbNo', AwbNumber);
      localStorage.setItem('IGMNo', IGMNo);
      localStorage.setItem('IGMYear', IGMYear);
+     localStorage.setItem('IGMDate', IGMDate);
      window.location.href = "IMP_DO.html";
      // $('body').mLoading({
      //     text: "Please Wait..",

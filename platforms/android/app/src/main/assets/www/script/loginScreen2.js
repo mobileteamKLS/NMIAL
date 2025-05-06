@@ -166,9 +166,9 @@ ValidateUser = function (pUserID, pPassword) {
    
     var deviceToken = localStorage.getItem('DeviceTokenId');
     console.log(deviceToken);
-    if(pUserID == "tpsuser"){
-        loginUrl = "https://acsadaniuat.kalelogistics.com/ACS_NMIAL_UAT_HHT_Services/srvMobile.asmx";
-    }
+    // if(pUserID == "tpsuser"){
+    //     loginUrl = "https://acsadaniuat.kalelogistics.com/TSM_NMIAL_UAT_SRV/srvMobile.asmx";
+    // }
     $.ajax({
         type: 'POST',
         url: loginUrl + "/ValidateUser",
@@ -292,7 +292,7 @@ UserLogin = function (pUserID, pPassword) {
         dataType: "json",
         success: function (response, xhr, textStatus) {
             console.log(response.d);
-          
+       
             if (response.d == 'Please enter valid credentials.') {
                 HideLoader();
                 errmsg = "Wrong Username or Password</br>";
@@ -314,6 +314,9 @@ UserLogin = function (pUserID, pPassword) {
                             localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
                             localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
                             localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            localStorage.setItem('ACSOrganizationBranchId', obj[0].OrganizationBranchUID);
+                            localStorage.setItem('ACSOrganizationId', obj[0].OrganizationUID);
+                            localStorage.setItem('ACSCreatedByUserId', obj[0].UserUID);
                             window.location.href = "dashboard-export.html";
 
                         } else if (obj[0].OrganizationTypeId == '3') { // Freight Forwarder
@@ -325,6 +328,9 @@ UserLogin = function (pUserID, pPassword) {
                             localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
                             localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
                             localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            localStorage.setItem('ACSOrganizationBranchId', obj[0].OrganizationBranchUID);
+                            localStorage.setItem('ACSOrganizationId', obj[0].OrganizationUID);
+                            localStorage.setItem('ACSCreatedByUserId', obj[0].UserUID);
                             window.location.href = "dashboard-export.html";
                         }
                         else if (obj[0].OrganizationTypeId == '4') { // Airline
@@ -335,6 +341,9 @@ UserLogin = function (pUserID, pPassword) {
                             localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
                             localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
                             localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            localStorage.setItem('ACSOrganizationBranchId', obj[0].OrganizationBranchUID);
+                            localStorage.setItem('ACSOrganizationId', obj[0].OrganizationUID);
+                            localStorage.setItem('ACSCreatedByUserId', obj[0].UserUID);
                             window.location.href = "AirlineDashboard.html";
                         }
                         else if (obj[0].OrganizationTypeId == '25') { // Airline
@@ -345,6 +354,9 @@ UserLogin = function (pUserID, pPassword) {
                             localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
                             localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
                             localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            localStorage.setItem('ACSOrganizationBranchId', obj[0].OrganizationBranchUID);
+                            localStorage.setItem('ACSOrganizationId', obj[0].OrganizationUID);
+                            localStorage.setItem('ACSCreatedByUserId', obj[0].UserUID);
                             window.location.href = "TPSUserDashboard.html";
                         }
                         else if (obj[0].OrganizationTypeId == '38') { // Airline
@@ -355,6 +367,9 @@ UserLogin = function (pUserID, pPassword) {
                             localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
                             localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
                             localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            localStorage.setItem('ACSOrganizationBranchId', obj[0].OrganizationBranchUID);
+                            localStorage.setItem('ACSOrganizationId', obj[0].OrganizationUID);
+                            localStorage.setItem('ACSCreatedByUserId', obj[0].UserUID);
                             localStorage.setItem('Businessline', obj[0].Businessline);
                             localStorage.setItem('IsCustomsOfficer', obj[0].IsCustomsOfficer);
                             $("#customsDiv").show();
@@ -366,6 +381,7 @@ UserLogin = function (pUserID, pPassword) {
                             $.alert(errmsg);
                             return false;
                         }
+                 
                     }
                 } else {
                     HideLoader();
@@ -380,6 +396,7 @@ UserLogin = function (pUserID, pPassword) {
         }
     });
 }
+
 
 SaveCustomsLoginDetails = function () {
     HideLoader();
@@ -963,4 +980,106 @@ function autocomplete(inp, arr) {
     });
   }
 
- 
+  UserTSMId = function () {
+
+    $.ajax({
+        type: 'POST',
+        url: TSMServiceUrl + "/Get_TSMUserDetailsFromACSGuid",
+       data: JSON.stringify({
+        "UserName": "tpsuser",
+        "UserGUID": "UID1540",
+        "OrganizationGUID": "OID1537",
+        "OrgBranchGUID": "OBID1558"
+    }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response, xhr, textStatus) {
+            console.log(response.d);
+          
+            if (response.d == 'Please enter valid credentials.') {
+                HideLoader();
+                errmsg = "Wrong Username or Password</br>";
+                errmsgcont = "Please enter valid credentials.</br>";
+                $.alert(errmsg,errmsgcont);
+                return false;
+            }
+            else {
+            
+                var obj = JSON.parse(response.d);
+                console.log(obj);
+                if (obj != null && obj != "") {
+                    if (obj.length > 0) {
+                        if (obj[0].OrganizationTypeId == '10') { // GHA
+                            localStorage.setItem('loginName', obj[0].Name);
+                            localStorage.setItem('OrgName', obj[0].OrgName);
+                            localStorage.setItem('EmailId', obj[0].EmailId);
+                            localStorage.setItem('CreatedByUserId', obj[0].CreatedByUserId);
+                            localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
+                            localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
+                            localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            window.location.href = "dashboard-export.html";
+
+                        } else if (obj[0].OrganizationTypeId == '3') { // Freight Forwarder
+                            localStorage.setItem('loginName', obj[0].Name);
+                            localStorage.setItem('OrgName', obj[0].OrgName);
+                            localStorage.setItem('EmailId', obj[0].EmailId);
+                            localStorage.setItem('FFLocation', '3');
+                            localStorage.setItem('CreatedByUserId', obj[0].CreatedByUserId);
+                            localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
+                            localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
+                            localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            window.location.href = "dashboard-export.html";
+                        }
+                        else if (obj[0].OrganizationTypeId == '4') { // Airline
+                            localStorage.setItem('EmailId', obj[0].EmailId);
+                            localStorage.setItem('loginName', obj[0].Name);
+                            localStorage.setItem('OrgName', obj[0].OrgName);
+                            localStorage.setItem('CreatedByUserId', obj[0].CreatedByUserId);
+                            localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
+                            localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
+                            localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            window.location.href = "AirlineDashboard.html";
+                        }
+                        else if (obj[0].OrganizationTypeId == '25') { // Airline
+                            localStorage.setItem('EmailId', obj[0].EmailId);
+                            localStorage.setItem('loginName', obj[0].Name);
+                            localStorage.setItem('OrgName', obj[0].OrgName);
+                            localStorage.setItem('CreatedByUserId', obj[0].CreatedByUserId);
+                            localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
+                            localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
+                            localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            window.location.href = "TPSUserDashboard.html";
+                        }
+                        else if (obj[0].OrganizationTypeId == '38') { // Airline
+                            localStorage.setItem('EmailId', obj[0].EmailId);
+                            localStorage.setItem('loginName', obj[0].Name);
+                            localStorage.setItem('OrgName', obj[0].OrgName);
+                            localStorage.setItem('CreatedByUserId', obj[0].CreatedByUserId);
+                            localStorage.setItem('OrganizationBranchId', obj[0].OrganizationBranchId);
+                            localStorage.setItem('OrganizationTypeId', obj[0].OrganizationTypeId);
+                            localStorage.setItem('OrganizationId', obj[0].OrganizationId);
+                            localStorage.setItem('Businessline', obj[0].Businessline);
+                            localStorage.setItem('IsCustomsOfficer', obj[0].IsCustomsOfficer);
+                            $("#customsDiv").show();
+                            window.location.href = "CustomOfficerDashboard.html";
+                        }
+                        else {
+                            HideLoader();
+                            errmsg = "You are not authenticate user for access this application, please contact Admin.</br>";
+                            $.alert(errmsg);
+                            return false;
+                        }
+                    }
+                } else {
+                    HideLoader();
+                    errmsg = errmsg + 'Invalid username and password.';
+                    $.alert(errmsg);
+                }
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            $("body").mLoading('hide');
+            alert('Server not responding...');
+        }
+    });
+}

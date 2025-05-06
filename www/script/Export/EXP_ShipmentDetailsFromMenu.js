@@ -2463,11 +2463,11 @@ CheckTSPConfigurationSetting = function(){
 
  clearTSPInputs  = function() {
 
-  var sel ='<option value="-1">Select</option>';
-  $("#ddlCommodityTypeList").html(sel);
+  // var sel ='<option value="-1">Select</option>';
+  // $("#ddlCommodityTypeList").html(sel);
 
-  var select ='<option value="-1">Select</option>';
-  $("#ddlCommodityNameList").html(select);
+  // var select ='<option value="-1">Select</option>';
+  // $("#ddlCommodityNameList").html(select);
   $("#HSNCode").val(''); 
   $("#payMode").val(''); 
   $("#PDAccNo").val(''); 

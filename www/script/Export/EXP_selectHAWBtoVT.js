@@ -2,6 +2,16 @@ var LocationName = localStorage.getItem('LocationName');
 var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
+
+var GHACreatedByUserId = localStorage.getItem('TSMCreatedByUserId');
+var GHAOrganizationBranchId = localStorage.getItem('TSMOrganizationBranchId');
+var GHAOrganizationId = localStorage.getItem('TSMOrganizationId');
+
+var FFCreatedByUserId = localStorage.getItem('FFCreatedByUserId');
+var FFOrganizationBranchId = localStorage.getItem('FFOrganizationBranchId');
+var FFOrganizationId = localStorage.getItem('FFOrganizationId');
+
+
 var MAWBNo = localStorage.getItem('mawbNo');
 var AirlinePrefix = localStorage.getItem('Prefix');
 var AwbNumber = localStorage.getItem('AWBNumber');
@@ -36,11 +46,11 @@ $(function () {
     // alert("hi")
     awbID = ArrayOfAwbId;
   }
-  $("#AlloDot").css('background-color', '#00AAA2');
 
-  $("#SelCTODot").css('border', '1px solid #00AAA2');
+
+
   $("#AlloDot").css('border', '1px solid orange');
-  $("#AssDot").css('border', '1px solid orange');
+  // $("#AssDot").css('border', '1px solid orange');
  
 });
     
@@ -78,20 +88,32 @@ $(function () {
   getHouseDetailsMaster = function (id) {
     console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
     $.ajax({
-        type: 'POST',
-        url: ACSServiceURL + "/ACS_EXP_Get_Multiple_SBDetailsForGenerateToken",
-        data: JSON.stringify({
-          "OperationType":3,
-          "AirlinePrefix":AirlinePrefix,
-          "AwbNumber":AwbNumber,
-          "HawbNumber":HawbNumber,
-          "SBID":sbID,
-          "AWBID":awbID,
-          "OrganizationBranchId":OrganizationBranchId,
-          "OrganizationId":OrganizationId,
-          "CustodianID":id,
-          "CreatedByUserId":CreatedByUserId
-            }),
+      type: 'POST',
+      url: TSMServiceUrl + "/ExportPendingBookSlotListCB",
+      data: JSON.stringify(
+          {
+
+            "createdByID": FFCreatedByUserId,
+    
+            "organizationBranchID":
+    
+            FFOrganizationBranchId,        
+    
+            "filterCondition": "",
+    
+            "PageNumber": 0,
+    
+            "RecordsPerPage": 10,
+    
+            "sortOrder": "DESC",
+    
+            "sortColumn": "",
+    
+            "GHABranchId": GHAOrganizationBranchId,
+    
+            "GHAOrganizationID":GHAOrganizationId
+    
+        }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response, xhr, textStatus) {
@@ -265,20 +287,31 @@ getSelectedHouseDetails = function () {
   var finalArray;
   console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
   $.ajax({
-      type: 'POST',
-      url: ACSServiceURL + "/ACS_EXP_Get_Multiple_SBDetailsForGenerateToken",
-      data: JSON.stringify({
-        "OperationType":2,
-        "AirlinePrefix":AirlinePrefix,
-        "AwbNumber":AwbNumber,
-        "HawbNumber":HawbNumber,
-        "SBID":sbID,
-        "AWBID":awbID,
-        "OrganizationBranchId":OrganizationBranchId,
-        "OrganizationId":OrganizationId,
-        "CustodianID":GHAID,
-        "CreatedByUserId":CreatedByUserId
-          }),
+    type: 'POST',
+    url: TSMServiceUrl + "/ExportPendingBookSlotListCB",
+    data: JSON.stringify(
+        {
+
+          "createdByID": FFCreatedByUserId,
+    
+          "organizationBranchID":
+  
+          FFOrganizationBranchId,     
+          "filterCondition": "",
+  
+          "PageNumber": 0,
+  
+          "RecordsPerPage": 10,
+  
+          "sortOrder": "DESC",
+  
+          "sortColumn": "",
+  
+          "GHABranchId": GHAOrganizationBranchId,
+  
+          "GHAOrganizationID":GHAOrganizationId
+  
+      }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (response, xhr, textStatus) {
@@ -292,7 +325,7 @@ getSelectedHouseDetails = function () {
               console.log("House = " + allVals[i])
               // if(obj[0].HAWBNumber == "" ||  obj[0].HAWBNumber == null){
               var newArray = obj.filter(function(p){
-                  return (p.SBID == allVals[i])
+                  return (p.SBGUID == allVals[i])
                 });
               // }else{
               //   var newArray = obj.filter(function(p){
@@ -349,20 +382,32 @@ getSelectedHouseDetailsMaster = function () {
   var finalArray;
   console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
   $.ajax({
-      type: 'POST',
-      url: ACSServiceURL + "/ACS_EXP_Get_Multiple_SBDetailsForGenerateToken",
-      data: JSON.stringify({
-        "OperationType":3,
-        "AirlinePrefix":AirlinePrefix,
-        "AwbNumber":AwbNumber,
-        "HawbNumber":HawbNumber,
-        "SBID":sbID,
-        "AWBID":awbID,
-        "OrganizationBranchId":OrganizationBranchId,
-        "OrganizationId":OrganizationId,
-        "CustodianID":GHAID,
-        "CreatedByUserId":CreatedByUserId
-          }),
+    type: 'POST',
+    url: TSMServiceUrl + "/ExportPendingBookSlotListCB",
+    data: JSON.stringify(
+        {
+
+          "createdByID": FFCreatedByUserId,
+    
+            "organizationBranchID":
+    
+            FFOrganizationBranchId,           
+  
+          "filterCondition": "",
+  
+          "PageNumber": 0,
+  
+          "RecordsPerPage": 10,
+  
+          "sortOrder": "DESC",
+  
+          "sortColumn": "",
+  
+          "GHABranchId": GHAOrganizationBranchId,
+  
+          "GHAOrganizationID":GHAOrganizationId
+  
+      }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (response, xhr, textStatus) {
@@ -473,19 +518,31 @@ getHouseDetails = function (id) {
   console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
   $.ajax({
       type: 'POST',
-      url: ACSServiceURL + "/ACS_EXP_Get_Multiple_SBDetailsForGenerateToken",
-      data: JSON.stringify({
-        "OperationType":2,
-        "AirlinePrefix":AirlinePrefix,
-        "AwbNumber":AwbNumber,
-        "HawbNumber":HawbNumber,
-        "SBID":sbID,
-        "AWBID":awbID,
-        "OrganizationBranchId":OrganizationBranchId,
-        "OrganizationId":OrganizationId,
-        "CustodianID":id,
-        "CreatedByUserId":CreatedByUserId
-          }),
+      url: TSMServiceUrl + "/ExportPendingBookSlotListCB",
+      data: JSON.stringify(
+          {
+
+            "createdByID": FFCreatedByUserId,
+    
+            "organizationBranchID":
+    
+            FFOrganizationBranchId,        
+    
+            "filterCondition": "",
+    
+            "PageNumber": 0,
+    
+            "RecordsPerPage": 10,
+    
+            "sortOrder": "DESC",
+    
+            "sortColumn": "",
+    
+            "GHABranchId": GHAOrganizationBranchId,
+    
+            "GHAOrganizationID":GHAOrganizationId
+    
+        }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (response, xhr, textStatus) {
@@ -556,12 +613,12 @@ FillControl = function (response) {
                 
                   
                   row +="<td class='tdalign'><span id='spnMode'></span>"+ d.SBNOP +"</td>"
-                  if (selectedList.includes(d.SBID)){
+                  if (selectedList.includes(d.SBGUID)){
                     var checkId = '#cbCheck' + count;
                     $('checkId').prop('checked', true);
-                    row +="<td class='tdalign'><input type='checkbox' name='chk' value= "+ d.SBID+ " id= 'cbCheck"  + count + "' class='cbCheck'  onclick='checkClick(" + count + ");' checked/></td>"
+                    row +="<td class='tdalign'><input type='checkbox' name='chk' value= "+ d.SBGUID+ " id= 'cbCheck"  + count + "' class='cbCheck'  onclick='checkClick(" + count + ");' checked/></td>"
                   }else{
-                    row +="<td class='tdalign'><input type='checkbox' name='chk' value= "+ d.SBID+ " id= 'cbCheck"  + count + "' class='cbCheck'  onclick='checkClick(" + count + ");'/></td>"
+                    row +="<td class='tdalign'><input type='checkbox' name='chk' value= "+ d.SBGUID+ " id= 'cbCheck"  + count + "' class='cbCheck'  onclick='checkClick(" + count + ");'/></td>"
                   }
                
                   row +="</tr>"

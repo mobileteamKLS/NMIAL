@@ -3,6 +3,15 @@ var LocationName = localStorage.getItem('LocationName');
 var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
+
+var GHACreatedByUserId = localStorage.getItem('TSMCreatedByUserId');
+var GHAOrganizationBranchId = localStorage.getItem('TSMOrganizationBranchId');
+var GHAOrganizationId = localStorage.getItem('TSMOrganizationId');
+
+var FFCreatedByUserId = localStorage.getItem('FFCreatedByUserId');
+var FFOrganizationBranchId = localStorage.getItem('FFOrganizationBranchId');
+var FFOrganizationId = localStorage.getItem('FFOrganizationId');
+
 var MAWBNo = localStorage.getItem('mawbNo');
 var AirlinePrefix = localStorage.getItem('Prefix');
 var AwbNumber = localStorage.getItem('AWBNumber');
@@ -69,9 +78,9 @@ if(ObjectToGenerateVT){
   
       window.location.href = "EXP_selectHAWBtoVT.html";
     }
-    function toAssignVehicle(){
+    function toBookSlot(){
   
-      window.location.href = "EXP_AssignVehicle.html";
+      window.location.href = "EXP_BookSlot.html";
     }
     function addAnotherHAWB(){
   
@@ -79,150 +88,150 @@ if(ObjectToGenerateVT){
     }
     
   
-    getHouseDetails = function () {
-      console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
-      $.ajax({
-          type: 'POST',
-          url: ACSServiceURL + "/ACS_EXP_GetSBDetailsForGenerateToken",
-          data: JSON.stringify({
-              "OperationType":1,
-              "AirlinePrefix":AirlinePrefix,
-              "AwbNumber":AwbNumber,
-              "HawbNumber":HawbNumber,
-              "SBID":sbID,
-              "AWBID":awbID,
-              "OrganizationBranchId":OrganizationBranchId,
-              "OrganizationId":OrganizationId,
-              }),
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          success: function (response, xhr, textStatus) {
-              var obj = JSON.parse(response.d);
-             console.log(response.d);
-             console.log(obj);
-              if (obj.length > 0) {
-                if (obj[0].ERRORMSG == undefined) {
-                  FillControl(response);
-                 // fillDriverImage(response);
-                  $("body").mLoading('hide');
-                  // $.alert('Details saved successfully');
-                }else{
+    // getHouseDetails = function () {
+    //   console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
+    //   $.ajax({
+    //       type: 'POST',
+    //       url: ACSServiceURL + "/ACS_EXP_GetSBDetailsForGenerateToken",
+    //       data: JSON.stringify({
+    //           "OperationType":1,
+    //           "AirlinePrefix":AirlinePrefix,
+    //           "AwbNumber":AwbNumber,
+    //           "HawbNumber":HawbNumber,
+    //           "SBID":sbID,
+    //           "AWBID":awbID,
+    //           "OrganizationBranchId":OrganizationBranchId,
+    //           "OrganizationId":OrganizationId,
+    //           }),
+    //       contentType: "application/json; charset=utf-8",
+    //       dataType: "json",
+    //       success: function (response, xhr, textStatus) {
+    //           var obj = JSON.parse(response.d);
+    //          console.log(response.d);
+    //          console.log(obj);
+    //           if (obj.length > 0) {
+    //             if (obj[0].ERRORMSG == undefined) {
+    //               FillControl(response);
+    //              // fillDriverImage(response);
+    //               $("body").mLoading('hide');
+    //               // $.alert('Details saved successfully');
+    //             }else{
                 
-                  errmsg = "Alert</br>";
-                  errmsgcont = obj[0].ERRORMSG;
-                  $.alert(errmsg,errmsgcont);
-                  return;
+    //               errmsg = "Alert</br>";
+    //               errmsgcont = obj[0].ERRORMSG;
+    //               $.alert(errmsg,errmsgcont);
+    //               return;
        
-                }
-              } else {
-                  $("body").mLoading('hide');
-                  $("#tblAirWayBillInfo").hide();
-                  $("#tblAirWayBillInfo1").hide();
-                  errmsg = "Wrong MAWB number</br>";
-                  errmsgcont = "Please enter a valid MAWB number</br>";
-                  //$.alert(errmsg,errmsgcont);
-                  return;
-              }
+    //             }
+    //           } else {
+    //               $("body").mLoading('hide');
+    //               $("#tblAirWayBillInfo").hide();
+    //               $("#tblAirWayBillInfo1").hide();
+    //               errmsg = "Wrong MAWB number</br>";
+    //               errmsgcont = "Please enter a valid MAWB number</br>";
+    //               //$.alert(errmsg,errmsgcont);
+    //               return;
+    //           }
     
-          },
-          error: function (xhr, textStatus, errorThrown) {
-              $("body").mLoading('hide');
-              alert('Server not responding...');
-          }
-      });
-    }
-    FillControl = function (response) {
-      console.log(response)
-      var obj = JSON.parse(response.d);
+    //       },
+    //       error: function (xhr, textStatus, errorThrown) {
+    //           $("body").mLoading('hide');
+    //           alert('Server not responding...');
+    //       }
+    //   });
+    // }
+    // FillControl = function (response) {
+    //   console.log(response)
+    //   var obj = JSON.parse(response.d);
       
-      var totalPieces = 0;
-      var totalGrWt = 0;
-      var count = 0;
-      var row = "";
-      if (obj.length > 0) {
-        localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(obj));
-                    $.each(obj, function (i, d) {
+    //   var totalPieces = 0;
+    //   var totalGrWt = 0;
+    //   var count = 0;
+    //   var row = "";
+    //   if (obj.length > 0) {
+    //     localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(obj));
+    //                 $.each(obj, function (i, d) {
                   
-                      var MawbNo = '"' + d.MAWBNumber + '"';
-                      var AirlinePrefix = MawbNo.substring(1, 4);
-                      var AwbNumber = MawbNo.substring(4, 12);
-                      var MAWBNumber = AirlinePrefix.concat("-", AwbNumber);
+    //                   var MawbNo = '"' + d.MAWBNumber + '"';
+    //                   var AirlinePrefix = MawbNo.substring(1, 4);
+    //                   var AwbNumber = MawbNo.substring(4, 12);
+    //                   var MAWBNumber = AirlinePrefix.concat("-", AwbNumber);
 
-                      totalPieces += d.SBNOP;
-                      totalGrWt += d.SBGrossWeight;
+    //                   totalPieces += d.SBNOP;
+    //                   totalGrWt += d.SBGrossWeight;
 
-                      row += "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>";
-                      row += "<div class= 'div-wrapper'>";
-                      row += "<div class='panel-heading' role='tab' id='heading3' style='font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;' data-toggle='collapse' data-parent='#accordion' href='#collapse"+ i +"' aria-expanded='true'>";
-                      row += "<div class='col-3' style='padding: 0px !important;'>";
-                      row += "<div class='form-group vtMargin' >";
-                    //   if(d.HAWBNumber == null || d.HAWBNumber == "")
-                    //   row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'></label>";
-                    //   else
-                      row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.SBNumber + "</label>";
-                      row += "</div>";
-                      row += "</div>";
-                      row += "<div class='col-4' style='padding: 0px !important;'>";
-                      row += "<div class='form-group vtMargin' >";
-                      row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.MAWBNumber  + "</label>";
-                      row += "</div>";
-                      row += "</div>";
+    //                   row += "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>";
+    //                   row += "<div class= 'div-wrapper'>";
+    //                   row += "<div class='panel-heading' role='tab' id='heading3' style='font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;' data-toggle='collapse' data-parent='#accordion' href='#collapse"+ i +"' aria-expanded='true'>";
+    //                   row += "<div class='col-3' style='padding: 0px !important;'>";
+    //                   row += "<div class='form-group vtMargin' >";
+    //                 //   if(d.HAWBNumber == null || d.HAWBNumber == "")
+    //                 //   row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'></label>";
+    //                 //   else
+    //                   row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.SBNumber + "</label>";
+    //                   row += "</div>";
+    //                   row += "</div>";
+    //                   row += "<div class='col-4' style='padding: 0px !important;'>";
+    //                   row += "<div class='form-group vtMargin' >";
+    //                   row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.MAWBNumber  + "</label>";
+    //                   row += "</div>";
+    //                   row += "</div>";
 
-                      row += "<div class='col-3' style='padding: 0px !important;'>";
-                      row += "<div class='form-group vtMargin' >";
-                      row +="<button class='remove' id='delete' onclick=(" + d.SBID + ");' style='font-size: 15px;'>Remove</button>";
-                      row += "</div>";
-                      row += "</div>";
+    //                   row += "<div class='col-3' style='padding: 0px !important;'>";
+    //                   row += "<div class='form-group vtMargin' >";
+    //                   row +="<button class='remove' id='delete' onclick=(" + d.SBGUID + ");' style='font-size: 15px;'>Remove</button>";
+    //                   row += "</div>";
+    //                   row += "</div>";
 
-                      row += "<div class='col-2'>";
-                      row += "<div class='form-group'>";
-                      row += "<button class='btn-arrow' data-toggle='collapse' data-parent='#accordion' href='#collapse"+ i +"' aria-expanded='true' aria-controls='collapse1' style='border: none;background-color: white;' onclick='getPickOrderDetails();'>";
-                      row += "<i class='more-less zmdi zmdi-chevron-down' id='down-arrow' style='float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;'></i>";
-                      row += "</button>";
-                      row += "</div>";
-                      row += "</div>";
-                      row += "</div>";
-                      row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
-                      row += "<table style='width: 100%;'>";
-                      row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>SB Date</th>";
-                      row += "<th> NOP</th>";
-                      row += "<th>Gr.Wt.</th>";
-                      row += "<th>Unit</th></tr>";
-                      row += "</thead><tbody>";
-                      row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><span id=''>"+ d.SBDate +"</span></td>";
-                      row += "<td><span id=''>"+ d.SBNOP +"</span></td>";
-                      row += "<td><span id=''>"+ (d.SBGrossWeight).toFixed(2) +"</span></td>";
-                      row += "<td><span id=''>Kgs</span></td>";
-                      row += "</tr></tbody></table>";
-                      row += "<table><tbody>";
-                      row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><span id=''>Allocated NOP</span></td>";
-                      row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
-                      row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
-                      row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><input type= 'number' id='' value= '"+ d.SBNOP +"' style='width: 70%;margin: 5px;' disabled/></td>";
-                      row += "<td><input type= 'number' id='' value= '"+ (d.SBGrossWeight).toFixed(2) +"' style='width: 70%;margin: 5px;'disabled/></td>";
-                      row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
-                      row += "</tr></tbody></table>";
-                      row += "</div></div></div>";
+    //                   row += "<div class='col-2'>";
+    //                   row += "<div class='form-group'>";
+    //                   row += "<button class='btn-arrow' data-toggle='collapse' data-parent='#accordion' href='#collapse"+ i +"' aria-expanded='true' aria-controls='collapse1' style='border: none;background-color: white;' onclick='getPickOrderDetails();'>";
+    //                   row += "<i class='more-less zmdi zmdi-chevron-down' id='down-arrow' style='float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;'></i>";
+    //                   row += "</button>";
+    //                   row += "</div>";
+    //                   row += "</div>";
+    //                   row += "</div>";
+    //                   row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
+    //                   row += "<table style='width: 100%;'>";
+    //                   row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
+    //                   row += "<th>SB Date</th>";
+    //                   row += "<th> NOP</th>";
+    //                   row += "<th>Gr.Wt.</th>";
+    //                   row += "<th>Unit</th></tr>";
+    //                   row += "</thead><tbody>";
+    //                   row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
+    //                   row += "<td><span id=''>"+ d.SBDate +"</span></td>";
+    //                   row += "<td><span id=''>"+ d.SBNOP +"</span></td>";
+    //                   row += "<td><span id=''>"+ (d.SBGrossWeight).toFixed(2) +"</span></td>";
+    //                   row += "<td><span id=''>Kgs</span></td>";
+    //                   row += "</tr></tbody></table>";
+    //                   row += "<table><tbody>";
+    //                   row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
+    //                   row += "<td><span id=''>Allocated NOP</span></td>";
+    //                   row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
+    //                   row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
+    //                   row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
+    //                   row += "<td><input type= 'number' id='' value= '"+ d.SBNOP +"' style='width: 70%;margin: 5px;' disabled/></td>";
+    //                   row += "<td><input type= 'number' id='' value= '"+ (d.SBGrossWeight).toFixed(2) +"' style='width: 70%;margin: 5px;'disabled/></td>";
+    //                   row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
+    //                   row += "</tr></tbody></table>";
+    //                   row += "</div></div></div>";
 
-                    count++;
+    //                 count++;
                         
-                });
+    //             });
               
-          $("#houseDetailsRow").append(row);
-          $("body").mLoading('hide');
-      } else {
-          $("body").mLoading('hide');
-          $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
-      }
-      console.log("pieces = ",totalPieces)
-      localStorage.setItem('TotalNoP', totalPieces)
-      console.log("pieces = ",totalGrWt)
-      localStorage.setItem('TotalGrWt', totalGrWt)
-    }
+    //       $("#houseDetailsRow").append(row);
+    //       $("body").mLoading('hide');
+    //   } else {
+    //       $("body").mLoading('hide');
+    //       $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+    //   }
+    //   console.log("pieces = ",totalPieces)
+    //   localStorage.setItem('TotalNoP', totalPieces)
+    //   console.log("pieces = ",totalGrWt)
+    //   localStorage.setItem('TotalGrWt', totalGrWt)
+    // }
     
     $("#ckbCheckAll").click(function () {
       $(".cbCheck").attr('checked', this.checked);
@@ -357,7 +366,7 @@ if(ObjectToGenerateVT){
         $("body").mLoading('hide');
     } else {
         $("body").mLoading('hide');
-        $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
     }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
@@ -378,7 +387,7 @@ if(ObjectToGenerateVT){
 var a11=[];
       for(i =0 ; i< sbIdArr.length;i++){
  
-       a11.push(obj.filter(function(p){return (p.SBID == sbIdArr[i])}))
+       a11.push(obj.filter(function(p){return (p.SBGUID == sbIdArr[i])}))
 
       
         }
@@ -389,10 +398,10 @@ var a11=[];
  const uniqueIds = [];
 
 const unique = arr1d.filter(element => {
-  const isDuplicate = uniqueIds.includes(element.SBID);
+  const isDuplicate = uniqueIds.includes(element.SBGUID);
 
   if (!isDuplicate) {
-    uniqueIds.push(element.SBID);
+    uniqueIds.push(element.SBGUID);
 
     return true;
   }
@@ -432,7 +441,7 @@ console.log(unique);
                  
                     row += "<div class='col-3' style='padding: 0px !important;'>";
                     row += "<div class='form-group vtMargin' >";
-                    row +="<button class='remove' id='delete' onclick='deleteClick(" + d.SBID + ");' style='font-size: 15px;'>Remove</button>";
+                    row +="<button class='remove' id='delete' onclick='deleteClick(" + d.SBGUID.substring(2,d.SBGUID.length) + ");' style='font-size: 15px;'>Remove</button>";
                     row += "</div>";
                     row += "</div>";
 
@@ -478,7 +487,7 @@ console.log(unique);
         $("body").mLoading('hide');
     } else {
         $("body").mLoading('hide');
-        $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
     }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
@@ -588,7 +597,7 @@ console.log(unique);
         $("body").mLoading('hide');
     } else {
         $("body").mLoading('hide');
-        $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
     }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
@@ -613,7 +622,7 @@ console.log(unique);
          });
        }else{
          finalArr = newArr.filter(object => {
-           return object.SBID !== id;
+           return object.SBGUID !== "SB"+id;
          });
        }
       localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(finalArr));
@@ -621,13 +630,199 @@ console.log(unique);
       
       var str =localStorage.getItem('HouseArrayData');
       var strArray = str.split(',');
-      for (var i = 0; i <strArray.length; i++) {
-        if (strArray[i] == (id.toString())) {
-            strArray.splice(i, 1);
-        }
-    }
+      if(TSPSetting =="M"){
+        for (var i = 0; i <strArray.length; i++) {
+          if (strArray[i] == ("AWB"+id.toString())) {
+              strArray.splice(i, 1);
+          }
+      }
+       }else{
+        for (var i = 0; i <strArray.length; i++) {
+          if (strArray[i] == ("SB"+id.toString())) {
+              strArray.splice(i, 1);
+          }
+      }
+       }
+     
 arr = String(strArray);
 localStorage.setItem('HouseArrayData',  arr);
 });
 
   }
+
+  getHouseDetails = function (id) {
+    console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
+    $.ajax({
+        type: 'POST',
+        url: TSMServiceUrl + "/ExportPendingBookSlotListCB",
+        data: JSON.stringify(
+            {
+  
+              "createdByID": FFCreatedByUserId,
+      
+              "organizationBranchID":
+      
+              FFOrganizationBranchId,        
+      
+              "filterCondition": "",
+      
+              "PageNumber": 0,
+      
+              "RecordsPerPage": 10,
+      
+              "sortOrder": "DESC",
+      
+              "sortColumn": "",
+      
+              "GHABranchId": GHAOrganizationBranchId,
+      
+              "GHAOrganizationID":GHAOrganizationId
+      
+          }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response, xhr, textStatus) {
+            var obj = JSON.parse(response.d);
+           console.log(response.d);
+           console.log(obj);
+        var tempArr=[];
+            if (obj.length > 0) {
+              if (obj[0].ERRORMSG == undefined) {
+            
+              tempArr.push(obj.filter(function(p){return (p.SBGUID == arr)}))
+         
+                 console.log(tempArr);
+                 arr1d = [].concat(...tempArr);
+                 console.log(arr1d);
+                 localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(arr1d));
+              $("#activeRecords").text(obj.length); 
+         
+              $("#selectedCTO").text(GHANAME); 
+            
+                
+                FillControl(arr1d);
+               // fillDriverImage(response);
+                $("body").mLoading('hide');
+                // $.alert('Details saved successfully');
+              }else{
+              
+                errmsg = "Alert</br>";
+                errmsgcont = obj[0].ERRORMSG;
+                $.alert(errmsg,errmsgcont);
+                return;
+     
+              }
+            } else {
+              $("#activeRecords").text(0); 
+              $("#selectedCTO").text(GHANAME); 
+                
+            
+                $("body").mLoading('hide');
+                $("#tblAirWayBillInfo").hide();
+                $("#tblAirWayBillInfo1").hide();
+                errmsg = "Wrong MAWB number</br>";
+                errmsgcont = "Please enter a valid MAWB number</br>";
+                //$.alert(errmsg,errmsgcont);
+                return;
+            }
+  
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            $("body").mLoading('hide');
+            alert('Server not responding...');
+        }
+    });
+  }
+
+  FillControl = function (obj) {
+    console.log(obj)
+    
+    var totalPieces = 0;
+    var totalGrWt = 0;
+    var count = 0;
+    var row = "";
+    if (obj.length > 0) {
+      localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(obj));
+                  $.each(obj, function (i, d) {
+                
+                    var MawbNo = '"' + d.MAWBNumber + '"';
+                    var AirlinePrefix = MawbNo.substring(1, 4);
+                    var AwbNumber = MawbNo.substring(4, 12);
+                    var MAWBNumber = AirlinePrefix.concat("-", AwbNumber);
+
+                    totalPieces += d.SBNOP;
+                    totalGrWt += d.SBGrossWeight;
+
+                    row += "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>";
+                    row += "<div class= 'div-wrapper'>";
+                    row += "<div class='panel-heading' role='tab' id='heading3' style='font-size: 17px;padding: 5px 10px 0px 10px;display: inline-flex;width: 100%;' data-toggle='collapse' data-parent='#accordion' href='#collapse"+ i +"' aria-expanded='true'>";
+                    row += "<div class='col-3' style='padding: 0px !important;'>";
+                    row += "<div class='form-group vtMargin' >";
+                  //   if(d.HAWBNumber == null || d.HAWBNumber == "")
+                  //   row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'></label>";
+                  //   else
+                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.SBNumber + "</label>";
+                    row += "</div>";
+                    row += "</div>";
+                    row += "<div class='col-4' style='padding: 0px !important;'>";
+                    row += "<div class='form-group vtMargin' >";
+                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.MAWBNumber  + "</label>";
+                    row += "</div>";
+                    row += "</div>";
+
+                    row += "<div class='col-3' style='padding: 0px !important;'>";
+                    row += "<div class='form-group vtMargin' >";
+                    row +="<button class='remove' id='delete' onclick=(" + d.SBGUID + ");' style='font-size: 15px;'>Remove</button>";
+                    row += "</div>";
+                    row += "</div>";
+
+                    row += "<div class='col-2'>";
+                    row += "<div class='form-group'>";
+                    row += "<button class='btn-arrow' data-toggle='collapse' data-parent='#accordion' href='#collapse"+ i +"' aria-expanded='true' aria-controls='collapse1' style='border: none;background-color: white;' onclick='getPickOrderDetails();'>";
+                    row += "<i class='more-less zmdi zmdi-chevron-down' id='down-arrow' style='float: none !important;margin-right: 0px !important;font-size: 30px; color:#00AAA2;background-color: white;'></i>";
+                    row += "</button>";
+                    row += "</div>";
+                    row += "</div>";
+                    row += "</div>";
+                    row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
+                    row += "<table style='width: 100%;'>";
+                    row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
+                    row += "<th>SB Date</th>";
+                    row += "<th> NOP</th>";
+                    row += "<th>Gr.Wt.</th>";
+                    row += "<th>Unit</th></tr>";
+                    row += "</thead><tbody>";
+                    row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
+                    row += "<td><span id=''>"+ d.SBDate +"</span></td>";
+                    row += "<td><span id=''>"+ d.SBNOP +"</span></td>";
+                    row += "<td><span id=''>"+ (d.SBGrossWeight).toFixed(2) +"</span></td>";
+                    row += "<td><span id=''>Kgs</span></td>";
+                    row += "</tr></tbody></table>";
+                    row += "<table><tbody>";
+                    row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
+                    row += "<td><span id=''>Allocated NOP</span></td>";
+                    row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
+                    row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
+                    row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
+                    row += "<td><input type= 'number' id='' value= '"+ d.SBNOP +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                    row += "<td><input type= 'number' id='' value= '"+ (d.SBGrossWeight).toFixed(2) +"' style='width: 70%;margin: 5px;'disabled/></td>";
+                    row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
+                    row += "</tr></tbody></table>";
+                    row += "</div></div></div>";
+
+                  count++;
+                      
+              });
+            
+        $("#houseDetailsRow").append(row);
+        $("body").mLoading('hide');
+    } else {
+        $("body").mLoading('hide');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
+    }
+    console.log("pieces = ",totalPieces)
+    localStorage.setItem('TotalNoP', totalPieces)
+    console.log("pieces = ",totalGrWt)
+    localStorage.setItem('TotalGrWt', totalGrWt)
+  }
+  

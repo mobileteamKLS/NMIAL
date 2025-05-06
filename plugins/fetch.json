@@ -94,5 +94,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-sms-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sms-plugin"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-x-socialsharing": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-x-socialsharing@^6.0.4"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

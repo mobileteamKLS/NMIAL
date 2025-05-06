@@ -244,7 +244,11 @@ ImportListingPageDetails = function (OperationType, AirlinePrefix, AwbNumber, Ha
               localStorage.setItem('HawbRowId', obj[0].HAWBROWID);
               localStorage.setItem('IgmRowId', obj[0].IGMROWID);
 
-                  localStorage.setItem('HouseArrayData',obj[0].BoEID);
+                  
+                  if (obj[0].HAWBGUID =="")
+                    localStorage.setItem('HouseArrayData',obj[0].MAWBGUID);
+                  else
+                  localStorage.setItem('HouseArrayData',obj[0].HAWBGUID);
                   localStorage.setItem("boENum",obj[0].BoENumber)
               $("#txtIGMNo").text(obj[0].IGMNo); 
               $("#txtIGMYear").text(obj[0].IGMYear); 
@@ -585,37 +589,56 @@ ImportListingPageDetails = function (OperationType, AirlinePrefix, AwbNumber, Ha
                }else if(obj[0].OoCApproved == "Rejected" ){
                    document.getElementById("btnSubmitOoC").value = "Re-submit";
                }
-
+               gatePassNo = obj[0].GatepassNo;
+               localStorage.setItem('gatePassNo',gatePassNo);
                if(obj[0].GatePassStatus == "Generated"){
-                gatePassNo = obj[0].GatepassNo;
-                localStorage.setItem('gatePassNo',gatePassNo);
+           
                 $("#GatePassDot").css('background-color', '#00AAA2');
                 $("#GatePassDot").css('border', '1px solid #00AAA2');
                 $("#GatePassStatus").text(obj[0].GatePassStatus).css( "color", "#00AAA2" );
-                $("#GatePassDate").text();
+            
+                $("#GatePassDate").text(obj[0].GatePassDate.substring(0, 11));
+                $("#GatePassTime").text(obj[0].GatePassDate.substring(11, 17));
                 if(gatePassNo != "" && gatePassNo !== undefined){
-                  $("#btnCollect").css('color', '#00AAA2 !important').css('border', '2px solid #00AAA2');
-                   
-                       
-                  $("#btnCancelGP").css('color', '#00AAA2 !important').css('border', '2px solid #00AAA2');
-              
-                 $("#btnCreateGP").css('background-color', 'grey').css('border', '2px solid grey');
+                  $("#btnCollect").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled'); 
+                  $("#btnCancelGP").css('color', '#00AAA2 !important').css('border', '2px solid #00AAA2').removeAttr('disabled', 'disabled');
+                  $("#btnCreateGP").css('background-color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled');
                   $("#gatePassAlert").show();
                   generateBarcode(gatePassNo);
                   $("#GPStatus").text("Gate Pass No. " + gatePassNo).css( "color", "#333" );
                 }
               }
-                
+                else if(obj[0].GatePassStatus == "Cancelled"){
+                  $("#GatePassStatus").text(obj[0].GatePassStatus).css( "color", "#ff9800" );
+                  $("#GatePassDate").text(obj[0].GatePassDate.substring(0, 11));
+                  $("#GatePassTime").text(obj[0].GatePassDate.substring(11, 17));
+                  $("#btnCollect").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled'); 
+                  $("#btnCancelGP").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled');
+                  $("#btnCreateGP").css('background-color', '#00AAA2').css('border', '2px solid #00AAA2').removeAttr('disabled', 'disabled');
+                }
+                else if(obj[0].GatePassStatus == "Released"){
+                  $("#GatePassDot").css('background-color', '#00AAA2');
+                  $("#GatePassDot").css('border', '1px solid #00AAA2');
+                  $("#GatePassStatus").text(obj[0].GatePassStatus).css( "color", "#00AAA2" );
+                  $("#GatePassDate").text(obj[0].GatePassDate.substring(0, 11));
+                  $("#GatePassTime").text(obj[0].GatePassDate.substring(11, 17));
+            
+                      $("#btnCollect").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled');
+                      $("#btnCancelGP").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled');
+                      $("#btnCreateGP").css('background-color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled');
+                      $("#gatePassAlert").show();
+                      generateBarcode(gatePassNo);
+                      $("#GPStatus").text("Gate Pass No. " + gatePassNo).css( "color", "#333" );
+                }
                 else{
-                  $("#btnCollect").css('color', 'grey').css('border', '2px solid grey');
-                   
-                       
-                  $("#btnCancelGP").css('color', 'grey').css('border', '2px solid grey');
-              
-                 $("#btnCreateGP").css('background-color', '#00AAA2').css('border', '2px solid #00AAA2');
+                  $("#btnCollect").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled'); 
+                  $("#btnCancelGP").css('color', 'grey').css('border', '2px solid grey').attr('disabled', 'disabled');
+                  $("#btnCreateGP").css('background-color', '#00AAA2').css('border', '2px solid #00AAA2').removeAttr('disabled', 'disabled');
                   $("#GatePassDot").css('background-color', '#f9f9f9');
                   $("#GatePassStatus").text(obj[0].GatePassStatus).css( "color", "#ff9800" );
-                $("#GatePassDate").text("--");
+                  $("#GatePassDate").text(obj[0].GatePassDate.substring(0, 11));
+                  $("#GatePassTime").text(obj[0].GatePassDate.substring(11, 17));
+                
                 }
 
 
@@ -3842,17 +3865,17 @@ var row = "";
 
   clearTSPInputs  = function() {
 
-    var sel ='<option value="-1">Select</option>';
-    $("#ddlCommodityTypeList").html(sel);
+    // var sel ='<option value="-1">Select</option>';
+    // $("#ddlCommodityTypeList").html(sel);
 
-    var select ='<option value="-1">Select</option>';
-    $("#ddlCommodityNameList").html(select);
+    // var select ='<option value="-1">Select</option>';
+    // $("#ddlCommodityNameList").html(select);
     $("#HSNCode").val(''); 
-    $("#payMode").val(''); 
-    $("#PDAccNo").val(''); 
-    $("#LocationCode").val(''); 
-    $("#CTOPDBalance").val(''); 
-    $("#TSPPayAmount").val(''); 
+    // $("#payMode").val(''); 
+    // $("#PDAccNo").val(''); 
+    // $("#LocationCode").val(''); 
+    // $("#CTOPDBalance").val(''); 
+    // $("#TSPPayAmount").val(''); 
   }
 
   clearTSPDetails = function () {
@@ -3955,11 +3978,11 @@ function CreateGatePass(){
             $("#gatePassAlert").hide();
             $("#GPStatus").text(obj[0].ERRORMSG).css( "color", "red" );
             if(obj[0].ERRORMSG == "Gate Pass can not be generated. Due Charge(s) are outstanding against selected shipment. Kindly settle due charges to generate Gate Pass."){
-              $("#btnCollect").css('color', '#00AAA2 !important').css('border', '2px solid #00AAA2');
+              $("#btnCollect").css('color', '#00AAA2 !important').css('border', '2px solid #00AAA2').removeAttr('disabled', 'disabled');
               
             }
             else{
-              $("#btnCollect").css('color', 'grey !important').css('border', '2px solid grey');
+              $("#btnCollect").css('color', 'grey !important').css('border', '2px solid grey').attr('disabled', 'disabled');
             } 
           }else{
             ImportListingPageDetails('1', AirlinePrefix, AwbNumber, HawbNumber, IGMNo, IGMYear, CreatedByUserId, OrganizationBranchId, OrganizationId);

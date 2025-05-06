@@ -3,6 +3,15 @@ var LocationName = localStorage.getItem('LocationName');
 var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
+
+var GHACreatedByUserId = localStorage.getItem('TSMCreatedByUserId');
+var GHAOrganizationBranchId = localStorage.getItem('TSMOrganizationBranchId');
+var GHAOrganizationId = localStorage.getItem('TSMOrganizationId');
+
+var FFCreatedByUserId = localStorage.getItem('FFCreatedByUserId');
+var FFOrganizationBranchId = localStorage.getItem('FFOrganizationBranchId');
+var FFOrganizationId = localStorage.getItem('FFOrganizationId');
+
 var MAWBNo = localStorage.getItem('mawbNo');
 var AirlinePrefix = localStorage.getItem('Prefix');
 var AwbNumber = localStorage.getItem('AWBNumber');
@@ -57,7 +66,7 @@ $(function () {
     }
     function toAssignVehicle(){
   
-      window.location.href = "IMP_AssignVehicle.html";
+      window.location.href = "IMP_BookSlot.html";
     }
     function addAnotherHAWB(){
   
@@ -69,28 +78,60 @@ $(function () {
       console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
       $.ajax({
           type: 'POST',
-          url: ACSServiceURL + "/ACS_Imp_GETHAWB_detailsForVT",
-          data: JSON.stringify({
-              "OperationType":1,
-              "AirlinePrefix":AirlinePrefix,
-              "AwbNumber":AwbNumber,
-              "HawbNumber":HawbNumber,
-              "IGMNo":IGMNo,
-              "IGMYear":IGMYear,
-              "CreatedByUserId":CreatedByUserId,
-              "OrganizationBranchId":OrganizationBranchId,
-              "OrganizationId":OrganizationId,
-              "GHAID":0
-              }),
+          url: TSMServiceUrl + "/ImportPendingBookSlotListCB",
+          data: JSON.stringify(
+      
+              {"UserID": FFCreatedByUserId,
+    
+                "createdByOrgID": FFOrganizationId,
+        
+                "organizationBranchID":
+        
+                FFOrganizationBranchId,        
+        
+                "filterCondition": "",
+        
+                "PageNumber": 0,
+        
+                "RecordsPerPage": 10,
+                "sortColumn": "",
+                "sortOrder": "DESC",
+        
+                "GHABranchId": GHAOrganizationBranchId,
+        
+                "GHAOrganizationID":GHAOrganizationId
+        
+            }),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function (response, xhr, textStatus) {
-              var obj = JSON.parse(response.d);
-             console.log(response.d);
-             console.log(obj);
-              if (obj.length > 0) {
-                if (obj[0].ERRORMSG == undefined) {
-                  FillControl(response);
+            var obj = JSON.parse(response.d);
+            console.log(response.d);
+            console.log(obj);
+         var tempArr=[];
+             if (obj.length > 0) {
+               if (obj[0].ERRORMSG == undefined) {
+             
+               tempArr.push(obj.filter(function(p){
+                if (p.HAWBGUID ==""){
+                  return (p.MAWBGUID == arr)
+                  }else{
+                    return (p.HAWBGUID == arr)
+                  }
+           
+              
+              }))
+          
+                  console.log(tempArr);
+                  arr1d = [].concat(...tempArr);
+                  console.log(arr1d);
+                  localStorage.setItem('HouseObjectToGenerateVT',  JSON.stringify(arr1d));
+               $("#activeRecords").text(obj.length); 
+          
+               $("#selectedCTO").text(GHANAME); 
+             
+                 
+                 FillControl(arr1d);
                  // fillDriverImage(response);
                   $("body").mLoading('hide');
                   // $.alert('Details saved successfully');
@@ -119,9 +160,8 @@ $(function () {
           }
       });
     }
-    FillControl = function (response) {
-      console.log(response)
-      var obj = JSON.parse(response.d);
+    FillControl = function (obj) {
+ 
       
       var totalPieces = 0;
       var totalGrWt = 0;
@@ -136,8 +176,9 @@ $(function () {
                       var AwbNumber = MawbNo.substring(4, 12);
                       var MAWBNumber = AirlinePrefix.concat("-", AwbNumber);
 
-                      totalPieces += d.HAWB_Total_Nop;
-                      totalGrWt += d.HAWB_Total_GrossWt;
+                      totalPieces += d.AWBPcs;
+                      totalGrWt += d.GrWt;
+  
 
                       row += "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>";
                       row += "<div class= 'div-wrapper'>";
@@ -152,7 +193,7 @@ $(function () {
                       row += "</div>";
                       row += "<div class='col-4' style='padding: 0px !important;'>";
                       row += "<div class='form-group vtMargin' >";
-                      row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + MAWBNumber + "</label>";
+                      row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.AIRLINE_MAWB + "</label>";
                       row += "</div>";
                       row += "</div>";
                    
@@ -167,15 +208,15 @@ $(function () {
                       row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
                       row += "<table style='width: 100%;'>";
                       row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>BoE No.</th>";
+                      row += "<th>GP No.</th>";
                       row += "<th> NOP</th>";
                       row += "<th>Gr.Wt.</th>";
                       row += "<th>Unit</th></tr>";
                       row += "</thead><tbody>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><span id=''>"+ d.BoENumber +"</span></td>";
-                      row += "<td><span id=''>"+ d.HAWB_Total_Nop +"</span></td>";
-                      row += "<td><span id=''>"+ (d.HAWB_Total_GrossWt).toFixed(2) +"</span></td>";
+                      row += "<td><span id=''>"+ d.GatePassNo +"</span></td>";
+                      row += "<td><span id=''>"+ d.AWBPcs +"</span></td>";
+                      row += "<td><span id=''>"+ (d.GrWt) +"</span></td>";
                       row += "<td><span id=''>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "<table><tbody>";
@@ -184,8 +225,8 @@ $(function () {
                       row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
                       row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><input type= 'number' id='' value= '"+ d.HAWB_Total_Nop +"' style='width: 70%;margin: 5px;' disabled/></td>";
-                      row += "<td><input type= 'number' id='' value= '"+ (d.HAWB_Total_GrossWt).toFixed(2) +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ d.AWBPcs +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ (d.GrWt) +"' style='width: 70%;margin: 5px;' disabled/></td>";
                       row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "</div></div></div>";
@@ -198,7 +239,7 @@ $(function () {
           $("body").mLoading('hide');
       } else {
           $("body").mLoading('hide');
-          $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+          $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
       }
       console.log("pieces = ",totalPieces)
       localStorage.setItem('TotalNoP', totalPieces)
@@ -223,22 +264,51 @@ $(function () {
       var sbIdArr = arr.split(',');
       var a11=[];
       for(i =0 ; i< sbIdArr.length;i++){
- 
-       a11.push(obj.filter(function(p){return (p.BoEID == sbIdArr[i])}))
-
-      
+    
+          a11.push(obj.filter(function(p){
+            if (p.HAWBGUID ==""){
+            return (p.MAWBGUID == sbIdArr[i])
+            }else{
+              return (p.HAWBGUID == sbIdArr[i])
+            }
+          
+          }))
         }
+     
         console.log(a11);
         arr1d = [].concat(...a11);
         console.log(arr1d);
 
  const uniqueIds = [];
 
+// const unique = arr1d.filter(element => {
+//   const isDuplicate = uniqueIds.includes(element.BoEID);
+
+//   if (!isDuplicate) {
+//     uniqueIds.push(element.BoEID);
+
+//     return true;
+//   }
+
+//   return false;
+// });
+var isDuplicate='';
 const unique = arr1d.filter(element => {
-  const isDuplicate = uniqueIds.includes(element.BoEID);
+  if (element.HAWBGUID ==""){
+    isDuplicate = uniqueIds.includes(element.MAWBGUID);
+    }else{
+    isDuplicate = uniqueIds.includes(element.HAWBGUID);
+    }
+
 
   if (!isDuplicate) {
-    uniqueIds.push(element.BoEID);
+    if (element.HAWBGUID ==""){
+      uniqueIds.push(element.MAWBGUID);
+     }else{
+      uniqueIds.push(element.HAWBGUID);
+     }
+ 
+   
 
     return true;
   }
@@ -256,8 +326,8 @@ console.log(unique);
                     var AwbNumber = MawbNo.substring(4, 12);
                     var MAWBNumber = AirlinePrefix.concat("-", AwbNumber);
 
-                    totalPieces += d.HAWB_Total_Nop;
-                    totalGrWt += d.HAWB_Total_GrossWt;
+                    totalPieces += d.AWBPcs;
+                    totalGrWt += d.GrWt;
 
                     row += "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>";
                     row += "<div class= 'div-wrapper'>";
@@ -272,13 +342,18 @@ console.log(unique);
                     row += "</div>";
                     row += "<div class='col-4' style='padding: 0px !important;'>";
                     row += "<div class='form-group vtMargin' >";
-                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + MAWBNumber + "</label>";
+                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.AIRLINE_MAWB + "</label>";
                     row += "</div>";
                     row += "</div>";
                  
                     row += "<div class='col-3' style='padding: 0px !important;'>";
                     row += "<div class='form-group vtMargin' >";
-                    row +="<button class='remove' id='delete' onclick='deleteClick(" + d.BoEID + ");' style='font-size: 15px;'>Remove</button>";
+                    if(d.HAWBGUID ==""){
+                      row +='<button class="remove" id="delete" onclick="deleteClick(\'' +d.MAWBGUID + '\');" style="font-size: 15px;">Remove</button>';
+                    }else{
+                      row +='<button class="remove" id="delete" onclick="deleteClick(\'' +d.HAWBGUID + '\');" style="font-size: 15px;">Remove</button>';
+                    }
+
                     row += "</div>";
                     row += "</div>";
 
@@ -293,15 +368,15 @@ console.log(unique);
                     row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
                     row += "<table style='width: 100%;'>";
                       row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>BoE No.</th>";
+                      row += "<th>GP No.</th>";
                       row += "<th> NOP</th>";
                       row += "<th>Gr.Wt.</th>";
                       row += "<th>Unit</th></tr>";
                       row += "</thead><tbody>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><span id=''>"+ d.BoENumber +"</span></td>";
-                      row += "<td><span id=''>"+ d.HAWB_Total_Nop +"</span></td>";
-                      row += "<td><span id=''>"+ (d.HAWB_Total_GrossWt).toFixed(2) +"</span></td>";
+                      row += "<td><span id=''>"+ d.GatePassNo +"</span></td>";
+                      row += "<td><span id=''>"+ d.AWBPcs +"</span></td>";
+                      row += "<td><span id=''>"+ (d.GrWt) +"</span></td>";
                       row += "<td><span id=''>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "<table><tbody>";
@@ -310,8 +385,8 @@ console.log(unique);
                       row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
                       row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><input type= 'number' id='' value= '"+ d.HAWB_Total_Nop +"' style='width: 70%;margin: 5px;' disabled/></td>";
-                      row += "<td><input type= 'number' id='' value= '"+ (d.HAWB_Total_GrossWt).toFixed(2) +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ d.AWBPcs +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ (d.GrWt) +"' style='width: 70%;margin: 5px;' disabled/></td>";
                       row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "</div></div></div>";
@@ -324,7 +399,7 @@ console.log(unique);
         $("body").mLoading('hide');
     } else {
         $("body").mLoading('hide');
-        $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
     }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
@@ -343,7 +418,12 @@ console.log(unique);
       newArr = JSON.parse(arrayObject);
 
         finalArr = newArr.filter(object => {
-          return object.BoEID !== id;
+          if(object.HAWBGUID ==""){
+            return object.MAWBGUID !== id;
+          }else{
+            return object.HAWBGUID !== id;
+          }
+        
         });
  
   

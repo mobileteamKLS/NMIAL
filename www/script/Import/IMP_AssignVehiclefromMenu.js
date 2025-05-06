@@ -3,6 +3,17 @@ var LocationName = localStorage.getItem('LocationName');
 var CreatedByUserId = localStorage.getItem('CreatedByUserId');
 var OrganizationBranchId = localStorage.getItem('OrganizationBranchId');
 var OrganizationId = localStorage.getItem('OrganizationId');
+
+var GHACreatedByUserId = localStorage.getItem('TSMCreatedByUserId');
+var GHAOrganizationBranchId = localStorage.getItem('TSMOrganizationBranchId');
+var GHAOrganizationId = localStorage.getItem('TSMOrganizationId');
+
+var FFCreatedByUserId = localStorage.getItem('FFCreatedByUserId');
+var FFOrganizationBranchId = localStorage.getItem('FFOrganizationBranchId');
+var FFOrganizationId = localStorage.getItem('FFOrganizationId');
+var selectedSlot = localStorage.getItem("Slot")
+
+var selectedSlot = localStorage.getItem("Slot")
 var MAWBNo = localStorage.getItem('mawbNo');
 var AirlinePrefix = localStorage.getItem('Prefix');
 var AwbNumber = localStorage.getItem('AWBNumber');
@@ -19,7 +30,10 @@ var BOEID = localStorage.getItem('BoeId');
 var HouseObjectToGenerateVT = JSON.parse(localStorage.getItem('HouseObjectToGenerateVT'));
 var TotalNoP = localStorage.getItem('TotalNoP');
 var TotalGrWt = localStorage.getItem('TotalGrWt');
-
+var VehicleDetailsList;
+var AssignedAWBdata;
+var VehicleDetailsArray= [];
+var AssignedAWBdataArray= [];
 console.log(HouseObjectToGenerateVT)
 $(function () {
   $("#CTODot").css('background-color', '#00AAA2');
@@ -43,7 +57,7 @@ if(HouseObjectToGenerateVT.length > 1){
     function back() {
   
       // modal.style.display = "block";
-      window.location.href = "IMP_AllocateShipmentfromMenu.html";
+      window.location.href = "IMP_BookSlotfromMenu.html";
     }
     function goToAirIndiaAppCharges(){
   
@@ -57,12 +71,13 @@ if(HouseObjectToGenerateVT.length > 1){
  
 var i = 0;
 var vehicleXml = "";
-
+var VTcount;
+var CustID;
 $(".GenerateVTBtn").on('click', function() {
   vehicleXml = "";
         
   console.log("globalCounter = ",window.globalCounter)
-  var VTcount = window.globalCounter - 1;
+   VTcount = window.globalCounter - 1;
   if ((HouseObjectToGenerateVT.length == 1 && VTcount == 1) || (HouseObjectToGenerateVT.length > 1 && VTcount == 1))
 {
   $('#VTList').find('.panel-group').each(function (index) {
@@ -131,11 +146,56 @@ $(".GenerateVTBtn").on('click', function() {
 
         console.log(element.MAWBID); // 100, 200, 300
         console.log(i+1); // 0, 1, 2
-        var index = 1;
-        vehicleXml +=  "<InsertSBData><SBData><rowIndex>" + (index) + "</rowIndex><AWBid>" + element.MAWBID + "</AWBid><BoEID>" + element.BoEID + "</BoEID><HAWBID>" + element.HAWBID + "</HAWBID><OOCID>" + element.OOCID + "</OOCID><AllocateNOP>" + element.HAWB_Total_Nop + "</AllocateNOP><AllocateGrWt>" + element.HAWB_Total_GrossWt + "</AllocateGrWt><GHAID>" + element.GHAID + "</GHAID><VehicleNo>" + VehicleNo + "</VehicleNo><DriverName>" + DriverName + "</DriverName><DriverCountryCode></DriverCountryCode><DriverMobileNo>" + DriverMobNo + "</DriverMobileNo><AgentMobileNo>" + DriverMobNo + "</AgentMobileNo><DriverLicense>" + LicenseNo + "</DriverLicense><NoOfPieces>" + NoP + "</NoOfPieces><GrossWeight>" + GrWt + "</GrossWeight><Unit>KGS</Unit><Remarks>" + element.GHANAME + "</Remarks><VehicleCargoType>" + CargoType + "</VehicleCargoType></SBData></InsertSBData>";
+        var index = 2;
+        // if(TSPSetting =="M"){
+        //   sbID = 0;
+        // }else{
+        //   sbID = element.SBGUID;
+        // }
+     CustID = (element.GHAID).toString();
+        AssignedAWBdata = {
+            "rowIndex":"2",
+                      "AWBid":(element.DOID).toString(), //TSM AWBiD
+                      "DOId":(element.DOID).toString(), // for import 
+                      "HAWBID":(element.HAWBId).toString(), ////HAWB if any TSM HAWBiD
+                      "AllocateNOP":element.AWBPcs,
+                      "AllocateGrWt":element.GrWt,
+                      "GHAID":(element.GHAID).toString() //TSM Branch ID
+          };
+          AssignedAWBdataArray.push(AssignedAWBdata);
+
     });
-  
+    VehicleDetailsList = {
+      "RowIndex":"2", // start from 2
+                  "SlotDetails":selectedSlot,
+                  "VehicleNo":VehicleNo,
+                  "DriverName":DriverName,
+                  "DriverMobileNo":DriverMobNo,
+                  "DriverCountryCode":"91",
+                  "DriverLicense":LicenseNo,
+                  "AgentMobileNo":"", 
+                  "TSA":"", //empty
+                  "VehicleType":"All", //Constant
+                  "NoOfPieces":NoP, 
+                  "GrossWeight":"", //empty
+                  "Unit":"Kgs", //Constant
+                  "UnitId":"", ////empty
+                  "Remarks":"",
+                  "VehicleTypeId":"", //empty
+                  "CustodianID":CustID, //GHA TSM Branch ID
+                  "MLValue":"14", //Constant
+                  "isAdvanceSlot":"0",
+                  "CoDrivername":"", //empty
+                  "CoDriverLicense":"", //empty
+                  "SealNo":"",//empty
+                  "Services":"",//empty
+                  "AdvApprovalDockNo":"" //empty
+       
+      };
+      VehicleDetailsArray.push(VehicleDetailsList);
+
     console.log("vehicleXml == ",vehicleXml);
+
 generateVehicleToken();
     });
    
@@ -372,13 +432,15 @@ if(r.test(v)) {
       console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
       $.ajax({
           type: 'POST',
-          url: ACSServiceURL + "/ACS_IMP_INSERT_VehicleToken",
-          data: JSON.stringify({
-                  "BoEDataXML":vehicleXml,
-                  "CreatedByUserId":CreatedByUserId,
-                  "strOutMsg":"",
-                  "VTNos": ""
-              }),
+          url: TSMServiceUrl + "/ImportBookVehicleSlotDetailsCB",
+          data: JSON.stringify({"OrganizationID": FFOrganizationId, "OrganizationBranchID" :  FFOrganizationBranchId,  "dateButtonValue":selectedSlot.substring(0, 11),"strNoOfVehicle" : VTcount, "strVehicleType" :"All",
+          
+            "VehicleDetails":VehicleDetailsArray,
+            "lstAssignedAwbData":AssignedAWBdataArray,
+            "BaseStation":"NMI",
+            "strCommodityIDs":"2", //Constant
+            "isWFSIntegrated":"0", //Constant
+            "createdByID":FFCreatedByUserId,"GHAOrganizationId":GHAOrganizationId, "GHABranchID":GHAOrganizationBranchId, "AirlineBranchids":"","Lang": "en-US"}),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function (response, xhr, textStatus) {

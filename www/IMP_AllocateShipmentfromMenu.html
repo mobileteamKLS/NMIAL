@@ -331,7 +331,7 @@ input#btnAdd {
           <h5 class="primary-heading" style="margin: 50px 10px 0px 10px;">Generate Vehicle Token (VT)</h5>
           <h6 class="primary-heading" style="margin: 10px 10px 0px 10px;">Allocate Shipment</h6>
           <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin: 10px !important;">
-            <div class="col-3" >
+            <div class="col-2" >
                 <div class="form-group vtMargin" style="margin-top: 7px;">
                   <span class="dot" id="CTODot"></span>
                     <label class="lbl" >Select CTO</label>
@@ -343,13 +343,19 @@ input#btnAdd {
                     <label class="lbl" >Allocate Shipment</label>
                 </div>
             </div>
+            <div class="col-2">
+              <div class="form-group vtMargin" style="margin-top: 7px;">
+                <span class="dot" id="slotDot"></span>
+                  <label class="lbl" >Book Slot</label>
+              </div>
+          </div>
              <div class="col-3">
                 <div class="form-group vtMargin" style="margin-top: 7px;">
                   <span class="dot" id="AssDot"></span>
                     <label class="lbl">Assign Vehicle</label>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
                 <div class="form-group vtMargin" style="margin-top: 7px;">
                   <span class="dot" id="GenDot"></span>
                     <label class="lbl" >Generate VT</label>
@@ -368,7 +374,7 @@ input#btnAdd {
         </div>
     </div>
 </div>
-        <h6 class="primary-heading" style="margin: 10px 10px 0px 10px;text-align: right;">Tap Next to Assign Vehicle</h6>
+        <h6 class="primary-heading" style="margin: 10px 10px 0px 10px;text-align: right;">Tap Next to Book Slot</h6>
         
         <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;background-color: #e8fcfd;">
             
@@ -379,7 +385,7 @@ input#btnAdd {
         </div>
         <div class="col-6">
           <div class="form-group">
-            <input type="button" class="submitBtn" id="btnClear" value="Next" onclick="toAssignVehicle();" style="color: #fff;background-color: #00AAA2;float: right !important;">
+            <input type="button" class="submitBtn" id="btnClear" value="Next" onclick="toBookSlot();" style="color: #fff;background-color: #00AAA2;float: right !important;">
 
           </div>
       </div>

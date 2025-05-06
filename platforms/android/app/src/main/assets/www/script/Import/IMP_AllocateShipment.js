@@ -167,7 +167,7 @@ $(function () {
                       row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
                       row += "<table style='width: 100%;'>";
                       row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>BoE No.</th>";
+                      row += "<th>GP No.</th>";
                       row += "<th> NOP</th>";
                       row += "<th>Gr.Wt.</th>";
                       row += "<th>Unit</th></tr>";
@@ -198,7 +198,7 @@ $(function () {
           $("body").mLoading('hide');
       } else {
           $("body").mLoading('hide');
-          $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+          $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
       }
       console.log("pieces = ",totalPieces)
       localStorage.setItem('TotalNoP', totalPieces)
@@ -293,7 +293,7 @@ console.log(unique);
                     row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
                     row += "<table style='width: 100%;'>";
                       row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>BoE No.</th>";
+                      row += "<th>GP No.</th>";
                       row += "<th> NOP</th>";
                       row += "<th>Gr.Wt.</th>";
                       row += "<th>Unit</th></tr>";
@@ -324,7 +324,7 @@ console.log(unique);
         $("body").mLoading('hide');
     } else {
         $("body").mLoading('hide');
-        $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
     }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
