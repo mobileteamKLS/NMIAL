@@ -54,9 +54,9 @@ $(function () {
   
       window.location.href = "IMP_selectHAWBtoVT.html";
     }
-    function toAssignVehicle(){
+    function toBookSlot(){
   
-      window.location.href = "IMP_AssignVehiclefromMenu.html";
+      window.location.href = "IMP_BookSlotfromMenu.html";
     }
     function addAnotherHAWB(){
   
@@ -68,19 +68,30 @@ $(function () {
       console.log(IGMNo + ',' + AirlinePrefix + ',' + AwbNumber + ',' + HawbNumber + ',' + CreatedByUserId + ',' + OrganizationBranchId + ',' + OrganizationId);
       $.ajax({
           type: 'POST',
-          url: ACSServiceURL + "/ACS_Imp_GETHAWB_detailsForVT",
-          data: JSON.stringify({
-            "OperationType":2,
-            "AirlinePrefix":"",
-            "AwbNumber":"",
-            "HawbNumber":"",
-            "IGMNo":0,
-            "IGMYear":0,
-            "CreatedByUserId":CreatedByUserId,
-            "OrganizationBranchId":OrganizationBranchId,
-            "OrganizationId":OrganizationId,
-            "GHAID":CTOId
-              }),
+          url: TSMServiceUrl + "/ImportPendingBookSlotListCB",
+          data: JSON.stringify(
+      
+              {"UserID": FFCreatedByUserId,
+    
+                "createdByOrgID": FFOrganizationId,
+        
+                "organizationBranchID":
+        
+                FFOrganizationBranchId,        
+        
+                "filterCondition": "",
+        
+                "PageNumber": 0,
+        
+                "RecordsPerPage": 10,
+                "sortColumn": "",
+                "sortOrder": "DESC",
+        
+                "GHABranchId": GHAOrganizationBranchId,
+        
+                "GHAOrganizationID":GHAOrganizationId
+        
+            }),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function (response, xhr, textStatus) {
@@ -94,7 +105,7 @@ $(function () {
                     console.log("House = " + houseArr[i])
                     // if(obj[0].HAWBNumber == null || obj[0].HAWBNumber == ""){
                     var newArray = obj.filter(function(p){
-                        return (p.BoEID == houseArr[i])
+                        return (p.Id == houseArr[i])
                       });
                     // }else{
                     //   var newArray = obj.filter(function(p){
@@ -183,15 +194,15 @@ $(function () {
                       row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
                       row += "<table style='width: 100%;'>";
                       row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>BoE No.</th>";
+                      row += "<th>GP No.</th>";
                       row += "<th> NOP</th>";
                       row += "<th>Gr.Wt.</th>";
                       row += "<th>Unit</th></tr>";
                       row += "</thead><tbody>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
                       row += "<td><span id=''>"+ d.BoENumber +"</span></td>";
-                      row += "<td><span id=''>"+ d.HAWB_Total_Nop +"</span></td>";
-                      row += "<td><span id=''>"+ (d.HAWB_Total_GrossWt).toFixed(2) +"</span></td>";
+                      row += "<td><span id=''>"+ d.Rcvdpcs +"</span></td>";
+                      row += "<td><span id=''>"+ (d.RcvdGrWt).toFixed(2) +"</span></td>";
                       row += "<td><span id=''>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "<table><tbody>";
@@ -200,8 +211,8 @@ $(function () {
                       row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
                       row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><input type= 'number' id='' value= '"+ d.HAWB_Total_Nop +"' style='width: 70%;margin: 5px;' disabled/></td>";
-                      row += "<td><input type= 'number' id='' value= '"+ (d.HAWB_Total_GrossWt).toFixed(2) +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ d.Rcvdpcs +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ (d.RcvdGrWt).toFixed(2) +"' style='width: 70%;margin: 5px;' disabled/></td>";
                       row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "</div></div></div>";
@@ -214,7 +225,7 @@ $(function () {
           $("body").mLoading('hide');
       } else {
           $("body").mLoading('hide');
-          $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+          $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
       }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
@@ -235,7 +246,7 @@ $(function () {
 var a11=[];
       for(i =0 ; i< sbIdArr.length;i++){
  
-       a11.push(obj.filter(function(p){return (p.BoEID == sbIdArr[i])}))
+       a11.push(obj.filter(function(p){return (p.Id == sbIdArr[i])}))
 
       
         }
@@ -246,10 +257,10 @@ var a11=[];
  const uniqueIds = [];
 
 const unique = arr1d.filter(element => {
-  const isDuplicate = uniqueIds.includes(element.BoEID);
+  const isDuplicate = uniqueIds.includes(element.Id);
 
   if (!isDuplicate) {
-    uniqueIds.push(element.BoEID);
+    uniqueIds.push(element.Id);
 
     return true;
   }
@@ -267,8 +278,8 @@ console.log(unique);
                     var AwbNumber = MawbNo.substring(4, 12);
                     var MAWBNumber = AirlinePrefix.concat("-", AwbNumber);
 
-                    totalPieces += d.HAWB_Total_Nop;
-                    totalGrWt += d.HAWB_Total_GrossWt;
+                    totalPieces += d.Rcvdpcs;
+                    totalGrWt += d.RcvdGrWt;
 
                     row += "<div class='panel-group' id='accordion' role='tablist' aria-multiselectable='true'>";
                     row += "<div class= 'div-wrapper'>";
@@ -278,18 +289,18 @@ console.log(unique);
                   //   if(d.HAWBNumber == null || d.HAWBNumber == "")
                   //   row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'></label>";
                   //   else
-                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.BoENumber + "</label>";
+                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.GatePassNo + "</label>";
                     row += "</div>";
                     row += "</div>";
                     row += "<div class='col-4' style='padding: 0px !important;'>";
                     row += "<div class='form-group vtMargin' >";
-                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.MAWBNumber + "</label>";
+                    row += "<label class='lbl' style='font-size: 13px;font-weight: bold;'>" + d.AIRLINE_MAWB + "</label>";
                     row += "</div>";
                     row += "</div>";
                  
                     row += "<div class='col-3' style='padding: 0px !important;'>";
                     row += "<div class='form-group vtMargin' >";
-                    row +="<button class='remove' id='delete' onclick='deleteClick(" + d.BoEID + ");' style='font-size: 15px;'>Remove</button>";
+                    row +="<button class='remove' id='delete' onclick='deleteClick(" + d.Id.split("-") + ");' style='font-size: 15px;'>Remove</button>";
                     row += "</div>";
                     row += "</div>";
 
@@ -304,15 +315,15 @@ console.log(unique);
                     row += "<div id='collapse"+ i +"' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading3'>";
                     row += "<table style='width: 100%;'>";
                       row += "<thead><tr style='background-color: orange;font-size: 13px;height: 25px;'>";
-                      row += "<th>BoE No.</th>";
-                      row += "<th> NOP</th>";
+                      row += "<th>GP No.</th>";
+                      row += "<th>NOP</th>";
                       row += "<th>Gr.Wt.</th>";
                       row += "<th>Unit</th></tr>";
                       row += "</thead><tbody>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><span id=''>"+ d.BoENumber +"</span></td>";
-                      row += "<td><span id=''>"+ d.HAWB_Total_Nop +"</span></td>";
-                      row += "<td><span id=''>"+ (d.HAWB_Total_GrossWt).toFixed(2) +"</span></td>";
+                      row += "<td><span id=''>"+ d.GatePassNo +"</span></td>";
+                      row += "<td><span id=''>"+ d.Rcvdpcs +"</span></td>";
+                      row += "<td><span id=''>"+ (d.RcvdGrWt).toFixed(2) +"</span></td>";
                       row += "<td><span id=''>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "<table><tbody>";
@@ -321,8 +332,8 @@ console.log(unique);
                       row += "<td><span id=''>Allocated Gr.Wt.</span></td>";
                       row += "<td><span id='' style = 'margin-right: 13px'>Unit</span></td></tr>";
                       row += "<tr style='text-align: center;font-size: 13px;height: 25px;'>";
-                      row += "<td><input type= 'number' id='' value= '"+ d.HAWB_Total_Nop +"' style='width: 70%;margin: 5px;' disabled/></td>";
-                      row += "<td><input type= 'number' id='' value= '"+ (d.HAWB_Total_GrossWt).toFixed(2) +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ d.Rcvdpcs +"' style='width: 70%;margin: 5px;' disabled/></td>";
+                      row += "<td><input type= 'number' id='' value= '"+ (d.RcvdGrWt).toFixed(2) +"' style='width: 70%;margin: 5px;' disabled/></td>";
                       row += "<td ><span id='' style = 'margin-right: 13px'>Kgs</span></td>";
                       row += "</tr></tbody></table>";
                       row += "</div></div></div>";
@@ -335,7 +346,7 @@ console.log(unique);
         $("body").mLoading('hide');
     } else {
         $("body").mLoading('hide');
-        $("#houseDetailsRow").html('There are no Vehicle details available').css('color', '#f7347a');
+        $("#houseDetailsRow").html('There are no details available').css('color', '#f7347a');
     }
     console.log("pieces = ",totalPieces)
     localStorage.setItem('TotalNoP', totalPieces)
@@ -347,9 +358,11 @@ console.log(unique);
       $(".cbCheck").attr('checked', this.checked);
   });
 
-  deleteClick = function(id){
+  deleteClick = function(DoId, id){
     var finalArr;
+    console.log(DoId);
     console.log(id);
+    var comID = DoId.toString().concat("-", id.toString());
       $("#houseDetailsRow").on("click", "#delete", function (ev) {
       var $currentTableRow = $(ev.currentTarget).parents('#accordion')[0];
       $currentTableRow.remove();
@@ -358,7 +371,7 @@ console.log(unique);
       newArr = JSON.parse(arrayObject);
 
         finalArr = newArr.filter(object => {
-          return object.BoEID !== id;
+          return object.Id !== comID;
         });
  
   
@@ -368,7 +381,7 @@ console.log(unique);
       var str =localStorage.getItem('HouseArrayData');
       var strArray = str.split(',');
       for (var i = 0; i <strArray.length; i++) {
-        if (strArray[i] == (id.toString())) {
+        if (strArray[i] == (comID.toString())) {
             strArray.splice(i, 1);
         }
     }

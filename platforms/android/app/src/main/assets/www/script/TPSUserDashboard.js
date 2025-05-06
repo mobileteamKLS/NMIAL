@@ -52,153 +52,78 @@ if(activeTab){
 function exitModal() {
   modal.style.display = "none";
 }
-
-function  GoToEXPAWBTracking(){
-  //localStorage.setItem('fromExport','1')
-  window.location.href = "EXP_AWBTracking.html";
+function GoToEXPParkingIn(){
+  localStorage.setItem('Tab','Exports');
+  localStorage.setItem('MenuTitle','Parking In VT List');
+  localStorage.setItem('event','ParkIn');
+  window.location.href = "TPSUserVTList.html";
 }
-function  GoToEXPVehicleTracking(){
-  window.location.href = "EXP_VehicleTracking.html";
+function GoToEXPParkingOut(){
+  localStorage.setItem('Tab','Exports');
+  localStorage.setItem('MenuTitle','Parking Out VT List');
+  localStorage.setItem('event','ParkOut');
+  window.location.href = "TPSUserVTList.html";
 }
-function  GoToEXPEGM(){
-  window.location.href = "EXP_EGM.html";
+function GoToEXPTerminalGateIn(){
+  localStorage.setItem('Tab','Exports');
+  localStorage.setItem('MenuTitle','Terminal Gate In VT List');
+  localStorage.setItem('event','YardCheckIn');
+  window.location.href = "TPSUserVTList.html";
 }
-
-
-
-function  GoToIMPAWBTracking(){
-  window.location.href = "IMP_Dashboard.html";
-}
-
-
-
-function  GoToPDAccountBalance(){
-  window.location.href = "OTH_PDBalance.html";
-}
-function  GoToFAQ(){
-  window.location.href = "OTH_FAQ.html";
-}
-function  GoToApplicableCharges(){
-  window.location.href = "OTH_ApplicableCharges.html";
-}
-function  GoToContactUs(){
-  window.location.href = "OTH_ContactUs.html";
-}
-function  GoToUpdates(){
-  localStorage.setItem('dashboard','dashboardUpdates');
-  window.location.href = "updates.html";
-}
-localStorage.removeItem('dashboard');
-
-
-function  GoToUploadBoEOoC(){
-  localStorage.setItem('ImportsMenu','Upload BoE and OoC');
-  window.location.href = "IMP_BoEandOoCDetails.html";
-}
-function  GoToPickOrderExam(){
-  localStorage.setItem('ImportsMenu','Pick Order Examination (Opt.)');
-  window.location.href = "IMP_BoEandOoCDetails.html";
-}
-function  GoToSubmitBoEASI(){
-  localStorage.setItem('ImportsMenu','BoE ASI Submission');
-  window.location.href = "IMP_BoEandOoCDetails.html";
-}
-function  GoToPayTSP(){
-  localStorage.setItem('ImportsMenu','Pay TSP');
-  window.location.href = "IMP_BoEandOoCDetails.html";
-}
-function  GoToGenerateVT(){
-  localStorage.setItem('ImportsMenu','Generate Vehicle Token');
-  window.location.href = "IMP_SelectCTO.html";
-}
-function  GoToAdditionalCharges(){
-  localStorage.setItem('ImportsMenu','Additional Charges');
-  window.location.href = "IMP_BoEandOoCDetails.html";
+function GoToEXPTerminalGateOut(){
+  localStorage.setItem('Tab','Exports');
+  localStorage.setItem('MenuTitle','Terminal Gate Out VT List');
+  localStorage.setItem('event','YardCheckOut');
+  window.location.href = "TPSUserVTList.html";
 }
 
-function MovetoNext(current, nextFieldID) {
-  if (current.value.length >= current.maxLength) {
-      document.getElementById(nextFieldID).focus();
-  }
+function GoToExpWalkIn(){
+  localStorage.setItem('Tab','Exports');
+  localStorage.setItem('MenuTitle','Walk-In');
+  localStorage.setItem('event','walkIn');
+  window.location.href = "TPSUserWalkIn.html";
 }
 
-function  GoToEXPAWBTracking(){
-  window.location.href = "EXP_Dashboard.html";
-}
-function  GoToViewSB(){
-  localStorage.setItem('ExportsMenu','View SB Details');
-  window.location.href = "EXP_MenuSearch.html";
-}
-function  GoToSBASI(){
-  localStorage.setItem('ExportsMenu','SB ASI');
-  window.location.href = "EXP_MenuSearch.html";
-}
-function  GoToUploadDocExp(){
-  localStorage.setItem('ExportsMenu','e-Docket');
-  window.location.href = "EXP_MenuSearch.html";
-}
-function  GoToExpPayTSP(){
-  localStorage.setItem('ExportsMenu','Pay TSP');
-  window.location.href = "EXP_MenuSearch.html";
-}
-function  GoToExpGenerateVT(){
-  localStorage.setItem('ExportsMenu','Generate Vehicle Token');
-  window.location.href = "EXP_SelectCTO.html";
-}
-function  GoToExpAdditionalCharges(){
-  localStorage.setItem('ExportsMenu','Additional Charges');
-  window.location.href = "EXP_MenuSearch.html";
+function GoToEXPLiveDock(){
+  localStorage.setItem('Tab','Exports');
+  window.location.href = "TPSUserVTList.html";
 }
 
 
-function searchAWBNumber() {
-  if ($("#txtFlightPrefix").val() == '' || $("#txtFlightNo").val() == '' || $("#txtFlightPrefix").val().length != 3 || $("#txtFlightNo").val().length != 8) {
-    
-      errmsg = "No MAWB Number</br>";
-      errmsgcont = "Please enter a valid MAWB number</br>";
-      $.alert(errmsg,errmsgcont);
-      return;
-  }  else {
-      AirlinePrefix = $("#txtFlightPrefix").val();
-      AwbNumber = $("#txtFlightNo").val();
-      HawbNumber = "";
-      var mawbNo = AirlinePrefix.concat("-", AwbNumber);
-      localStorage.setItem('mawbNo',mawbNo);
-      localStorage.setItem('Prefix',AirlinePrefix);
-      localStorage.setItem('AWBNumber',AwbNumber);
-
-      window.location.href = "IMP_IGMHawbList.html";
-     
-  }
+function GoToIMPParkingIn(){
+  localStorage.setItem('Tab','Imports');
+  localStorage.setItem('MenuTitle','Parking In VT List');
+  localStorage.setItem('event','ParkIn');
+  window.location.href = "TPSUserVTList.html";
+}
+function GoToIMPParkingOut(){
+  localStorage.setItem('Tab','Imports');
+  localStorage.setItem('MenuTitle','Parking Out VT List');
+  localStorage.setItem('event','ParkOut');
+  window.location.href = "TPSUserVTList.html";
+}
+function GoToIMPTerminalGateIn(){
+  localStorage.setItem('Tab','Imports');
+  localStorage.setItem('MenuTitle','Terminal Gate In VT List');
+  localStorage.setItem('event','YardCheckIn');
+  window.location.href = "TPSUserVTList.html";
+}
+function GoToIMPTerminalGateOut(){
+  localStorage.setItem('Tab','Imports');
+  localStorage.setItem('MenuTitle','Terminal Gate Out VT List');
+  localStorage.setItem('event','YardCheckOut');
+  window.location.href = "TPSUserVTList.html";
 }
 
-function searchAWBNumberExports() {
-  if ($("#txtFlightPrefixExp").val() == '' || $("#txtFlightNoExp").val() == '' || $("#txtFlightPrefixExp").val().length != 3 || $("#txtFlightNoExp").val().length != 8) {
-    
-      errmsg = "No MAWB Number</br>";
-      errmsgcont = "Please enter a valid MAWB number</br>";
-      $.alert(errmsg,errmsgcont);
-      return;
-  }  else {
-      AirlinePrefix = $("#txtFlightPrefixExp").val();
-      AwbNumber = $("#txtFlightNoExp").val();
-      HawbNumber = "";
-      var mawbNo = AirlinePrefix.concat("-", AwbNumber);
-      localStorage.setItem('mawbNo',mawbNo);
-      localStorage.setItem('Prefix',AirlinePrefix);
-      localStorage.setItem('AWBNumber',AwbNumber);
-
-      //if()
-      window.location.href = "EXP_SBHawbList.html";
-      //EXP_SBHawbList
-  }
+function GoToIMPWalkIn(){
+  localStorage.setItem('Tab','Imports');
+  localStorage.setItem('MenuTitle','Walk-In');
+  localStorage.setItem('event','walkIn');
+  window.location.href = "TPSUserWalkIn.html";
 }
 
-function clearInputs() {
-  $("#txtFlightPrefix").val('');
-   $("#txtFlightNo").val('');
-   $("#txtFlightNoExp").val('');
-   $("#txtFlightPrefixExp").val('');
-   
-   
+function GoToIMPLiveDock(){
+  localStorage.setItem('Tab','Imports');
+  window.location.href = "TPSUserVTList.html";
 }
+

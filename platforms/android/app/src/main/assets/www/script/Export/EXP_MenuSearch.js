@@ -983,10 +983,12 @@ var countCol = 1;
     {
     
       "DocumentStoreId":storeId,
-  
       "DocumentTemplateId":tempId,
-    
-      "OrganizationTypeId":OrganizationTypeId
+      "OrganizationTypeId":OrganizationTypeId,
+      "AWBId":MAWBID,
+      "UserId":CreatedByUserId,
+      "organizationId":OrganizationId,
+      "orgbranchId":OrganizationBranchId
     }),
     
   contentType: "application/json; charset=utf-8",
@@ -996,7 +998,8 @@ var countCol = 1;
         console.log(response.d);
         console.log(obj);
  
-     if (obj[0].IsDeleted == "True") {
+        if (obj[0].Successmessage == "Document deleted successfully.") {
+          ImportTrackandTraceMenuFlow('4', AirlinePrefix, AwbNumber, HawbNumber, CreatedByUserId, OrganizationBranchId, OrganizationId);
       counter = 0;
       countCol = 1;
  

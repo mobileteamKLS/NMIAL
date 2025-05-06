@@ -7,6 +7,7 @@ var AwbNumber = localStorage.getItem('awbNo');
 var HawbNumber = "";
 var IGMNo = localStorage.getItem('IGMNo');
 var IGMYear = localStorage.getItem('IGMYear');
+var IGMDate = localStorage.getItem('IGMDate');
 var errmsg = "";
 
 $(function () {
@@ -129,7 +130,7 @@ ImportDeliveryOrder = function (OperationType, AirlinePrefix, AwbNumber, HawbNum
   $.ajax({
       type: 'POST',
       url: ACSServiceURL + "/ACS_Imp_DeliveryOrderDetails",
-      data: JSON.stringify({ OperationType: "1", IGMNo :IGMNo, IGMYear :IGMYear, AirlinePrefix: AirlinePrefix, AwbNumber: AwbNumber, HawbNumber: HawbNumber, CreatedByUserId: CreatedByUserId, OrganizationBranchId: OrganizationBranchId, OrganizationId: OrganizationId, DeliveryNo: "",DeliveryDate: "" }),
+      data: JSON.stringify({ OperationType: "1", IGMNo :IGMNo, IGMYear :IGMYear, AirlinePrefix: AirlinePrefix, AwbNumber: AwbNumber, HawbNumber: HawbNumber, CreatedByUserId: CreatedByUserId, OrganizationBranchId: OrganizationBranchId, OrganizationId: OrganizationId, DeliveryNo: "",DeliveryDate: IGMDate }),
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function (response, xhr, textStatus) {
@@ -150,7 +151,9 @@ ImportDeliveryOrder = function (OperationType, AirlinePrefix, AwbNumber, HawbNum
                   errmsg = "Alert</br>";
                 errmsgcont = obj[0].ERRORMSG;
                 $.alert(errmsg,errmsgcont);
-                return;
+                setTimeout(function () {
+                  window.location.href = 'IMP_DODataList.html'
+                }, 2500);
               }
 
           } else {
@@ -232,7 +235,7 @@ revokeDO = function (OperationType, AirlinePrefix, AwbNumber, HawbNumber, Create
       $("#IgmNo").val(''); 
       $("#IgmDt").val(''); 
       setTimeout(function () {
-        window.location.href = 'EXP_CODataList.html'
+        window.location.href = 'IMP_DODataList.html'
       }, 3000);
     },
   

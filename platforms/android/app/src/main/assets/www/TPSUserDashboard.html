@@ -74,85 +74,47 @@
                
     
                 <div class="scrol">
-                  <!-- <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
-                    <div class="col-4" style="text-align:left;">
-                        <div class="form-group vtMargin" style="margin-top: 10px;">
-                            <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No.</label>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                          <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNoExp');"  id="txtFlightPrefixExp" class="fontSize12" placeholder="Prefix"name="prefix"
-                          pattern="[0-9]*" maxlength="3" autofocus></input>
-                        </div>
-                    </div>
-                    <div class="col-5">
-                        <div class="form-group">
-                          <input type="tel" onkeyup="NumberOnly(event); ChkMaxLength(this, '8');" id="txtFlightNoExp" class="fontSize13" placeholder="Enter AWB No." name="MAWBNo"
-                          pattern="[0-9]*" maxlength="8" ></input>
-                        </div>
-                    </div>
-              </div>
-        
-                <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
-                    
-                      <div class="col-6">
-                        <div class="form-group">
-                            <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-group">
-                        <input type="button" class="submitBtn" id="btnClear" value="Search" onclick="searchAWBNumberExports();" style="color: #fff;background-color: #00AAA2;float: right !important;">
-        
-                      </div>
-                  </div>
-              
-              </div> -->
+            
                     </div>
                     <table>
                       <tr>
                         <td class="col_menu">
-                          <a onclick="GoToEXPAWBTracking();" >
-                          <img src="img/Tracking.png" class="img_center"></a>
+                          <a onclick="GoToEXPParkingIn();" >
+                          <img src="img/ParkingIn.png" class="img_center"></a>
                         </td>
                         <td class="col_menu">
-                          <a onclick="GoToViewSB();">
-                          <img src="img/ViewSB.png" class="img_center"></a>
+                          <a onclick="GoToEXPParkingOut();">
+                          <img src="img/ParkingOut.png" class="img_center"></a>
                         </td>
         
                         <td class="col_menu">
-                          <a onclick="GoToSBASI();">
-                          <img src="img/SBASI.png" class="img_center"></a>
+                          <a onclick="GoToEXPTerminalGateIn();">
+                          <img src="img/TerminalGateIn.png" class="img_center"></a>
                         </td>
                       </tr>
                       <tr>
-                        <!-- <td class="col_menu"> -->
-                          <!-- <a onclick="GoToUploadDocExp();"> -->
-                            <!-- <div class="myDIV"> -->
-                          <!-- <img src="img/UploadDocument.png" class="img_center"></a> -->
-                          <!-- <div class="hide">Coming Soon...</div> -->
-                        <!-- </td> -->
+                        
     
                         <td class="col_menu">
-                          <a onclick="GoToExpPayTSP();">
-                          <img src="img/PayTSP.png" class="img_center"></a>
+                          <a onclick="GoToEXPTerminalGateOut();">
+                          <img src="img/TerminalGateOut.png" class="img_center"></a>
                         </td>
         
                         <td class="col_menu">
-                          <a onclick="GoToExpGenerateVT();">
-                          <img src="img/GenerateViewVt.png" class="img_center"></a>
+                          <a onclick="GoToExpWalkIn();">
+                          <img src="img/WalkIn.png" class="img_center"></a>
+                        </td>
+                        <td class="col_menu">
+                          <a onclick="GoToEXPLiveDock();">
+                            <img src="img/ViewLiveDockStatus.png" class="img_center"></a>
                         </td>
                       </tr>
     
                       <tr>
                 
-                        
                         <!-- <td class="col_menu">
-                          <a onclick="GoToExpAdditionalCharges();">
-                            <div class="myDIV">
-                          <img src="img/AdditionalCharges.png" class="img_center"></div>
-                            <div class="hide">Coming Soon...</div>
+                          <a onclick="GoToExpGenerateVT();">
+                          <img src="img/ViewLiveDockstatus.png" class="img_center"></a>
                         </td> -->
                       </tr>
                 
@@ -161,80 +123,46 @@
     
               <div class="tab-pane " id="profile-2" role="tabpanel">
                 <div class="scrol">
-              <!-- <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin-right: 10px;margin-left: 10px;margin-bottom: 0px !important;">
-                <div class="col-4" style="text-align:left;">
-                    <div class="form-group vtMargin" style="margin-top: 10px;">
-                        <label class="lbl" style="font-size: 15px;font-weight: bold;">MAWB No.</label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                      <input type="tel" onkeyup="MovetoNext(this, 'txtFlightNo');"  id="txtFlightPrefix" class="fontSize12" placeholder="Prefix"name="prefix"
-                      pattern="[0-9]*" maxlength="3" autofocus></input>
-                    </div>
-                </div>
-                <div class="col-5">
-                    <div class="form-group">
-                      <input type="tel" onkeyup="NumberOnly(event); ChkMaxLength(this, '8');" id="txtFlightNo" class="fontSize13" placeholder="Enter AWB No." name="MAWBNo"
-                      pattern="[0-9]*" maxlength="8" ></input>
-                    </div>
-                </div>
-          </div> -->
-    
-            <!-- <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;">
-                
-                  <div class="col-6">
-                    <div class="form-group">
-                        <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
-                    </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <input type="button" class="submitBtn" id="btnClear" value="Search" onclick="searchAWBNumber();" style="color: #fff;background-color: #00AAA2;float: right !important;">
-    
-                  </div>
-              </div>
-          
-          </div> -->
+         
                 </div>
                 <table>
                   <tr>
                     <td class="col_menu">
-                      <a onclick="GoToIMPAWBTracking();" >
-                      <img src="img/Tracking.png" class="img_center"></a>
+                      <a onclick="GoToIMPParkingIn();" >
+                      <img src="img/ParkingIn.png" class="img_center"></a>
                     </td>
                     <td class="col_menu">
-                      <a onclick="GoToUploadBoEOoC();">
-                      <img src="img/UploadBoEOoC.png" class="img_center"></a>
+                      <a onclick="GoToIMPParkingOut();">
+                      <img src="img/ParkingOut.png" class="img_center"></a>
                     </td>
     
                     <td class="col_menu">
-                      <a onclick="GoToPickOrderExam();">
-                      <img src="img/PickOrder.png" class="img_center"></a>
+                      <a onclick="GoToIMPTerminalGateIn();">
+                      <img src="img/TerminalGateIn.png" class="img_center"></a>
                     </td>
                   </tr>
                   <tr>
                     <td class="col_menu">
-                      <a onclick="GoToSubmitBoEASI();" >
-                      <img src="img/BoEASISub.png" class="img_center"></a>
+                      <a onclick="GoToIMPTerminalGateOut();" >
+                      <img src="img/TerminalGateOut.png" class="img_center"></a>
                     </td>
                     <td class="col_menu">
-                      <a onclick="GoToPayTSP();">
-                      <img src="img/PayTSP.png" class="img_center"></a>
+                      <a onclick="GoToIMPWalkIn();">
+                      <img src="img/WalkIn.png" class="img_center"></a>
                     </td>
     
                     <td class="col_menu">
-                      <a onclick="GoToGenerateVT();">
-                      <img src="img/GenerateViewVt.png" class="img_center"></a>
+                      <a onclick="GoToIMPLiveDock();">
+                      <img src="img/ViewLiveDockStatus.png" class="img_center"></a>
                     </td>
                   </tr>
                   <tr>
-                    <td class="col_menu">
+                    <!-- <td class="col_menu">
                       <a onclick="GoToAdditionalCharges();">
                         <div class="myDIV">
                       <img src="img/AdditionalCharges.png" class="img_center"></div>
                       <div class="hide">Coming Soon...</div>
-                    </td>
+                    </td> -->
                     <td class="col_menu">
                   
                     </td>

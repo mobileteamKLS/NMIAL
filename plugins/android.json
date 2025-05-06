@@ -48,7 +48,17 @@
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.kale.GMRHYD"
+    },
+    "cordova-sms-plugin": {
+      "PACKAGE_NAME": "com.kale.GMRHYD"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.kale.GMRHYD"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.kale.GMRHYD"
+    }
+  }
 }

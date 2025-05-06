@@ -1,0 +1,508 @@
+<style>
+    .buttonUpload { 
+          margin-top: 10px !important;
+          width: 100%;
+        padding: 5px;
+        /* border-radius: 15px; */
+        color: #ffffff;
+        font-weight: bold;
+        background-color: #3e5263;
+        /* font-size: large; */
+        height: 35px;
+        border: #3e5263 !important;
+        
+        }
+        .btnback {
+          margin: 20px 30px 40px 30px;
+        border-radius: 15px;
+        color: white;
+        font-weight: bold;
+        background-color: #00AAA2;
+        /* font-size: large; */
+        height: 35px;
+        border: 1px solid #00AAA2 !important;
+        width: 85%;
+        }
+        .buttonSubmit {
+        margin-top: 10px !important;
+        width: 90%;
+        /* padding: 12px; */
+        border-radius: 15px;
+        color: #ffffff;
+        font-weight: bold;
+        background-color: #adb5bd;
+        /* font-size: large; */
+        height: 35px;
+        border: #3e5263 !important;
+        margin: 10px;
+    }
+    .buttonClear {
+        margin-top: 10px !important;
+        width: 90%;
+        /* padding: 12px; */
+        border-radius: 15px;
+        color: #00AAA2;
+        font-weight: bold;
+        background-color: white;
+        /* font-size: large; */
+        height: 35px;
+        border:1px solid #00AAA2 !important;
+        margin: 10px;
+    }
+      
+        .tablink {
+          background-color: #00AAA2;;
+          color: white;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          width: 100%;
+          text-align: center;
+        }
+        
+        .tablink.active {
+          border-bottom: solid 3px white;
+          font-weight: bold;
+        }
+        
+        .tabcontent {
+          background-color:#e8fcfd;
+          display: none;
+        }
+        .col_menu{
+          padding: 10px 10px 10px 20px;
+        }
+        h6.foo_left {
+        text-align: left !important;
+        display: inline !important;
+            font-size: smaller !important;
+        
+        }
+        h6.foo_right {
+        text-align: right !important;
+        display: inline !important;
+            font-size: smaller  !important;
+        }
+         /* The Modal (background) */
+         .modal {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                /* Stay in place */
+                z-index: 1;
+                /* Sit on top */
+                padding-top: 150px;
+                /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                overflow: auto;
+                /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0);
+                /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4);
+                /* Black w/ opacity */
+            }
+        
+           /* Modal Content */
+          .modal-cont {
+            border-radius: 15px;
+            margin:15px;
+            border:1px solid grey;
+            background-color: #fff;
+        }
+            /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .logOff{
+              text-align: center;
+              background-color: #00AAA2;
+              margin-bottom: 20px;
+              height: 43px;
+              border-radius: 15px 15px 0px 0px;
+            }
+            input#btnlogOff {
+          background-color: white;
+            border: 1px solid #00AAA2;
+            border-radius: 15px;
+            margin-top: 10px;
+            width: 38%;
+            padding: 7px;
+        }
+        .log_label{
+          color: white;
+          margin-top: 7px;
+        }
+            .icon{
+            background-color: #00AAA2;
+            border: #FFFFFF;
+            color: white;
+            font-size: 20px;
+            padding-top: 10px;
+        }
+        .icons {
+            background-color: #00AAA2;
+            height: 40px;
+            width: 100%;
+        }
+        .footer {
+          position:fixed;
+           left: 0;
+           bottom: 0;
+           width: 100%;
+           background-color:lightgray;
+           color: white;
+           text-align: center;
+           height:20px;
+        }
+        
+        .img_center{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 100%;
+        }
+        .headbar {
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+        }
+        .menu_heading{
+          float: none;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+        }
+     
+        .fontSize13 {
+            width: 100%;
+            border: 0px;
+            border-bottom: 1px solid black;
+            text-align: right;
+            margin-top: 10px;
+        }
+      
+        .actionBtn {
+          width: 90%;
+            color:#00AAA2;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            height: 30px;
+            border: 1px solid #00AAA2;
+            margin-top: 10PX;
+            font-size: 15px;
+            /* margin-bottom: 10px; */
+        }
+        button.btn-arrow {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        border: solid 2px;
+        color: white;
+        background-color: #00AAA2;
+        /* float: right;
+        margin-right: 10px; */
+    }
+    .div-wrapper {
+        margin: 5px 10px 0px 10px;
+        background-color: white;
+        border: lightgrey 1px solid;
+    }
+   
+    .col-3{
+    text-align: center;
+    padding: 30px;
+    }
+    .col-2,.col-4{
+    text-align: center;
+    }
+    .spanTD{
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    }
+    .table_row{
+    border-bottom: 1px solid grey;
+    height: 50px;
+    background-color: #fff;
+    }
+    .col-6,.col-5{
+        padding: 0px !important;
+    }
+    .remove{
+        color: red;
+        border: 0px;
+        background-color: white;
+        font-weight: bold;
+    }
+    .dot {
+      height: 15px;
+        width: 15px;
+        background-color: #f9f9f9;
+        border-radius: 50%;
+        display: inline-block;
+        border: 2px solid lightgrey;
+    }
+    .lbl{
+      display: block;
+    }
+    tr.table_heading {
+        background-color: orange;
+        height: 35px;
+    }
+    input#btnClear {
+  width: 80%;
+    color:#00AAA2;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    height: 30px;
+    border: 1px solid #00AAA2;
+    margin-top: 10PX;
+    font-size: 15px;
+    /* margin-bottom: 10px; */
+}
+.table td{
+    padding: 5px;
+    text-align: center !important;
+}
+input#btnAdd {
+    width: 100%;
+    color: #00AAA2;
+    background-color: #fff;
+    /* border-radius: 15px; */
+    height: 30px;
+    border: 1px solid #f9f9f9;
+    /* margin-top: 10PX; */
+    font-size: 15px;
+    /* margin-bottom: 10px; */
+}
+
+input#selectFirstSlot,#selectSecondSlot{
+    width: 100%;
+    background-color: #fff;
+    /* border-radius: 15px; */
+    height: 30px;
+    border: 1px solid #ccc;
+    /* margin-top: 10PX; */
+    font-size: 15px;
+    color: grey;
+    /* margin-bottom: 10px; */
+}
+.selectSlot {
+  width: 100%;
+    background-color: #fff;
+    /* border-radius: 15px; */
+    height: 30px;
+    border: 1px solid #ccc;
+    /* margin-top: 10PX; */
+    font-size: 15px;
+    color: grey;
+    /* margin-bottom: 10px; */
+}
+input#dateShow {
+    width: 100%;
+    background-color: #fff;
+    text-align: left;
+    /* border-radius: 15px; */
+    height: 30px;
+    border: 1px solid #f9f9f9;
+    margin-top: 10PX;
+    font-size: 15px;
+    color: black;
+    /* margin-bottom: 10px; */
+}
+
+.hawbHead{
+  background-color: #ffc721 !important;
+}
+        </style>
+        
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+          <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=0">
+          <link rel="stylesheet" href="vendors/material-design-iconic-font/css/material-design-iconic-font.min.css">
+          <link rel="stylesheet" href="css/app.min.css">
+          <link href="css/custom.css" rel="stylesheet" />
+          <link href="css/Loader.css" rel="stylesheet" />
+          <link href="css/dialog.css" rel="stylesheet" />
+          <link href="css/alert.mob.css" rel="stylesheet" />
+          <link href="css/jquery-ui.css" rel="stylesheet" />
+          <link href="css/Common.css" rel="stylesheet" />
+          <link href="css/General.css" rel="stylesheet" />
+         
+        </head>
+        <body style=" background-color:#e8fcfd !important">
+        
+        <div class= "headbar">
+            <div class="icons">
+                <div>
+                 <button class="icon" onclick="back();"><i class="zmdi zmdi-arrow-left" style="font-size: x-large;font-weight: bold;"></i></button>
+                 <button class="icon" style="float: right;margin-right: 5px;" onclick="logOut();"><i class="zmdi zmdi-power" style="font-size: x-large;font-weight: bold;"></i>
+                 </button>
+                 <!-- <button class="icon" style="float: right;"><i class='zmdi zmdi-notifications' style="font-size: x-large;font-weight: bold;"></i> -->
+                 </button>
+                 <h4 class="menu_heading">Exports</h4> 
+               </div>
+             </div>
+             
+          </div>
+              
+          <h5 class="primary-heading" style="margin: 50px 10px 0px 10px;">Generate Vehicle Token (VT)</h5>
+          <h6 class="primary-heading" style="margin: 10px 10px 0px 10px;">VT List</h6>
+          <div class="contacts row contacts__itemfortext" style="padding: 2px 8px !important;margin: 10px !important;">
+            <!-- <div class="col-2" >
+              <div class="form-group vtMargin" style="margin-top: 7px;">
+                <span class="dot" id="CTODot"></span>
+                  <label class="lbl" >Select CTO</label>
+              </div>
+          </div> -->
+            <div class="col-3">
+                <div class="form-group vtMargin" style="margin-top: 7px;">
+                  <span class="dot" id="AlloDot"></span>
+                    <label class="lbl" >Allocate Shipment</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group vtMargin" style="margin-top: 7px;">
+                  <span class="dot" id="slotDot"></span>
+                    <label class="lbl" >Book Slot</label>
+                </div>
+            </div>
+             <div class="col-3">
+                <div class="form-group vtMargin" style="margin-top: 7px;">
+                  <span class="dot" id="AssDot"></span>
+                    <label class="lbl">Assign Vehicle</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group vtMargin" style="margin-top: 7px;">
+                  <span class="dot" id="GenDot"></span>
+                    <label class="lbl" >Generate VT</label>
+                </div>
+            </div>
+          
+          </div>
+         
+    <!-- <section id = "houseDetailsRow"></section> -->
+    <!-- <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;background-color: #e8fcfd;"> -->
+            
+      <div class="col-12">
+        <div class="form-group" style="display: flex;">
+          <input type="button" class="btn btn-lg btn-primary btn-add-panel" id="dateShow" />
+      
+        </div>
+     </div>
+     <div class="col-12">
+      <div class="form-group" style="display: flex;">
+        <label class="lbl" >Select Slot</label>
+    
+      </div>
+   </div>
+
+   <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;background-color: #e8fcfd;">
+            
+    <div class="col-6">
+      <div class="form-group">
+        <input type="button" class="btn btn-lg btn-primary btn-add-panel" id="selectFirstSlot" value="00:00 - 12:00" onclick="selFirstHalfSlot(12);" />
+      
+      </div>
+  </div>
+  <div class="col-6">
+    <div class="form-group">
+      <input type="button" class="btn btn-lg btn-primary btn-add-panel" id="selectSecondSlot" value="12:00 - 23:59" onclick="selSecondHalfSlot(12);" />
+    
+    </div>
+</div>
+ </div>
+
+    <div class="contacts row contacts__itemfortext" id = "slotDetailsRow" style="padding: 0px 5px !important;margin-right: 25px;margin-left: 25px;background-color: #e8fcfd;">
+
+   </div>
+        <h6 class="primary-heading" style="margin: 10px 10px 0px 10px;text-align: right;">Tap Next to Assign Vehicle</h6>
+        
+        <div class="contacts row contacts__itemfortext"  style="padding: 0px 5px !important;margin-right: 10px;margin-left: 10px;background-color: #e8fcfd;">
+            
+          <div class="col-6">
+            <div class="form-group">
+                <input type="button" class="submitBtn" id="btnClear" value="Clear" onclick="clearInputs();">
+            </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <input type="button" class="submitBtn" id="btnClear" value="Next" onclick="toAssignVehicle();" style="color: #fff;background-color: #00AAA2;float: right !important;margin-bottom: 30px;">
+
+          </div>
+      </div>
+  
+  </div>
+    
+            <div id="myModal" class="modal">
+                  <div class="modal-cont">
+                      <div class="logOff">
+                          <label class="log_label" style="font-weight: bold;font-size: large;">Sign out</label>
+                      </div>
+                      <div style="text-align: center;">
+                           <label style="font-size: large;">Are you sure you want to sign out?</label>
+                      </div>
+                      <div style="margin-bottom: 15px;">
+                        <input class="log_label" type="button" id="btnlogOff" value="Cancel" onclick="exitModal();" style="color: #00AAA2;margin-left: 35px;"  >
+                        <input class="log_label" type="button" id="btnlogOff" value="Sign out" onclick="window.location.href = 'loginScreen2.html'" style="background-color:#00AAA2;margin-right: 25px;float: right;" >
+                      </div>
+                  </div>
+            </div>
+           <div class="footer">
+            <p style="float:left;color: black;font-size: smaller;margin-left: 5px;">Powered by Kale Logistics Solutions</p>
+            <p style="float:right;color: black;font-size: smaller;margin-right: 5px;">Current Version-V3.0.0.0</p>
+          </div>
+          </body>
+        
+          <script type="text/javascript" src="js/jquery.min.js"></script>
+          <script type="text/javascript" src="js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="js/app.min.js"></script>
+          <script type="text/javascript" src="js/LoadingModel.js"></script>
+          <script type="text/javascript" src="js/LoaderShow-Hide.js"></script>
+          <script type="text/javascript" src="js/dialog.js"></script>
+          <script type="text/javascript" src="js/alert.mob.js"></script>
+          <script type="text/javascript" src="js/bootstrap-add-clear.js"></script>
+          <script type="text/javascript" src="script/General.js"></script>
+          
+          <script src="js/jquery-ui.js"></script>
+          <script type="text/javascript" src="cordova.js"></script>
+          <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+          <script type="text/javascript" src="script/Import/IMP_BookSlot.js"></script>
+        
+        
+        <script language="javascript" type="text/javascript">
+          function toggleIcon(e) {
+        $(e.target)
+            .prev('.panel-heading')
+            .find(".more-less")
+            .toggleClass('zmdi-chevron-down zmdi-chevron-up');
+        }
+        $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+        $('.panel-group').on('shown.bs.collapse', toggleIcon);
+          // Get the modal
+          var modal = document.getElementById("myModal");
+      
+          // Get the button that opens the modal
+          var btn = document.getElementById("myBtn");
+      
+      </script>
+        </html>
